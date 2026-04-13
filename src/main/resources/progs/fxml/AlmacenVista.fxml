@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.AlmacenController">
+
+    <top>
+        <Label text="Inventario de Materia Prima"
+               style="-fx-font-size: 20px; -fx-padding: 10;" />
+    </top>
+
+    <center>
+        <TableView fx:id="tabla">
+            <columns>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="180"/>
+                <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="120"/>
+                <TableColumn fx:id="colUnidad" text="Unidad" prefWidth="120"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <HBox spacing="10">
+                <TextField fx:id="txtNombre" promptText="Nombre"/>
+                <TextField fx:id="txtCantidad" promptText="Cantidad"/>
+                <TextField fx:id="txtUnidad" promptText="Unidad"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Button text="Agregar" onAction="#agregar"/>
+                <Button text="Editar" onAction="#editar"/>
+                <Button text="Eliminar" onAction="#eliminar"/>
+                <Button text="Limpiar" onAction="#limpiarCampos"/>
+            </HBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>
