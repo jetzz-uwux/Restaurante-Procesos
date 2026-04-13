@@ -8,6 +8,6 @@ package progs.restaurante;
  *
  * @author camil
  */
-public class Factura {
+public class Factura extends Comprobante{
     
 }

@@ -8,6 +8,6 @@ package progs.restaurante;
  *
  * @author camil
  */
-public class Gerente {
+public class Gerente extends Empleado{
     
 }

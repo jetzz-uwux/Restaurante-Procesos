@@ -8,6 +8,6 @@ package progs.restaurante;
  *
  * @author camil
  */
-public class Ticket {
+public class Ticket extends Comprobante{
     
 }

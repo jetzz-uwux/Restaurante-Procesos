@@ -8,6 +8,6 @@ package progs.restaurante;
  *
  * @author camil
  */
-public class Bebida {
+public class Bebida extends Producto{
     
 }
