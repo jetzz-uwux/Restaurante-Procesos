@@ -1,0 +1,69 @@
+
+@font-face {
+    font-family: 'Lemon Milk'; /* Nombre oficial que aparece al abrir el archivo */
+    src: url('LEMONMILK-Regular.otf'); 
+}
+
+.fuente-lemon {
+    -fx-font-family: 'Lemon Milk'; 
+}
+
+@font-face {
+    font-family: 'MADE Tommy Soft'; 
+    src: url('MADE Tommy Soft Medium.otf'); 
+}
+
+.fuente-tommy {
+    -fx-font-family: 'MADE Tommy Soft';
+    -fx-font-weight: 700;
+}
+
+@font-face {
+    font-family: 'KG Perfect Penmanship Regular'; 
+    src: url('KGPerfectPenmanship.otf'); 
+}
+
+.fuente-perfectP {
+    -fx-font-family: 'KG Perfect Penmanship Regular'; 
+; 
+}
+
+@font-face {
+    font-family: 'Simply Olive'; 
+    src: url('Simply Olive.tff'); 
+}
+
+.fuente-olive {
+    -fx-font-family: 'Simply Olive'; 
+; 
+}
+
+@font-face {
+    font-family: 'Bouncy Thin PERSONAL USE ONLY'; 
+    src: url('Bouncy-Thin.oft'); 
+}
+
+.fuente-bouncy {
+    -fx-font-family: 'Bouncy Thin PERSONAL USE ONLY'; 
+; 
+}
+
+@font-face {
+    font-family: 'Times New Romance'; 
+    src: url('Times New Romance.otf'); 
+}
+
+.fuente-newromance {
+    -fx-font-family: 'Times New Romance';
+    -fx-font-size: 16px; 
+; 
+}
+
+.boton-redondo {
+    -fx-background-radius: 20;    /* <--- ESTO redondea el fondo */
+    -fx-border-radius: 20;        /* <--- ESTO redondea el borde (si tiene) */
+    -fx-padding: 5 15;           /* Espacio interno para que no se vea apretado */
+    -fx-cursor: hand;
+    
+}
+
