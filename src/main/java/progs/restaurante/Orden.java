@@ -13,7 +13,7 @@ import progs.restaurante.Productos.Platillo;
  */
 public class Orden {
 
-    private ArrayList<Platillo> items;
+    private ArrayList<Producto> items;
     private String estado; // Pendiente, En preparación, Listo
 
     public Orden() {
@@ -21,7 +21,7 @@ public class Orden {
         this.estado = "Pendiente";
     }
 
-    public void agregarItem(Platillo p) {
+    public void agregarItem(Producto p) {
         this.items.add(p);
     }
 
@@ -33,7 +33,7 @@ public class Orden {
         return estado;
     }
 
-    public ArrayList<Platillo> getItems() {
+    public ArrayList<Producto> getItems() {
         return items;
     }
 }

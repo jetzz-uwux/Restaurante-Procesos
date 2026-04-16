@@ -9,6 +9,7 @@ import progs.restaurante.Mesa;
 import progs.restaurante.Productos.Platillo;
 import progs.restaurante.Orden;
 import java.util.ArrayList;
+import progs.restaurante.Producto;
 
 /**
  *
@@ -20,13 +21,13 @@ public class Mesero extends Empleado {
         super(idEmpleado, nombre, puesto, contrasena, estaPresente);
     }
 
-    public void registrarPedido(Mesa mesa, ArrayList<Platillo> seleccion) {
+    public void registrarPedido(Mesa mesa, ArrayList<Producto> seleccion) {
         //Mesa debe estar ocupada
         if (!mesa.getEstado().equalsIgnoreCase("Ocupada")) {
             return;
         }
         //Validar platillos seleccionados
-        for (Platillo p : seleccion) {
+        for (Producto p : seleccion) {
             if (p.getStock() <= 0) {
                 continue;
             }
