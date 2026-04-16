@@ -3,28 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package progs.restaurante.Productos;
+import progs.restaurante.Producto;
 
 /**
  *
  * @author camil
  */
-public class Platillo {
-    private String nombre;
-    private double precio;
-    private int stock; // Materia prima
-
-    public Platillo(String nombre, double precio, int stock) {
-        this.nombre = nombre;
-        this.precio = precio;
-        this.stock = stock;
-    }
-
-    public String getNombre() { return nombre; }
-    
-    public int getStock() { return stock; }
-
-    // Método que el Mesero llama para actualizar el almacén
-    public void reducirStock(int cantidad) {
-        this.stock -= cantidad;
+public class Platillo  extends Producto{
+   public Platillo(String nombre, double precio, int stock) {
+        super(nombre, precio, stock);
     }
 }

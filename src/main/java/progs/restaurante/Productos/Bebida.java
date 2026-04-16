@@ -3,11 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package progs.restaurante.Productos;
+import progs.restaurante.Producto;
 
 /**
  *
  * @author camil
  */
-public class Bebida {
-    
+public class Bebida extends Producto {
+    public Bebida(String nombre, double precio, int stock){
+        super(nombre, precio, stock);
+    }
 }

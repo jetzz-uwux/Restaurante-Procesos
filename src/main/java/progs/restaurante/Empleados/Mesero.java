@@ -26,9 +26,10 @@ public class Mesero extends Empleado {
         if (!mesa.getEstado().equalsIgnoreCase("Ocupada")) {
             return;
         }
-        //Validar platillos seleccionados
+        //Validar stock de platillos seleccionados
         for (Producto p : seleccion) {
             if (p.getStock() <= 0) {
+                System.out.println("Error: Producto " + p.getNombre() + " no disponible.");
                 continue;
             }
             //Agregar a la cuenta de la mesa y reducir el stock
