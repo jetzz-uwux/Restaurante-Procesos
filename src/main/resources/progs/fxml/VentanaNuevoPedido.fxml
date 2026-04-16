@@ -24,7 +24,7 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="598.0" spacing="10.0">
          <children>
-            <TextField fx:id="txt_buscar" disable="true" prefHeight="32.0" prefWidth="129.0">
+            <TextField fx:id="txt_numeroMesa" disable="true" prefHeight="32.0" prefWidth="129.0">
                <styleClass>
                   <String fx:value="boton-redondo" />
                   <String fx:value="fuente-newromance" />
@@ -52,13 +52,13 @@
       </TableView>
       <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="598.0" spacing="20.0">
          <children>
-            <Button fx:id="btn_generar" mnemonicParsing="false" text="Generar">
+            <Button fx:id="btn_generar" mnemonicParsing="false" onAction="#handleGenerar" text="Generar">
                <styleClass>
                   <String fx:value="boton-redondo" />
                   <String fx:value="fuente-newromance" />
                </styleClass>
             </Button>
-            <Button fx:id="btn_cancelar" mnemonicParsing="false" text="Cancelar">
+            <Button fx:id="btn_cancelar" mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar">
                <styleClass>
                   <String fx:value="boton-redondo" />
                   <String fx:value="fuente-newromance" />

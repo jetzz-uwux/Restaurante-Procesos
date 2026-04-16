@@ -15,10 +15,15 @@ public class Orden {
 
     private ArrayList<Producto> items;
     private String estado; // Pendiente, En preparación, Listo
+   private Mesa mesa;
 
     public Orden() {
         this.items = new ArrayList<>();
         this.estado = "Pendiente";
+    }
+    
+    public Mesa getMesa(){
+        return mesa;
     }
 
     public void agregarItem(Producto p) {
