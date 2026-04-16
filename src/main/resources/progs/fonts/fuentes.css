@@ -67,3 +67,24 @@
     
 }
 
+@font-face {
+    font-family: 'Super Chips'; 
+    src: url('Super Chips.ttf'); 
+}
+
+.fuente-superchips {
+    -fx-font-family: 'Super Chips';
+    -fx-font-size: 16px; 
+; 
+}
+
+@font-face {
+    font-family: 'Somelist'; 
+    src: url('Somelist.otf'); 
+}
+
+.fuente-somelist {
+    -fx-font-family: 'Somelist';
+    -fx-font-size: 16px; 
+; 
+}
