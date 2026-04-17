@@ -17,7 +17,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaPedidos.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Gestión de Pedidos - Restaurante UV");
         stage.setScene(scene);
         stage.show();
     }

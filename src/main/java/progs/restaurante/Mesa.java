@@ -17,7 +17,7 @@ public class Mesa {
     public Mesa(int numero) {
         this.numero = numero;
         this.estado = "Disponible"; // Por defecto al iniciar
-        this.ordenActual = new Orden();
+        this.ordenActual = new Orden(0, this);
     }
 
     public int getNumero() {
@@ -30,9 +30,12 @@ public class Mesa {
 
     public void setEstado(String estado) {
         this.estado = estado;
-        // Si se marca como Ocupada, aseguramos tener una orden limpia
+        
+        // Si la mesa pasa a "Ocupada", se crea una orden limpia
         if (estado.equalsIgnoreCase("Ocupada")) {
-            this.ordenActual = new Orden();
+            /*Usa el numero de mesa como ID temporal del pedido y pasa
+            'this' para cumplir con el constructor de Orden*/
+            this.ordenActual = new Orden(this.numero, this);
         }
     }
 

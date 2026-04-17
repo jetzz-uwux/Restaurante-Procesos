@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controller.VentanaNuevoPedidoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VentanaNuevoPedidoController">
    <children>
       <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="600.0">
          <children>
@@ -24,7 +24,7 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="598.0" spacing="10.0">
          <children>
-            <TextField fx:id="txt_numeroMesa" disable="true" prefHeight="32.0" prefWidth="129.0">
+            <TextField fx:id="txt_numeroMesa" prefHeight="32.0" prefWidth="129.0">
                <styleClass>
                   <String fx:value="boton-redondo" />
                   <String fx:value="fuente-newromance" />
@@ -36,10 +36,10 @@
                </HBox.margin>
             </Label>
          </children></HBox>
-      <TableView fx:id="tlb_pedidos" styleClass="fuente-newromance" VBox.vgrow="SOMETIMES">
+      <TableView fx:id="tlb_pedidos" editable="true" styleClass="fuente-newromance" VBox.vgrow="SOMETIMES">
         <columns>
           <TableColumn fx:id="clb_1" prefWidth="86.40002286434174" text="Platillo/Bebida" />
-          <TableColumn fx:id="clb_2" prefWidth="63.99994659423828" text="Cantidad" />
+          <TableColumn fx:id="clb_2" onEditCommit="#handleCambioCantidad" prefWidth="63.99994659423828" text="Cantidad" />
             <TableColumn fx:id="clb_3" prefWidth="63.99994659423828" text="Precio unitario" />
             <TableColumn fx:id="clb_4" prefWidth="63.99994659423828" text="Subtotal" />
         </columns>
