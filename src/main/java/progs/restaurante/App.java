@@ -17,11 +17,17 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaPedidos.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progs/fxml/VistaGestionReservas.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Gestión de Pedidos - Restaurante UV");
         stage.setScene(scene);
         stage.show();
+        
+        /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaPedidos.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Gestión de Pedidos - Restaurante UV");
+        stage.setScene(scene);
+        stage.show(); */
     }
 
     static void setRoot(String fxml) throws IOException {

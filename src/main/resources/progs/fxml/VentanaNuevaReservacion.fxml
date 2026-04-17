@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VistaNuevaReservacionController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="58.0" prefWidth="380.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+         <children>
+            <Label styleClass="fuente-superchips" text="Agregar reservación">
+               <font>
+                  <Font size="23.0" />
+               </font></Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="58.0" prefWidth="380.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+         <children>
+            <TextField fx:id="txt_numreservacion" HBox.hgrow="SOMETIMES">
+               <styleClass>
+                  <String fx:value="boton-redondo" />
+                  <String fx:value="fuente-newromance" />
+               </styleClass></TextField>
+            <Label alignment="CENTER" prefWidth="150.0" styleClass="fuente-newromance" text="No. de reservación" HBox.hgrow="SOMETIMES">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
+         </children>
+         <padding>
+            <Insets left="15.0" right="15.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="58.0" prefWidth="380.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+         <children>
+            <TextField fx:id="txt_nombrecliente" HBox.hgrow="SOMETIMES">
+               <styleClass>
+                  <String fx:value="boton-redondo" />
+                  <String fx:value="fuente-newromance" />
+               </styleClass></TextField>
+            <Label alignment="CENTER" prefWidth="150.0" styleClass="fuente-newromance" text="Nombre del cliente" HBox.hgrow="SOMETIMES">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
+         </children>
+         <padding>
+            <Insets left="15.0" right="15.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="58.0" prefWidth="380.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+         <children>
+            <TextField fx:id="txt_mesa" HBox.hgrow="SOMETIMES">
+               <styleClass>
+                  <String fx:value="boton-redondo" />
+                  <String fx:value="fuente-newromance" />
+               </styleClass></TextField>
+            <Label alignment="CENTER" prefWidth="150.0" styleClass="fuente-newromance" text="Mesa Asignada" HBox.hgrow="SOMETIMES">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
+         </children>
+         <padding>
+            <Insets left="15.0" right="15.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="58.0" prefWidth="380.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+         <children>
+            <TextField fx:id="txt_estado" HBox.hgrow="SOMETIMES">
+               <styleClass>
+                  <String fx:value="boton-redondo" />
+                  <String fx:value="fuente-newromance" />
+               </styleClass></TextField>
+            <Label alignment="CENTER" prefWidth="150.0" styleClass="fuente-newromance" text="Estado" HBox.hgrow="SOMETIMES">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
+         </children>
+         <padding>
+            <Insets left="15.0" right="15.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="56.0" prefWidth="380.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+         <children>
+            <Button fx:id="btn_agregar" mnemonicParsing="false" onAction="#handleAgregar" text="Agregar">
+               <styleClass>
+                  <String fx:value="boton-redondo" />
+                  <String fx:value="fuente-newromance" />
+               </styleClass></Button>
+            <Button fx:id="btn_cancelar" mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar">
+               <styleClass>
+                  <String fx:value="boton-redondo" />
+                  <String fx:value="fuente-newromance" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>
