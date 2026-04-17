@@ -1,9 +1,10 @@
-package progs.restaurante;
+package progs.restaurante.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import progs.restaurante.Item;
 import progs.restaurante.Item;
 
 public class AlmacenController {
