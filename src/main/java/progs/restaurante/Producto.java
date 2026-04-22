@@ -9,6 +9,7 @@ package progs.restaurante;
  * @author camil
  */
 public abstract class Producto {
+
     protected String nombre;
     protected double precio;
     protected int stock;
@@ -30,9 +31,13 @@ public abstract class Producto {
     public int getStock() {
         return stock;
     }
-    
-    public void reducirStock(int cantidad){
+
+    public void reducirStock(int cantidad) {
         this.stock -= cantidad;
     }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+   
 }
- 

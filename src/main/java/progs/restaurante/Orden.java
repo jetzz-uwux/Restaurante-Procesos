@@ -17,7 +17,8 @@ public class Orden {
     private ArrayList<Producto> items;
     private String estado; // Pendiente, En preparación, Listo
     private Mesa mesa;
-    private int idPedido;
+    private int idPedido;  
+    private double total;
 
     public Orden(int idPedido, Mesa mesa) {
         this.idPedido = idPedido;
@@ -64,5 +65,21 @@ public class Orden {
             suma += p.getPrecio();
         }
         return suma;
+    }
+
+    public void setItems(ArrayList<Producto> items) {
+        this.items = items;
+    }
+
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
+    }
+
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
+    }
+    
+    public void setTotal(double total) {
+        this.total = total;
     }
 }

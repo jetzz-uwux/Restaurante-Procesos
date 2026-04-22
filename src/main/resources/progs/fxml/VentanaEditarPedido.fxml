@@ -36,10 +36,10 @@
                </HBox.margin>
             </Label>
          </children></HBox>
-      <TableView fx:id="tlb_pedidos" styleClass="fuente-newromance" VBox.vgrow="SOMETIMES">
+      <TableView fx:id="tlb_pedidos" editable="true" styleClass="fuente-newromance" VBox.vgrow="SOMETIMES">
         <columns>
           <TableColumn fx:id="clb_1" prefWidth="86.40002286434174" text="Platillo/Bebida" />
-          <TableColumn fx:id="clb_2" prefWidth="63.99994659423828" text="Cantidad" />
+          <TableColumn fx:id="clb_2" onEditCommit="#handleCambioCantidad" prefWidth="63.99994659423828" text="Cantidad" />
             <TableColumn fx:id="clb_3" prefWidth="63.99994659423828" text="Precio unitario" />
             <TableColumn fx:id="clb_4" prefWidth="63.99994659423828" text="Subtotal" />
         </columns>

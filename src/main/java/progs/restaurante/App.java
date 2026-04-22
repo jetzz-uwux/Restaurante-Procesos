@@ -23,7 +23,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();*/
         
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progs/fxml/AlmacenVista.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaPedidos.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Gestión de Pedidos - Restaurante UV");
         stage.setScene(scene);

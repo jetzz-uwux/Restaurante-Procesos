@@ -8,79 +8,100 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
 import javafx.stage.Stage;
 import progs.restaurante.Orden;
 import progs.restaurante.Producto;
+import progs.restaurante.datos.OrdenesDAO;
+import progs.restaurante.datos.ProductoDAO;
 
 public class VentanaEditarPedidoController implements Initializable {
 
     @FXML
     private TableView<Producto> tlb_pedidos;
     @FXML
-    private TableColumn<Producto, String> clb_1; // Platillo/Bebida
+    private TableColumn<Producto, String> clb_1; // Nombre
     @FXML
-    private TableColumn<Producto, Integer> clb_2; // Cantidad
+    private TableColumn<Producto, Integer> clb_2; // Cantidad (Editable)
     @FXML
-    private TableColumn<Producto, Double> clb_3;  // Precio unitario
+    private TableColumn<Producto, Double> clb_3; // Precio
     @FXML
-    private TableColumn<Producto, Double> clb_4;  // Subtotal
-
+    private TableColumn<Producto, Double> clb_4; // Subtotal
     @FXML
     private TextField txt_numeroMesa;
 
-    private ObservableList<Producto> productosEditados = FXCollections.observableArrayList();
+    private ObservableList<Producto> productosMenu = FXCollections.observableArrayList();
     private Orden ordenOriginal;
-    private Orden ordenEditar;
+    private OrdenesDAO ordenesDAO = new OrdenesDAO();
+    private ProductoDAO productoDAO = new ProductoDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         clb_1.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        clb_2.setCellValueFactory(new PropertyValueFactory<>("stock"));
         clb_3.setCellValueFactory(new PropertyValueFactory<>("precio"));
 
-        // Subtotal: Precio * Cantidad (stock)
+        tlb_pedidos.setEditable(true);
+        clb_2.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        clb_2.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
         clb_4.setCellValueFactory(cellData -> {
             Producto p = cellData.getValue();
             return new javafx.beans.property.SimpleDoubleProperty(p.getPrecio() * p.getStock()).asObject();
         });
 
-        tlb_pedidos.setItems(productosEditados);
+        productosMenu = productoDAO.listarMenu();
+        tlb_pedidos.setItems(productosMenu);
     }
 
     public void cargarDatos(Orden orden) {
         this.ordenOriginal = orden;
         this.txt_numeroMesa.setText(String.valueOf(orden.getMesa().getNumero()));
 
-        if (orden.getItems() != null) {
-            java.util.Map<String, Producto> agrupados = new java.util.HashMap<>();
-
-            for (Producto p : orden.getItems()) {
-                if (agrupados.containsKey(p.getNombre())) {                    
-                    agrupados.get(p.getNombre()).reducirStock(-1);
-                } else {                   
-                    p.reducirStock(p.getStock());
-                    p.reducirStock(-1);
-                    agrupados.put(p.getNombre(), p);
+        for (Producto pMenu : productosMenu) {
+            int contador = 0;
+            
+            if (orden.getItems() != null) {
+                for (Producto pOrden : orden.getItems()) {
+                    if (pMenu.getNombre().trim().equalsIgnoreCase(pOrden.getNombre().trim())) {
+                        contador++;
+                    }
                 }
             }
-            this.productosEditados.setAll(agrupados.values());
+            
+            pMenu.setStock(contador);
         }
+        tlb_pedidos.refresh();
     }
 
     @FXML
     private void handleAceptar() {
         ordenOriginal.getItems().clear();
-
-        for (Producto p : productosEditados) {
-            int cantidad = p.getStock();
-
-            for (int i = 0; i < cantidad; i++) {
-                ordenOriginal.getItems().add(p);
+        for (Producto p : productosMenu) {
+            if (p.getStock() > 0) {
+                for (int i = 0; i < p.getStock(); i++) {
+                    ordenOriginal.getItems().add(p);
+                }
             }
         }
 
-        mostrarAlerta("Actualización", "El pedido ha sido modificado.");
-        cerrarVentana();
+        try {
+            ordenesDAO.actualizarOrden(ordenOriginal);
+            ordenesDAO.actualizarDetalles(ordenOriginal);
+
+            cerrarVentana();
+        } catch (Exception e) {
+            System.out.println("Error al actualizar: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleCambioCantidad(TableColumn.CellEditEvent<Producto, Integer> event) {
+        Producto p = event.getRowValue();
+        p.reducirStock(p.getStock()); // Reset
+        p.reducirStock(-event.getNewValue()); // Nueva cantidad
+        tlb_pedidos.refresh();
     }
 
     @FXML
@@ -89,15 +110,6 @@ public class VentanaEditarPedidoController implements Initializable {
     }
 
     private void cerrarVentana() {
-        Stage stage = (Stage) tlb_pedidos.getScene().getWindow();
-        stage.close();
-    }
-
-    private void mostrarAlerta(String titulo, String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
+        ((Stage) tlb_pedidos.getScene().getWindow()).close();
     }
 }
