@@ -17,14 +17,14 @@ public class ProductoDAO {
         ObservableList<Producto> lista = FXCollections.observableArrayList();
         String sql = "SELECT * FROM productos";
 
-        try (Connection con = ConexionBD.getConexion(); PreparedStatement ps = 
-                con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+        try (Connection con = ConexionBD.getConexion(); PreparedStatement ps
+                = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 String nombre = rs.getString("nombre");
                 double precio = rs.getDouble("precio");
                 String categoria = rs.getString("categoria");
-                
+
                 if (categoria.equalsIgnoreCase("Platillo")) {
                     lista.add(new Platillo(nombre, precio, 0));
                 } else {

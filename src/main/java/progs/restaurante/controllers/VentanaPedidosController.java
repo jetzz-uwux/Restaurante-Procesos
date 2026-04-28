@@ -57,33 +57,19 @@ public class VentanaPedidosController implements Initializable {
 
     @FXML
     private void handleNuevoPedido() {
-        Orden pedidoSeleccionado = tlb_pedidos.getSelectionModel().getSelectedItem();
-
-        if (pedidoSeleccionado == null) {
-            mostrarAlerta("Atención", "Por favor, selecciona una mesa de la tabla.");
-            return;
-        }
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaNuevoPedido.fxml"));
             Parent root = loader.load();
-
-            VentanaNuevoPedidoController controller = loader.getController();
-            // Pasamos la lista actual para que la ventana de registro pueda añadir ítems
-            controller.setListaPedidos(this.listaPedidos);
-
+            
             Stage stage = new Stage();
-            stage.setTitle("Registro de Nuevo Pedido - Mesa " + pedidoSeleccionado.getMesa().getNumero());
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(tlb_pedidos.getScene().getWindow());
-
+            stage.setTitle("Nuevo Pedido");
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
-            stage.showAndWait(); // Usamos showAndWait para que se pause aquí
+            stage.showAndWait();
 
-            cargarDatosDesdeBD(); // Refrescar al cerrar la ventana de creación
-
+            cargarDatosDesdeBD(); // Refresh al volver
         } catch (IOException e) {
-            mostrarAlerta("Error", "No se pudo abrir la ventana de pedidos: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -143,9 +129,9 @@ public class VentanaPedidosController implements Initializable {
         if (seleccionada == null) {
             mostrarAlerta("Atención", "Selecciona un pedido primero.");
             return;
-        }
+        }                
 
-        if (seleccionada.getEstado().equals("Listo")) {
+        //if (seleccionada.getEstado().equals("Listo")) {
             seleccionada.setEstado("Servido");
 
             // Persistir cambio en BD
@@ -153,9 +139,9 @@ public class VentanaPedidosController implements Initializable {
 
             tlb_pedidos.refresh();
             mostrarAlerta("Éxito", "El pedido ha sido marcado como servido.");
-        } else {
-            mostrarAlerta("Acción Denegada", "Solo pedidos marcados como 'Listo' pueden pasarse a 'Servido'.");
-        }
+        //} else {
+            //mostrarAlerta("Acción Denegada", "Solo pedidos marcados como 'Listo' pueden pasarse a 'Servido'.");
+        //}
     }
 
     private void mostrarAlerta(String titulo, String mensaje) {
