@@ -1,0 +1,3 @@
+.etiqueta {
+    -fx-effect: dropshadow(three-pass-box, black, 2, 2, 2, 2);
+}

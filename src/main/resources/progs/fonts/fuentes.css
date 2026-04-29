@@ -54,17 +54,7 @@
 }
 
 .fuente-newromance {
-    -fx-font-family: 'Times New Romance';
-    -fx-font-size: 16px; 
-; 
-}
-
-.boton-redondo {
-    -fx-background-radius: 20;    /* <--- ESTO redondea el fondo */
-    -fx-border-radius: 20;        /* <--- ESTO redondea el borde (si tiene) */
-    -fx-padding: 5 15;           /* Espacio interno para que no se vea apretado */
-    -fx-cursor: hand;
-    
+    -fx-font-family: 'Times New Romance'; 
 }
 
 @font-face {
@@ -84,4 +74,10 @@
 
 .fuente-somelist {
     -fx-font-family: 'Somelist';
+}
+
+.texto-botones{
+    -fx-text-origin: BASELINE; 
+    -fx-alignment: CENTER;
+    -fx-line-spacing: 0;
 }

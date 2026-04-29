@@ -1,0 +1,225 @@
+.boton-redondo {
+    -fx-background-radius: 20;    /* <--- ESTO redondea el fondo */
+    -fx-border-radius: 20;        /* <--- ESTO redondea el borde (si tiene) */
+    -fx-padding: 5 15;           /* Espacio interno para que no se vea apretado */
+    -fx-cursor: hand;    
+}
+.boton-vidrio-color {
+    /* 1. Base de color con transparencia (el cuerpo del vidrio) */
+    -fx-background-color: 
+        rgba(0, 223, 93, 0.5), /* Capa 1: El tinte verde */
+        linear-gradient(to bottom, 
+            rgba(255, 255, 255, 0.8) 0%,   /* Reflejo fuerte arriba */
+            rgba(255, 255, 255, 0.2) 48%,  /* Desvanecimiento */
+            rgba(255, 255, 255, 0.0) 50%,  /* El "corte" del vidrio */
+            rgba(0, 0, 0, 0.1) 100%        /* Sombra interna abajo */
+        );
+
+    /* 2. El borde es clave: le da el grosor al cristal */
+    -fx-border-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.2) rgba(0, 0, 0, 0.2) rgba(255, 255, 255, 0.2);
+    -fx-border-width: 1.5;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+
+    /* 3. Margen interno para que el brillo no pegue al borde */
+    -fx-background-insets: 0, 1 1 1 1;
+
+    /* Texto y efectos */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 30 10 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8, 0, 0, 3);
+}
+
+.boton-vidrio-color:hover {
+    /* Se ilumina al pasar el mouse */
+    -fx-background-color: 
+        rgba(44, 238, 125, 0.7), 
+        linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    -fx-cursor: hand;
+}
+
+
+
+/* =================================================###########
+   ESTILO: GLOW-BUBBLE MSN (Con Luz de Rebote Inferior)
+   =================================================########### */
+
+.boton-glow-bubble-azul {
+    -fx-background-radius: 50;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-padding: 12 35 12 35;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,40,150,0.4), 10, 0, 0, 3);
+    
+
+    -fx-background-color: 
+        /* Capa 1: Borde exterior oscuro */
+        linear-gradient(to bottom, #001f5c, #003a88), 
+        
+        /* Capa 2: Base de gel (Azul profundo) */
+        linear-gradient(to bottom, #0055ff 0%, #0033cc 100%), 
+        
+        /* Capa 3: LUZ DE REBOTE (Azul claro abajo) - ESTO ES LO QUE BUSCABAS */
+        /* Usamos un radial gradient posicionado abajo al centro */
+        radial-gradient(center 50% 100%, radius 80%, #00d9ff 0%, transparent 80%),
+        
+        /* Capa 4: Brillo superior de cristal (Corto y nítido) */
+        linear-gradient(to bottom, 
+            rgba(255, 255, 255, 0.9) 0%, 
+            rgba(255, 255, 255, 0.3) 35%, 
+            transparent 45%
+        ),
+        
+        /* Capa 5: Brillo de borde muy fino */
+        linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.2) 80%, transparent 100%);
+
+    /* Ajuste de Insets:
+       Capa 3 (la luz de abajo) la dejamos en 1 o 2 para que se note en el borde inferior.
+       Capa 4 (el brillo de arriba) se mantiene en 28 para que no baje. */
+    -fx-background-insets: 0, 1, 2, 2 12 28 12, 1 10 10 10;
+}
+
+/* Efecto Hover para resaltar el degradado inferior */
+.boton-glow-bubble-azul:hover {
+    -fx-font-size: inherit;
+    -fx-font-weight: inherit;
+    -fx-background-color: 
+        linear-gradient(to bottom, #001f5c, #003a88), 
+        linear-gradient(to bottom, #1a66ff 0%, #0044ee 100%), 
+        radial-gradient(center 50% 100%, radius 90%, #00f2ff 0%, transparent 80%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 35%, transparent 45%),
+        linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.3) 20%, rgba(255, 255, 255, 0.3) 80%, transparent 100%);
+    
+    -fx-effect: dropshadow(three-pass-box, rgba(0,217,255,0.6), 15, 0, 0, 0);
+}
+
+.boton-glow-bubble-verde {
+    -fx-background-radius: 50;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-padding: 12 35 12 35;
+    -fx-effect: dropshadow(three-pass-box, rgba(20,100,20,0.4), 10, 0, 0, 3);
+
+    -fx-background-color: 
+        linear-gradient(to bottom, #104010, #1e7a1e), 
+        linear-gradient(to bottom, #32cd32 0%, #1e9a1e 100%), 
+        radial-gradient(center 50% 100%, radius 80%, #b3ff00 0%, transparent 80%), /* Luz de rebote limón */
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 35%, transparent 45%),
+        linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.2) 80%, transparent 100%);
+
+    -fx-background-insets: 0, 1, 2, 2 12 28 12, 1 10 10 10;
+}
+
+.boton-glow-bubble-verde:hover {
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+    -fx-background-color: 
+        linear-gradient(to bottom, #104010, #1e7a1e), 
+        linear-gradient(to bottom, #45e645 0%, #1a9a1a 100%), 
+        radial-gradient(center 50% 100%, radius 90%, #ccff00 0%, transparent 80%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 35%, transparent 45%),
+        linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.3) 20%, rgba(255, 255, 255, 0.3) 80%, transparent 100%);
+    -fx-effect: dropshadow(three-pass-box, rgba(179,255,0,0.6), 15, 0, 0, 0);
+}
+
+.boton-glow-bubble-naranja {
+    -fx-background-radius: 50;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-padding: 12 35 12 35;
+    -fx-effect: dropshadow(three-pass-box, rgba(150,60,0,0.4), 10, 0, 0, 3);
+
+    -fx-background-color: 
+        linear-gradient(to bottom, #803300, #b34700), 
+        linear-gradient(to bottom, #ff9933 0%, #ff6600 100%), 
+        radial-gradient(center 50% 100%, radius 80%, #ffeb00 0%, transparent 80%), /* Luz de rebote amarilla */
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 35%, transparent 45%),
+        linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.2) 80%, transparent 100%);
+
+    -fx-background-insets: 0, 1, 2, 2 12 28 12, 1 10 10 10;
+}
+
+.boton-glow-bubble-naranja:hover {
+    -fx-background-color: 
+        linear-gradient(to bottom, #803300, #b34700), 
+        linear-gradient(to bottom, #ffaa55 0%, #ff7700 100%), 
+        radial-gradient(center 50% 100%, radius 90%, #fff700 0%, transparent 80%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 35%, transparent 45%),
+        linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.3) 20%, rgba(255, 255, 255, 0.3) 80%, transparent 100%);
+    -fx-effect: dropshadow(three-pass-box, rgba(255,235,0,0.6), 15, 0, 0, 0);
+}
+
+.boton-glow-bubble-rojo {
+    /* 1. Base y Forma */
+    -fx-background-radius: 50;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-padding: 12 35 12 35;
+    
+    /* Sombra con brillo rojo neón */
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.418), 10, 0, 0, 3);
+
+    /* 2. El Rojo Frutiger Aero Perfecto (Candy Gloss) */
+    -fx-background-color: 
+        /* Capa 1: Borde (Rojo vibrante definido) */
+        linear-gradient(to bottom, #e60000, #ff0000), 
+        
+        /* Capa 2: Base (Rojo puro de alta saturación) */
+        /* Eliminamos cualquier rastro de negro o café */
+        linear-gradient(to bottom, #e61616 0%, #ec0000 100%), 
+        
+        /* Capa 3: LUZ DE REBOTE (Rojo eléctrico abajo) */
+        /* Esto da la sensación de gelatina iluminada sin ser oscuro */
+        radial-gradient(center 50% 100%, radius 90%, #ff508a 0%, transparent 80%),
+        
+        /* Capa 4: EL GLOSS (Brillo blanco muy nítido arriba) */
+        linear-gradient(to bottom, 
+            rgba(255, 255, 255, 0.9) 0%, 
+            rgba(255, 255, 255, 0.35) 35%, 
+            transparent 45%
+        ),
+        
+        /* Capa 5: Reflejo de contorno fino */
+        linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.2) 80%, transparent 100%);
+
+    /* Insets: El 28 mantiene la burbuja de luz arriba como en el tutorial */
+    -fx-background-insets: 0, 1, 2, 2 12 28 12, 1 10 10 10;
+}
+
+/* --- Estado Hover (Efecto "Encendido") --- */
+.boton-glow-bubble-rojo:hover {
+    -fx-background-color: 
+        linear-gradient(to bottom, #ff0000, #ff4d4d), 
+        linear-gradient(to bottom, #ff3333 0%, #ff0000 100%), 
+        radial-gradient(center 50% 100%, radius 100%, #ff8b9e 0%, transparent 80%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.45) 35%, transparent 45%);
+    
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.7), 15, 0, 0, 0);
+}
+
+/* --- CORRECCIÓN DE ESCALA --- */
+.boton-glow-bubble-azul:pressed,
+.boton-glow-bubble-verde:pressed, 
+.boton-glow-bubble-naranja:pressed, 
+.boton-glow-bubble-rojo:pressed {
+    /* Cambiamos de 0.96 a 0.98. Parece poco, pero visualmente es mucho más estable */
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    
+    /* El innershadow es lo que realmente vende el efecto de "hundido" sin mover el botón */
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.7), 15, 0, 0, 0);
+}
+
+/* Este es el estilo normal del botón */
+.boton-imagen {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-transition-duration: 0.1s; /* Para que sea suave */
+}
+
+/* Este efecto ocurre cuando mantienes presionado el clic */
+.boton-imagen:pressed {
+    -fx-scale-x: 0.92;
+    -fx-scale-y: 0.92;
+}

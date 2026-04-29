@@ -1,0 +1,10 @@
+.fondo-1 {
+    -fx-background-image: url('fondo_1.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+.fondo-2 {
+    -fx-background-image: url('fondo_2.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}

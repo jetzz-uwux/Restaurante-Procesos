@@ -1,4 +1,3 @@
-
 package progs.restaurante.lib;
 
 import java.io.IOException;
