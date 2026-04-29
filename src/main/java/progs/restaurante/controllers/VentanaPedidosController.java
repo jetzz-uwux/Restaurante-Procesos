@@ -1,10 +1,6 @@
 package progs.restaurante.controllers;
 
 import java.io.IOException;
-import progs.restaurante.Mesa;
-import progs.restaurante.Orden;
-import progs.restaurante.Empleados.Mesero;
-import progs.restaurante.datos.OrdenesDAO; // Importante
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -18,35 +14,28 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import progs.restaurante.Orden;
+import progs.restaurante.datos.OrdenesDAO;
 
 public class VentanaPedidosController implements Initializable {
 
-    @FXML
-    private TableView<Orden> tlb_pedidos;
-    @FXML
-    private TableColumn<Orden, Integer> clb_1; // ID Pedido
-    @FXML
-    private TableColumn<Orden, Integer> clb_2; // No. de mesa
-    @FXML
-    private TableColumn<Orden, String> clb_3;  // Estado
-    @FXML
-    private TableColumn<Orden, Double> clb_4;  // Total
-
-    @FXML
-    private TextField txt_buscar;
+    @FXML private TableView<Orden> tlb_pedidos;
+    @FXML private TableColumn<Orden, Integer> clb_1;
+    @FXML private TableColumn<Orden, Integer> clb_2;
+    @FXML private TableColumn<Orden, String> clb_3;
+    @FXML private TableColumn<Orden, Double> clb_4;
+    @FXML private TextField txt_buscar;
 
     private ObservableList<Orden> listaPedidos = FXCollections.observableArrayList();
-    private OrdenesDAO ordenesDAO = new OrdenesDAO(); // Instancia para la BD
+    private OrdenesDAO ordenesDAO = new OrdenesDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Configuración de columnas
         clb_1.setCellValueFactory(new PropertyValueFactory<>("idPedido"));
         clb_2.setCellValueFactory(new PropertyValueFactory<>("numeroMesa"));
         clb_3.setCellValueFactory(new PropertyValueFactory<>("estado"));
         clb_4.setCellValueFactory(new PropertyValueFactory<>("total"));
 
-        // Carga inicial de datos desde la base de datos
         cargarDatosDesdeBD();
     }
 
@@ -55,50 +44,31 @@ public class VentanaPedidosController implements Initializable {
         tlb_pedidos.setItems(listaPedidos);
     }
 
+    // NUEVO PEDIDO
     @FXML
     private void handleNuevoPedido() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaNuevoPedido.fxml"));
             Parent root = loader.load();
-            
+
             Stage stage = new Stage();
             stage.setTitle("Nuevo Pedido");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-            cargarDatosDesdeBD(); // Refresh al volver
+            cargarDatosDesdeBD();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML
-    private void handleBtnCancelarPedido() {
-        Orden seleccionado = tlb_pedidos.getSelectionModel().getSelectedItem();
-
-        if (seleccionado == null) {
-            mostrarAlerta("Atención", "Selecciona un pedido para cancelarlo.");
-            return;
-        }
-
-        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmacion.setTitle("Confirmar Cancelación");
-        confirmacion.setHeaderText("¿Estás seguro de cancelar el pedido?");
-        confirmacion.setContentText("Se eliminará permanentemente de la base de datos.");
-
-        if (confirmacion.showAndWait().get() == ButtonType.OK) {
-            // Eliminación física en BD
-            ordenesDAO.eliminarOrden(seleccionado.getIdPedido());
-
-            cargarDatosDesdeBD(); // Refrescar tabla
-            mostrarAlerta("Éxito", "El pedido ha sido eliminado.");
-        }
-    }
-
+    // EDITAR PEDIDO
     @FXML
     private void handleEditar() {
         Orden seleccionado = tlb_pedidos.getSelectionModel().getSelectedItem();
+
         if (seleccionado == null) {
             mostrarAlerta("Atención", "Selecciona un pedido.");
             return;
@@ -112,16 +82,40 @@ public class VentanaPedidosController implements Initializable {
             controller.cargarDatos(seleccionado);
 
             Stage stage = new Stage();
+            stage.setTitle("Editar Pedido");
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-            cargarDatosDesdeBD(); // Refrescar después de editar
+            cargarDatosDesdeBD();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // CANCELAR PEDIDO
+    @FXML
+    private void handleBtnCancelarPedido() {
+        Orden seleccionado = tlb_pedidos.getSelectionModel().getSelectedItem();
+
+        if (seleccionado == null) {
+            mostrarAlerta("Atención", "Selecciona un pedido para cancelarlo.");
+            return;
+        }
+
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Confirmar Cancelación");
+        confirmacion.setHeaderText("¿Estás seguro de cancelar el pedido?");
+        confirmacion.setContentText("Se eliminará permanentemente.");
+
+        if (confirmacion.showAndWait().get() == ButtonType.OK) {
+            ordenesDAO.eliminarOrden(seleccionado.getIdPedido());
+            cargarDatosDesdeBD();
+            mostrarAlerta("Éxito", "Pedido eliminado.");
+        }
+    }
+
+    // SERVIR (REGISTRA VENTA)
     @FXML
     private void handleCambiarEstado() {
         Orden seleccionada = tlb_pedidos.getSelectionModel().getSelectedItem();
@@ -129,21 +123,44 @@ public class VentanaPedidosController implements Initializable {
         if (seleccionada == null) {
             mostrarAlerta("Atención", "Selecciona un pedido primero.");
             return;
-        }                
+        }
 
-        //if (seleccionada.getEstado().equals("Listo")) {
-            seleccionada.setEstado("Servido");
+        if ("Servido".equals(seleccionada.getEstado())) {
+            mostrarAlerta("Aviso", "Este pedido ya fue servido.");
+            return;
+        }
 
-            // Persistir cambio en BD
-            ordenesDAO.actualizarOrden(seleccionada);
+        seleccionada.setEstado("Servido");
 
-            tlb_pedidos.refresh();
-            mostrarAlerta("Éxito", "El pedido ha sido marcado como servido.");
-        //} else {
-            //mostrarAlerta("Acción Denegada", "Solo pedidos marcados como 'Listo' pueden pasarse a 'Servido'.");
-        //}
+        // 🔥 Registrar venta
+        ordenesDAO.registrarVenta(seleccionada);
+
+        // Actualizar pedido
+        ordenesDAO.actualizarOrden(seleccionada);
+
+        tlb_pedidos.refresh();
+
+        mostrarAlerta("Éxito", "Pedido servido y registrado como venta.");
     }
 
+    // ABRIR VENTANA
+    @FXML
+    private void abrirVentas() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaVentas.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Reporte de Ventas");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // ALERTAS
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);

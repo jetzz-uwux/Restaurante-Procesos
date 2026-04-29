@@ -1,0 +1,16 @@
+<VBox spacing="10" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="progs.restaurante.controllers.VentanaVentasController">
+
+    <Label text="Reporte de Ventas"/>
+
+    <TableView fx:id="tbl_ventas">
+        <columns>
+            <TableColumn fx:id="col_id" text="ID Venta"/>
+            <TableColumn fx:id="col_pedido" text="Pedido"/>
+            <TableColumn fx:id="col_mesa" text="Mesa"/>
+            <TableColumn fx:id="col_total" text="Total"/>
+            <TableColumn fx:id="col_fecha" text="Fecha y Hora"/>
+        </columns>
+    </TableView>
+
+</VBox>
