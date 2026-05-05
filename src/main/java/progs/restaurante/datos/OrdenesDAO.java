@@ -168,4 +168,30 @@ public class OrdenesDAO {
         }
         return items;
     }
+
+    public Orden buscarPedidoActivoPorMesa(int numMesa) {
+        String sql = "SELECT * FROM pedidos WHERE numero_mesa = ? AND estado NOT IN ('Pagado', 'Cerrado')";
+
+        try (Connection con = ConexionBD.getConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, numMesa);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Orden orden = new Orden(rs.getInt("id_pedido"), new Mesa(numMesa));
+                orden.setEstado(rs.getString("estado"));
+
+                // Carga los productos asociados
+                orden.setItems(obtenerItemsPedido(orden.getIdPedido()));
+
+                // Calcula el total real basándonos en los items
+                orden.setTotal(orden.getTotal());
+
+                return orden;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
