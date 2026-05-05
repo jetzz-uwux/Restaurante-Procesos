@@ -31,7 +31,7 @@ public class VentanaFacturacionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {        
-        colMesa.setCellValueFactory(new PropertyValueFactory<>("idPedido")); // O el atributo que prefieras mostrar
+        colMesa.setCellValueFactory(new PropertyValueFactory<>("numeroMesa"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
         
         cmb_metodoPago.setItems(FXCollections.observableArrayList("Efectivo", "Tarjeta"));
