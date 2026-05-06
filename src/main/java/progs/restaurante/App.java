@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import progs.restaurante.lib.EstilosApp;
 import progs.restaurante.lib.EstilosApp.CSS;
+import static progs.restaurante.lib.EstilosApp.cargarFuentes;
 
 /**
  * JavaFX App aaaa
@@ -36,8 +37,10 @@ public class App extends Application {
             CSS.FUENTES,
             CSS.BOTONES,
             CSS.TEXTFIELD,
-            CSS.IMAGEN
+            CSS.IMAGEN,
+            CSS.TEXTO
         );
+        cargarFuentes();
 
         stage.setScene(scene);
         stage.show();
