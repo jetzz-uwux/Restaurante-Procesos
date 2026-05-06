@@ -54,7 +54,7 @@
                   </HBox>
                   <VBox alignment="CENTER" VBox.vgrow="SOMETIMES">
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Pedidos" VBox.vgrow="SOMETIMES">
+                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Reportes" VBox.vgrow="SOMETIMES">
                            <VBox.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
@@ -66,7 +66,7 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Desocupar Mesa" VBox.vgrow="SOMETIMES">
+                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Inventario" VBox.vgrow="SOMETIMES">
                            <styleClass>
                               <String fx:value="boton-glow-bubble-naranja" />
                               <String fx:value="fuente-superchips" />
@@ -78,7 +78,31 @@
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Cerrar Cuentas">
+                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Gestión de menú">
+                           <styleClass>
+                              <String fx:value="boton-glow-bubble-naranja" />
+                              <String fx:value="fuente-superchips" />
+                           </styleClass>
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Empleados">
+                           <styleClass>
+                              <String fx:value="boton-glow-bubble-naranja" />
+                              <String fx:value="fuente-superchips" />
+                           </styleClass>
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Control de asistencia">
                            <styleClass>
                               <String fx:value="boton-glow-bubble-naranja" />
                               <String fx:value="fuente-superchips" />
@@ -91,9 +115,6 @@
                            </VBox.margin>
                         </Button>
                         <ImageView fitHeight="193.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icono_5.png" />
-                           </image>
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>

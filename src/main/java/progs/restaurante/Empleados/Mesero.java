@@ -19,7 +19,12 @@ public class Mesero extends Empleado {
 
     public Mesero(String idEmpleado, String nombre, String puesto, String contrasena, boolean estaPresente) {
         super(idEmpleado, nombre, puesto, contrasena, estaPresente);
+        this.rol = "Mesero";
     }
+
+    public Mesero() {
+    }
+
 
     public void registrarPedido(Mesa mesa, ArrayList<Producto> seleccion) {
         //Mesa debe estar ocupada

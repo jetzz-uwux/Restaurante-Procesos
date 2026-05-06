@@ -8,16 +8,15 @@ import progs.restaurante.Empleado;
 
 /**
  *
- * @author camil
+ * @author Jetzaly
  */
-public class Chef extends Empleado{
+public class Administrador extends Empleado{
 
-    public Chef(String idEmpleado, String nombre, String puesto, String contrasena, boolean estaPresente) {
+    public Administrador(String idEmpleado, String nombre, String puesto, String contrasena, boolean estaPresente) {
         super(idEmpleado, nombre, puesto, contrasena, estaPresente);
-        this.rol = "Chef";
     }
 
-    public Chef() {
+    public Administrador() {
     }
 
 

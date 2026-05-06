@@ -1,0 +1,20 @@
+.textfield-overcooked {
+    -fx-background-color: 
+        linear-gradient(to bottom, #c8651a, #e8a020),
+        white;
+    -fx-background-radius: 50px;
+    -fx-background-insets: 0, 3px;
+    -fx-border-color: #8b3a00;
+    -fx-border-radius: 50px;
+    -fx-border-width: 2px;
+    -fx-padding: 8px 15px;
+    -fx-font-size: 16px;
+    -fx-prompt-text-fill: #aaaaaa;
+}
+
+.textfield-overcooked:focused {
+    -fx-background-color: 
+        linear-gradient(to bottom, #e07010, #f0b030),
+        white;
+    -fx-border-color: #ff8800;
+}

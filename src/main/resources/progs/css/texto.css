@@ -1,3 +1,50 @@
-.etiqueta {
+.texto-sombra {
     -fx-effect: dropshadow(three-pass-box, black, 2, 2, 2, 2);
+}
+.texto-borde{
+        -fx-stroke: black;
+        -fx-stroke-width: 1.5px;
+}
+.texto-glow-azul {
+    -fx-fill: linear-gradient(to bottom, 
+        rgba(255,255,255,0.9) 0%,
+        #0055ff 20%,
+        rgba(255,255,255,0.3) 25%,
+        #0055ff 50%,
+        #0033cc 60%,
+        #00d9ff 100%);
+    -fx-stroke: #001f5c;
+    -fx-stroke-width: 2px;
+
+}
+
+.texto-glow-verde {
+    -fx-fill: linear-gradient(to bottom, 
+        rgba(255,255,255,0.9) 0%,
+        #00ff00 20%,
+        rgba(255,255,255,0.3) 25%,
+        #00ff00 50%,
+        #00a116 60%,
+        #66ff00 100%);
+    -fx-stroke: #005c08;
+    -fx-stroke-width: 2px;
+}
+.texto-glow-naranja {
+    -fx-fill: linear-gradient(to bottom, 
+        rgba(255,255,255,0.9) 0%,
+        #ff9100 20%,
+        rgba(255,255,255,0.3) 25%,
+        #ff9100 50%,
+        #f04c00 60%,
+        #ffd000 100%);
+    -fx-stroke: #aa1a00;
+    -fx-stroke-width: 2px;
+
+}
+
+.titulo-login {
+   -fx-fill: white;             /* Color del relleno */
+    -fx-stroke: #661400;        /* Color del borde */
+    -fx-stroke-width: 2.5;      /* Grosor del borde */
+    -fx-stroke-type: outside;   /* El borde crece hacia afuera */
 }

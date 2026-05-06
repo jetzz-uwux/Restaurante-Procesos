@@ -17,6 +17,7 @@ public class CSS {
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/progs/fonts/fuentes.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/progs/fonts/fuentes.css").toExternalForm());
 
         stage.setScene(scene);
         stage.show();

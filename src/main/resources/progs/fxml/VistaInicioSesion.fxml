@@ -7,114 +7,94 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" styleClass="fondo-1" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-   <stylesheets>
-      <URL value="@../img/imagenes.css" />
-      <URL value="@../fonts/fuentes.css" />
-   </stylesheets>
+<AnchorPane prefHeight="474.0" prefWidth="678.0" styleClass="fondo-1" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.LoginController">
    <children>
-      <HBox alignment="CENTER">
+      <AnchorPane styleClass="panel-cristal" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-            <Label alignment="CENTER" stylesheets="@../fonts/fuentes.css" text="Inicio de Sesión">
-               <font>
-                  <Font size="39.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="fuente-bouncy" />
-                  <String fx:value="etiqueta" />
-               </styleClass>
-               <textFill>
-                  <LinearGradient cycleMethod="REFLECT" endX="0.5497630331753554" startX="1.0" startY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.6399999856948853" green="0.8731428384780884" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.8888888955116272" green="1.0" blue="0.9888888597488403" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-               <HBox.margin>
-                  <Insets bottom="10.0" />
-               </HBox.margin>
-            </Label>
+            <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <stylesheets>
+                  <URL value="@../img/imagenes.css" />
+                  <URL value="@../fonts/fuentes.css" />
+               </stylesheets>
+               <children>
+                  <HBox alignment="CENTER" VBox.vgrow="SOMETIMES">
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="INICIO DE SESIÓN">
+                           <font>
+                              <Font size="56.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="fuente-luckiest" />
+                              <String fx:value="titulo-login" />
+                           </styleClass>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" styleClass="fila-campo">
+                     <children>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label alignment="CENTER" layoutX="3.0" prefWidth="175.0" styleClass="campo-label" text="👤 USER" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txt_user" onAction="#manejarLogin" promptText="Usuario" styleClass="campo-texto" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="3.0" styleClass="campo-label" text="🔑 CONTRASEÑA" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <PasswordField fx:id="txt_contrasena" onAction="#manejarLogin" promptText="••••••••" styleClass="campo-texto" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" VBox.vgrow="SOMETIMES">
+                     <children>
+                        <Button fx:id="btn_login" mnemonicParsing="false" onAction="#manejarLogin" pickOnBounds="false" style="-fx-font-size: 1.4em;" text="Iniciar sesión" HBox.hgrow="SOMETIMES">
+                           <HBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="boton-login" />
+                              <String fx:value="fuente-bouncy" />
+                              <String fx:value="texto-botones" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
-         <children>
-            <ImageView fitHeight="132.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/icono_2.png" />
-               </image>
-            </ImageView>
-         </children>
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin>
-      </HBox>
-      <VBox alignment="CENTER_LEFT" prefHeight="163.0" prefWidth="658.0" VBox.vgrow="SOMETIMES">
-         <children>
-            <Label text="Usuario">
-               <VBox.margin>
-                  <Insets left="70.0" right="70.0" top="8.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="Comic Sans MS" size="16.0" />
-               </font>
-            </Label>
-            <TextField style="-fx-font-size: 1.3em;">
-               <VBox.margin>
-                  <Insets left="70.0" right="70.0" top="8.0" />
-               </VBox.margin>
-               <styleClass>
-                  <String fx:value="boton-vidrio-color" />
-                  <String fx:value="fuente-newromance" />
-               </styleClass>
-            </TextField>
-            <Label text="Contraseña">
-               <font>
-                  <Font name="Comic Sans MS" size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="70.0" right="70.0" top="8.0" />
-               </VBox.margin>
-            </Label>
-            <PasswordField style="-fx-font-size: 1.3em;" styleClass="boton-vidrio-color">
-               <VBox.margin>
-                  <Insets left="70.0" right="70.0" />
-               </VBox.margin>
-            </PasswordField>
-         </children>
-      </VBox>
-      <HBox alignment="CENTER" VBox.vgrow="SOMETIMES">
-         <children>
-            <Button mnemonicParsing="false" pickOnBounds="false" style="-fx-font-size: 1.4em;" text="Iniciar sesión" HBox.hgrow="SOMETIMES">
-               <HBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="boton-glow-bubble-azul" />
-                  <String fx:value="fuente-superchips" />
-                  <String fx:value="texto-botones" />
-               </styleClass></Button>
-         </children>
-      </HBox>
+      </AnchorPane>
    </children>
-</VBox>
+</AnchorPane>

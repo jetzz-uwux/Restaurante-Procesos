@@ -1,0 +1,187 @@
+
+/* ══════════════════════════════════════
+   ETIQUETAS USER / KEY
+   ══════════════════════════════════════ */
+
+.campo-label {
+    -fx-font-family: 'Fredoka One', sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 3, 0, 1, 1);
+    -fx-min-width: 70px;
+}
+
+/* ══════════════════════════════════════
+   CAMPOS DE TEXTO (fondo blanco redondeado)
+   ══════════════════════════════════════ */
+
+.campo-texto {
+    -fx-background-color:
+        linear-gradient(to bottom, #e8a830, #c47a10),  /* borde dorado */
+        linear-gradient(to bottom, #ffffff, #f5f0e8);  /* interior marfil */
+
+    -fx-background-insets: 0, 3px;
+    -fx-background-radius: 20px, 17px;
+
+    -fx-font-family: 'Nunito', sans-serif;
+    -fx-font-size: 15px;
+    -fx-text-fill: #5a3a10;
+    -fx-prompt-text-fill: #b89860;
+
+    -fx-padding: 8px 16px 8px 16px;
+    -fx-pref-width: 340px;
+    -fx-pref-height: 44px;
+
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.15), 4, 0, 0, 2);
+}
+
+/* Foco activo — borde azul brillante */
+.campo-texto:focused {
+    -fx-background-color:
+        linear-gradient(to bottom, #4eb8ff, #1a8fe0),
+        linear-gradient(to bottom, #ffffff, #eef8ff);
+    -fx-background-insets: 0, 3px;
+    -fx-background-radius: 20px, 17px;
+    -fx-effect: dropshadow(gaussian, #4eb8ff, 10, 0.4, 0, 0)
+                innershadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
+}
+
+/* Campo con error — borde rojo */
+.campo-error {
+    -fx-background-color:
+        linear-gradient(to bottom, #ff4444, #cc0000),
+        linear-gradient(to bottom, #fff5f5, #ffe8e8);
+    -fx-background-insets: 0, 3px;
+    -fx-background-radius: 20px, 17px;
+}
+
+/* ══════════════════════════════════════
+   BOTÓN ¡A COCINAR!
+   ══════════════════════════════════════ */
+
+.boton-login {
+    -fx-background-color:
+        linear-gradient(to bottom, #f5c842, #d4920e, #a86d08), /* sombra base */
+        linear-gradient(to bottom, #ffe066, #f5b800, #d48000); /* cara del botón */
+
+    -fx-background-insets: 0 0 4px 0, 0 0 0 0;
+    -fx-background-radius: 22px;
+
+    -fx-text-fill: #7a3d00;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0.2, 2, 4);
+
+    -fx-pref-width: 260px;
+    -fx-pref-height: 40px;
+    -fx-cursor: hand;
+
+    /* Borde interior blanco sutil */
+    -fx-border-color: rgba(255,255,255,0.4) rgba(255,255,255,0.1) transparent rgba(255,255,255,0.1);
+    -fx-border-width: 2px;
+    -fx-border-radius: 22px;
+}
+
+/* Hover — se ilumina */
+.boton-login:hover {
+    -fx-background-color:
+        linear-gradient(to bottom, #f5c842, #d4920e, #a86d08),
+        linear-gradient(to bottom, #fff0a0, #ffe266, #f5c000);
+    -fx-effect: dropshadow(gaussian, #ffe066, 16, 0.5, 0, 0)
+                dropshadow(gaussian, rgba(0,0,0,0.4), 8, 0.2, 2, 4);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+/* Pressed — se hunde */
+.boton-login:pressed {
+    -fx-background-insets: 4px 0 0 0, 4px 0 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0.1, 1, 2);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* ══════════════════════════════════════
+   BOTÓN DESHABILITADO (cargando)
+   ══════════════════════════════════════ */
+
+.boton-login:disabled {
+    -fx-background-color:
+        linear-gradient(to bottom, #999, #666),
+        linear-gradient(to bottom, #ccc, #aaa);
+    -fx-text-fill: #555;
+    -fx-effect: none;
+    -fx-opacity: 0.7;
+}
+
+
+/* ══════════════════════════════════════
+   MENSAJE DE ERROR GENERAL
+   ══════════════════════════════════════ */
+
+.error-box {
+    -fx-background-color:
+        linear-gradient(to bottom, #ff6666, #cc0000),
+        linear-gradient(to bottom, #ffe8e8, #ffd0d0);
+    -fx-background-insets: 0, 2px;
+    -fx-background-radius: 12px, 10px;
+    -fx-padding: 10px 20px;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(200,0,0,0.4), 8, 0.2, 0, 2);
+}
+
+.error-texto {
+    -fx-font-family: 'Nunito', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6b0000;
+}
+
+/* ══════════════════════════════════════
+   MENSAJE DE ÉXITO
+   ══════════════════════════════════════ */
+
+.exito-box {
+    -fx-background-color:
+        linear-gradient(to bottom, #44cc66, #228833),
+        linear-gradient(to bottom, #e8ffe8, #d0ffd8);
+    -fx-background-insets: 0, 2px;
+    -fx-background-radius: 12px, 10px;
+    -fx-padding: 10px 20px;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0,150,0,0.4), 8, 0.2, 0, 2);
+}
+
+.exito-texto {
+    -fx-font-family: 'Nunito', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #004d00;
+}
+
+
+/* ══════════════════════════════════════
+   SEPARADOR
+   ══════════════════════════════════════ */
+
+.separador {
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-pref-height: 1px;
+}
+
+/* ══════════════════════════════════════
+   FILA DE CAMPO (HBox con label + input)
+   ══════════════════════════════════════ */
+
+.fila-campo {
+    -fx-spacing: 20px;
+    -fx-padding: 4px 0px;
+}
+
+/* ══════════════════════════════════════
+   ICONO DENTRO DEL LABEL (🧑 🔑)
+   ══════════════════════════════════════ */
+
+.icono-campo {
+    -fx-font-size: 18px;
+    -fx-padding: 0px 4px 0px 0px;
+}

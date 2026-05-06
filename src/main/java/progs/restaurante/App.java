@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import progs.restaurante.lib.EstilosApp;
+import progs.restaurante.lib.EstilosApp.CSS;
 
 /**
  * JavaFX App aaaa
@@ -23,11 +25,23 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();*/
         
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaFacturacion.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Gestión de cuenta - Restaurante UV");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VistaInicioSesion.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+
+        // Aquí aplicas los CSS de la pantalla de login
+        EstilosApp.aplicar(scene,
+            CSS.JUEGO,
+            CSS.FUENTES,
+            CSS.BOTONES,
+            CSS.TEXTFIELD,
+            CSS.IMAGEN
+        );
+
         stage.setScene(scene);
         stage.show();
+
     }
 
     static void setRoot(String fxml) throws IOException {

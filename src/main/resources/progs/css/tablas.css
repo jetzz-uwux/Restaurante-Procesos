@@ -1,0 +1,36 @@
+.tabla-glow-bubble-azul-clarito {
+    /* 1. Base y Forma */
+    -fx-background-radius: 50;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-padding: 12 35 12 35;
+    
+    /* Sombra con brillo rojo neón */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 247, 255, 0.418), 10, 0, 0, 3);
+
+    /* 2. El Rojo Frutiger Aero Perfecto (Candy Gloss) */
+    -fx-background-color: 
+        /* Capa 1: Borde (Rojo vibrante definido) */
+        linear-gradient(to bottom, #000000, #000000), 
+        
+        /* Capa 2: Base (Rojo puro de alta saturación) */
+        /* Eliminamos cualquier rastro de negro o café */
+        linear-gradient(to bottom, #1688e6 0%, #00b5ec 100%), 
+        
+        /* Capa 3: LUZ DE REBOTE (Rojo eléctrico abajo) */
+        /* Esto da la sensación de gelatina iluminada sin ser oscuro */
+        radial-gradient(center 50% 100%, radius 90%, #50ffff 0%, transparent 80%),
+        
+        /* Capa 4: EL GLOSS (Brillo blanco muy nítido arriba) */
+        linear-gradient(to bottom, 
+            rgba(255, 255, 255, 0.9) 0%, 
+            rgba(255, 255, 255, 0.35) 35%, 
+            transparent 45%
+        ),
+        
+        /* Capa 5: Reflejo de contorno fino */
+        linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.2) 80%, transparent 100%);
+
+    /* Insets: El 28 mantiene la burbuja de luz arriba como en el tutorial */
+    -fx-background-insets: 0, 1, 2, 2 12 28 12, 1 10 10 10;
+}

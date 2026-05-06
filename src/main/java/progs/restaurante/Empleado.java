@@ -10,10 +10,13 @@ package progs.restaurante;
  */
 public abstract class Empleado {
     protected String idEmpleado;
+    protected String usuario;
     protected String nombre;
     protected String puesto;
     protected String contrasena;
     protected boolean estaPresente;
+    protected String rol;
+
 
     public Empleado(String idEmpleado, String nombre, String puesto, String contrasena, boolean estaPresente) {
         this.idEmpleado = idEmpleado;
@@ -22,7 +25,19 @@ public abstract class Empleado {
         this.contrasena = contrasena;
         this.estaPresente = false;
     }
-    /*
+
+    public Empleado() {
+    }
+    
+    
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    
     public boolean login(String id, String pass){
         return this.idEmpleado.equals(id) && this.contrasena.equals(pass);
     }
@@ -71,5 +86,13 @@ public abstract class Empleado {
     public void setEstaPresente(boolean estaPresente) {
         this.estaPresente = estaPresente;
     }        
-    */
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    
 }
