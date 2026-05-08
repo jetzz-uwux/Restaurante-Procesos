@@ -26,6 +26,7 @@ public class EstilosApp {
     // ══════════════════════════════════════════════════════
 
     private static final String RUTA_CSS      = "/progs/css/";
+    private static final String RUTA_FONTS    = "/progs/fonts/";
 
     // Controla que las fuentes solo se carguen una vez
     private static boolean fuentesCargadas = false;
@@ -67,11 +68,11 @@ public class EstilosApp {
         KG_PERFECT ("KGPerfectPenmanship.otf"),
         LEMONMILK ("LEMONMILK-Regular.otf"),
         LUCKYEST ("LuckiestGuy-Regular.ttf"),
-        TOMMY ("MADE Tommy Soft Medium.otf"),
-        SIMPLY("Simply Olive.ttf"),
+        TOMMY ("MADE-Tommy-Soft-Medium.otf"),
+        SIMPLY("Simply-Olive.ttf"),
         SOMELIST("Somelist.otf"),
-        SUPER_CHIPS("Super Chips.ttf"),
-        NEW_ROMANCE("Times New Romance.otf");
+        SUPER_CHIPS("Super-Chips.ttf"),
+        NEW_ROMANCE("Times-New-Romance.otf");
         
 
         // Agrega las tuyas aquí con el mismo patrón
@@ -96,7 +97,7 @@ public class EstilosApp {
         if (fuentesCargadas) return; // evitar cargar dos veces
 
         for (FUENTE fuente : FUENTE.values()) {
-            String rutaCompleta = RUTA_CSS + fuente.archivo;
+            String rutaCompleta = RUTA_FONTS + fuente.archivo;
             URL url = EstilosApp.class.getResource(rutaCompleta);
 
             if (url == null) {

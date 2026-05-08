@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'MADE Tommy Soft'; 
-    src: url('../fonts/MADE Tommy Soft Medium.otf'); 
+    src: url('../fonts/MADE-Tommy-Soft-Medium.otf'); 
 }
 
 .fuente-tommy {
@@ -30,7 +30,7 @@
 
 @font-face {
     font-family: 'Simply Olive'; 
-    src: url('../fonts/Simply\ Olive.ttf'); 
+    src: url('../fonts/Simply-Olive.ttf'); 
 }
 
 .fuente-olive {
@@ -50,7 +50,7 @@
 
 @font-face {
     font-family: 'Times New Romance'; 
-    src: url('../fonts/Times New Romance.otf'); 
+    src: url('../fonts/Times-New-Romance.otf'); 
 }
 
 .fuente-newromance {
@@ -59,7 +59,7 @@
 
 @font-face {
     font-family: 'Super Chips'; 
-    src: url('../fonts/Super Chips.ttf'); 
+    src: url('../fonts/Super-Chips.ttf'); 
 }
 
 .fuente-superchips {
