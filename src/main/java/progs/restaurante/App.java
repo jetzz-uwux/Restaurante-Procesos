@@ -19,13 +19,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progs/fxml/VistaGestionReservas.fxml"));
+        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaCerrarCuenta.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Gestión de Pedidos - Restaurante UV");
         stage.setScene(scene);
         stage.show();*/
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VistaInicioSesion.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaFacturacion.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);

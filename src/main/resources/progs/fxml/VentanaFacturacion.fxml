@@ -68,6 +68,18 @@
                   <String fx:value="fuente-newromance" />
                </styleClass>
             </Button>
+            <Button fx:id="btn_Ticket" mnemonicParsing="false" onAction="#handleTicket" text="Generar Ticket">
+               <styleClass>
+                  <String fx:value="boton-redondo" />
+                  <String fx:value="fuente-newromance" />
+               </styleClass>
+            </Button>
+            <Button fx:id="btn_Factura" mnemonicParsing="false" onAction="#handleFactura" text="Generar Factura">
+               <styleClass>
+                  <String fx:value="boton-redondo" />
+                  <String fx:value="fuente-newromance" />
+               </styleClass>
+            </Button>
          </children></HBox>
    </children>
 </VBox>
