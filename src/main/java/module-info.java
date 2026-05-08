@@ -4,6 +4,8 @@ module progs.restaurante {
     requires java.base;
     requires java.sql;
     requires mysql.connector.j;
+    opens progs.restaurante.models to javafx.base, javafx.controls;
+
     
     opens progs.fxml to javafx.fxml;
     

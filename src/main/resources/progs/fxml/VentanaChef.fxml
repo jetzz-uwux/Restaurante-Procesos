@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="615.0" prefWidth="792.0" styleClass="fondo-7" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="615.0" prefWidth="792.0" styleClass="fondo-7" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VentanaChefController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="panel-cristal" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -24,7 +24,7 @@
                      <children>
                         <Button contentDisplay="RIGHT" mnemonicParsing="false" style="-fx-font-size: 1.7em;" text="Ayuda" textAlignment="RIGHT">
                            <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="btn_i" fitHeight="45.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/icono_i.png" />
                                  </image>
@@ -61,7 +61,7 @@
                   </HBox>
                   <HBox alignment="BOTTOM_LEFT" minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-font-size: 1.7em;" text="Refrescar tabla" HBox.hgrow="SOMETIMES">
+                        <Button fx:id="btn_refrscar" mnemonicParsing="false" onAction="#handleRefrescar" style="-fx-font-size: 1.7em;" text="Refrescar tabla" HBox.hgrow="SOMETIMES">
                            <graphic>
                               <ImageView fitHeight="62.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -132,11 +132,11 @@
                   </HBox>
                   <HBox alignment="BOTTOM_LEFT" minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-font-size: 1.7em;" text=" Salir">
+                        <Button fx:id="btn_salir" mnemonicParsing="false" onAction="#handleSalir" style="-fx-font-size: 1.7em;" text=" Salir">
                            <graphic>
                               <ImageView fitHeight="52.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/icono_cerrar.png" />
+                                    <Image url="@../img/icono_cerrar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
