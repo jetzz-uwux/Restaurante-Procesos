@@ -8,10 +8,11 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VentanaNuevoPedidoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="598.0" styleClass="fondo-7" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VentanaNuevoPedidoController">
    <children>
       <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="600.0">
          <children>
@@ -24,43 +25,56 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="598.0" spacing="10.0">
          <children>
-            <TextField fx:id="txt_numeroMesa" prefHeight="32.0" prefWidth="129.0">
+            <TextField fx:id="txt_numeroMesa">
                <styleClass>
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="campo-texto" />
                   <String fx:value="fuente-newromance" />
                </styleClass>
-            </TextField>
-            <Label styleClass="fuente-newromance" text="No. de mesa">
                <HBox.margin>
-                  <Insets right="15.0" />
+                  <Insets bottom="30.0" top="20.0" />
+               </HBox.margin>
+            </TextField>
+            <Label styleClass="campo-label" text="No. de mesa">
+               <HBox.margin>
+                  <Insets bottom="30.0" right="15.0" top="20.0" />
                </HBox.margin>
             </Label>
          </children></HBox>
-      <TableView fx:id="tlb_pedidos" editable="true" styleClass="fuente-newromance" VBox.vgrow="SOMETIMES">
-        <columns>
-          <TableColumn fx:id="clb_1" prefWidth="86.40002286434174" text="Platillo/Bebida" />
-          <TableColumn fx:id="clb_2" onEditCommit="#handleCambioCantidad" prefWidth="63.99994659423828" text="Cantidad" />
-            <TableColumn fx:id="clb_3" prefWidth="63.99994659423828" text="Precio unitario" />
-            <TableColumn fx:id="clb_4" prefWidth="63.99994659423828" text="Subtotal" />
-        </columns>
+      <StackPane styleClass="stackpane-tabla" VBox.vgrow="SOMETIMES">
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
          </VBox.margin>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
+         <children>
+            <TableView fx:id="tlb_pedidos" editable="true" style="-fx-background-color: transparent;" styleClass="fuente-newromance">
+              <columns>
+                <TableColumn fx:id="clb_1" prefWidth="86.40002286434174" text="Platillo/Bebida" />
+                <TableColumn fx:id="clb_2" onEditCommit="#handleCambioCantidad" prefWidth="63.99994659423828" text="Cantidad" />
+                  <TableColumn fx:id="clb_3" prefWidth="63.99994659423828" text="Precio unitario" />
+                  <TableColumn fx:id="clb_4" prefWidth="63.99994659423828" text="Subtotal" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <StackPane.margin>
+                  <Insets bottom="50.0" left="40.0" right="35.0" top="20.0" />
+               </StackPane.margin>
+            </TableView>
+         </children>
+      </StackPane>
       <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="598.0" spacing="20.0">
          <children>
             <Button fx:id="btn_generar" mnemonicParsing="false" onAction="#handleGenerar" text="Generar">
                <styleClass>
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="boton-glow-bubble-verde" />
                   <String fx:value="fuente-newromance" />
                </styleClass>
             </Button>
             <Button fx:id="btn_cancelar" mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar">
                <styleClass>
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="boton-glow-bubble-naranja" />
                   <String fx:value="fuente-newromance" />
                </styleClass>
             </Button>

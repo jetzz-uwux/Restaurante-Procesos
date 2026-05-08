@@ -8,59 +8,82 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VentanaCerrarCuentaController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="863.0" styleClass="fondo-7" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VentanaCerrarCuentaController">
    <children>
       <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="600.0">
          <children>
-            <Label prefHeight="38.0" prefWidth="117.0" styleClass="fuente-lemon" text="Cerrar cuentas">
+            <Label styleClass="fuente-lemon" text="Cerrar cuentas">
                <font>
                   <Font size="18.0" />
                </font>
+               <opaqueInsets>
+                  <Insets bottom="20.0" />
+               </opaqueInsets>
             </Label>
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="598.0" spacing="10.0">
          <children>
-            <TextField fx:id="txt_buscarMesa" prefHeight="27.0" prefWidth="194.0" promptText="No. de mesa">
+            <TextField fx:id="txt_buscarMesa" promptText="No. de mesa">
                <styleClass>
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="campo-texto" />
                   <String fx:value="fuente-newromance" />
                </styleClass>
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
             </TextField>
             <Button fx:id="btn_buscar" mnemonicParsing="false" onAction="#handleBuscar" text="Buscar">
                <HBox.margin>
                   <Insets right="15.0" />
                </HBox.margin>
                <styleClass>
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="boton-glow-bubble-naranja" />
                   <String fx:value="fuente-newromance" />
                </styleClass>
             </Button>
          </children></HBox>
-      <TableView fx:id="tlb_resumen" styleClass="fuente-newromance" VBox.vgrow="SOMETIMES">
-        <columns>
-          <TableColumn fx:id="colNombre" prefWidth="86.40002286434174" text="Producto" />
-          <TableColumn fx:id="colCantidad" prefWidth="63.99994659423828" text="Cantidad" />
-            <TableColumn fx:id="colPrecio" prefWidth="63.99994659423828" text="Precio unitario" />
-            <TableColumn fx:id="colSubtotal" prefWidth="63.99994659423828" text="Subtotal" />
-        </columns>
+      <StackPane styleClass="stackpane-tabla" VBox.vgrow="SOMETIMES">
          <VBox.margin>
-            <Insets left="10.0" right="10.0" />
+            <Insets left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-      <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="598.0" spacing="20.0">
+         <children>
+            <TableView fx:id="tlb_resumen" style="-fx-background-color: transparent;" styleClass="fuente-lemon">
+              <columns>
+                <TableColumn fx:id="colNombre" prefWidth="86.40002286434174" text="Producto" />
+                <TableColumn fx:id="colCantidad" prefWidth="63.99994659423828" text="Cantidad" />
+                  <TableColumn fx:id="colPrecio" prefWidth="63.99994659423828" text="Precio unitario" />
+                  <TableColumn fx:id="colSubtotal" prefWidth="63.99994659423828" text="Subtotal" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="20.0" top="20.0" />
+               </opaqueInsets>
+               <StackPane.margin>
+                  <Insets bottom="75.0" left="60.0" right="50.0" top="20.0" />
+               </StackPane.margin>
+            </TableView>
+         </children>
+      </StackPane>
+      <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="656.0" spacing="20.0">
          <children>
             <Button fx:id="btn_cerrarCuenta" mnemonicParsing="false" onAction="#handleCerrar" text="Cerrar cuenta">
                <styleClass>
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="boton-glow-bubble-azul" />
                   <String fx:value="fuente-newromance" />
                </styleClass>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets>
             </Button>
          </children></HBox>
    </children>
