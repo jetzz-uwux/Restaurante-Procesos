@@ -31,7 +31,7 @@ public class VentanaFacturacionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Configurar columnas de la tabla (usando los métodos de tu clase Orden)
+        // Configurar columnas de la tabla (usando los métodos de clase Orden)
         colMesa.setCellValueFactory(new PropertyValueFactory<>("numeroMesa"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
