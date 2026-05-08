@@ -26,12 +26,12 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();*/
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VistaInicioSesion.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaEditarPedido.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
 
-        // Aquí aplicas los CSS de la pantalla de login
+        // Aquí aplica los CSS de la pantalla de login
         EstilosApp.aplicar(scene,
             CSS.JUEGO,
             CSS.FUENTES,
