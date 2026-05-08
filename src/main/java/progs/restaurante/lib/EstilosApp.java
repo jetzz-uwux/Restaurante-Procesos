@@ -62,7 +62,18 @@ public class EstilosApp {
         // Ponle el nombre exacto de tu archivo con extensión
         FREDOKA_ONE     ("FredokaOne-Regular.ttf"),
         NUNITO_BOLD     ("Nunito-Bold.ttf"),
-        NUNITO_REGULAR  ("Nunito-Regular.ttf");
+        NUNITO_REGULAR  ("Nunito-Regular.ttf"),
+        BOUNCY_THIN ("Bouncy-Thin.otf"),
+        KG_PERFECT ("KGPerfectPenmanship.otf"),
+        LEMONMILK ("LEMONMILK-Regular.otf"),
+        LUCKYEST ("LuckiestGuy-Regular.ttf"),
+        TOMMY ("MADE Tommy Soft Medium.otf"),
+        SIMPLY("Simply Olive.ttf"),
+        SOMELIST("Somelist.otf"),
+        SUPER_CHIPS("Super Chips.ttf"),
+        NEW_ROMANCE("Times New Romance.otf");
+        
+
         // Agrega las tuyas aquí con el mismo patrón
 
         final String archivo;
