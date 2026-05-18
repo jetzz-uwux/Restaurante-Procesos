@@ -19,8 +19,8 @@
     <Label text="Asistencia de Empleados"
            style="-fx-font-size: 22px; -fx-font-weight: bold;" />
 
-    <TextField fx:id="txtNombre"
-               promptText="Nombre del empleado"
+    <TextField fx:id="txtUsuario"
+               promptText="Usuario del empleado"
                maxWidth="250"/>
 
     <PasswordField fx:id="txtContrasena"

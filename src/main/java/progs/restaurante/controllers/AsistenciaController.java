@@ -18,7 +18,7 @@ import progs.restaurante.datos.ConexionBD;
 public class AsistenciaController implements Initializable {
 
     @FXML
-    private TextField txtNombre;
+    private TextField txtUsuario;
 
     @FXML
     private PasswordField txtContrasena;
@@ -34,29 +34,29 @@ public class AsistenciaController implements Initializable {
     @FXML
     private void marcarAsistencia(ActionEvent event) {
 
-        String nombre = txtNombre.getText();
+        String usuario = txtUsuario.getText();
         String contrasena = txtContrasena.getText();
 
-        if (nombre.isEmpty() || contrasena.isEmpty()) {
+        if (usuario.isEmpty() || contrasena.isEmpty()) {
 
             lblMensaje.setText("Complete todos los campos");
             return;
         }
 
         String consulta = "SELECT * FROM empleados "
-                + "WHERE nombre = ? AND contrasena = ?";
+                + "WHERE usuario = ? AND contrasena = ?";
 
         try (Connection conexion = ConexionBD.getConexion();
              PreparedStatement ps = conexion.prepareStatement(consulta)) {
 
-            ps.setString(1, nombre);
+            ps.setString(1, usuario);
             ps.setString(2, contrasena);
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
 
-                lblMensaje.setText("Asistencia registrada: " + nombre);
+                lblMensaje.setText("Asistencia registrada: " + usuario);
 
             } else {
 
