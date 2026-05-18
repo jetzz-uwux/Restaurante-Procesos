@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import progs.restaurante.datos.ConexionBD;
 import progs.restaurante.lib.EstilosApp;
 import progs.restaurante.lib.EstilosApp.CSS;
 import progs.restaurante.models.DetallePedido;
@@ -31,7 +32,6 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import progs.restaurante.datos.ConexionBD;
 
 /**
  * ╔══════════════════════════════════════════════════════════════════════╗
@@ -311,7 +311,7 @@ public class VentanaChefController implements Initializable {
                 tlb_pedidos.refresh();
             });
 
-        }, 30, 30, TimeUnit.SECONDS);
+        }, 5, 5, TimeUnit.SECONDS);
     }
 
     // ══════════════════════════════════════════════════════
@@ -495,17 +495,34 @@ public class VentanaChefController implements Initializable {
         Task<Void> tarea = new Task<>() {
             @Override
             protected Void call() throws Exception {
-                String sql = "UPDATE " + TABLA_PEDIDOS
-                           + " SET " + COL_ESTADO + " = ?"
-                           + " WHERE " + COL_ID + " = ?";
-
+                System.out.println("🔄 Intentando actualizar pedido #" + pedido.getIdPedido());
                 Connection conn = ConexionBD.getConexion();
+                System.out.println("✅ Conexión obtenida: " + conn);
 
-                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                // 1. Cambiar estado del pedido a 'listo'
+                String sqlUpdate = "UPDATE " + TABLA_PEDIDOS
+                                 + " SET " + COL_ESTADO + " = ?"
+                                 + " WHERE " + COL_ID + " = ?";
+
+                try (PreparedStatement stmt = conn.prepareStatement(sqlUpdate)) {
                     stmt.setString(1, ESTADO_LISTO);
                     stmt.setInt(2, pedido.getIdPedido());
-                    stmt.executeUpdate();
+                    int filas = stmt.executeUpdate();
+                    System.out.println("✅ UPDATE ejecutado — filas afectadas: " + filas);
                 }
+
+                // 2. Insertar notificación para que el mesero la vea
+                String sqlNotif = "INSERT INTO notificaciones "
+                                + "(id_pedido, numero_mesa, leida) "
+                                + "VALUES (?, ?, FALSE)";
+
+                try (PreparedStatement stmt = conn.prepareStatement(sqlNotif)) {
+                    stmt.setInt(1, pedido.getIdPedido());
+                    stmt.setInt(2, pedido.getNumeroMesa());
+                    int filas = stmt.executeUpdate();
+                    System.out.println("✅ INSERT notificacion ejecutado — filas: " + filas);
+                }
+
                 return null;
             }
         };
@@ -525,8 +542,9 @@ public class VentanaChefController implements Initializable {
         }));
 
         tarea.setOnFailed(e -> {
-            System.err.println("❌ Error actualizando estado: "
-                + tarea.getException().getMessage());
+            Throwable ex = tarea.getException();
+            System.err.println("❌ Error actualizando estado: " + ex.getMessage());
+            ex.printStackTrace(); // ← imprime el stack trace completo
             Platform.runLater(() ->
                 mostrarError("No se pudo actualizar el estado. Intenta de nuevo.")
             );
@@ -550,7 +568,7 @@ public class VentanaChefController implements Initializable {
         try {
             // 2. Cargar el FXML del login
             javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(
-                getClass().getResource("/progs/fxml/VistaInicioSesion.fxml")
+                getClass().getResource("/progs/fxml/login.fxml")
             );
             javafx.scene.Parent root = loader.load();
 
@@ -563,9 +581,7 @@ public class VentanaChefController implements Initializable {
                 CSS.JUEGO,
                 CSS.FUENTES,
                 CSS.BOTONES,
-                CSS.TEXTFIELD,
-                CSS.IMAGEN,
-                CSS.TEXTO
+                CSS.TEXTFIELD
             );
             stage.setScene(escena);
             stage.setTitle("Restaurante — Iniciar Sesión");

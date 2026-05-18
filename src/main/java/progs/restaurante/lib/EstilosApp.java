@@ -13,10 +13,10 @@ import java.net.URL;
  * ║  Estructura de tu proyecto:                                  ║
  * ║    src/main/resources/                                       ║
  * ║      progs/                                                  ║
- * ║        css/       ← RUTA_CSS                                ║
- * ║        img/       ← RUTA_IMAGENES                           ║
- * ║        fuentes/   ← RUTA_FUENTES                            ║
- * ║        fxml/      ← tus FXML                                ║
+ * ║        css/       ← RUTA_CSS                                 ║
+ * ║        img/       ← RUTA_IMAGENES                            ║
+ * ║        fuentes/   ← RUTA_FUENTES                             ║
+ * ║        fxml/      ← tus FXML                                 ║
  * ╚══════════════════════════════════════════════════════════════╝
  */
 public class EstilosApp {

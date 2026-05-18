@@ -8,10 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="progs.restaurante.controllers.VistaMeseroController">
    <children>
       <AnchorPane styleClass="panel-cristal" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -41,7 +44,7 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="[usuario]">
+                        <Text fx:id="txt_usuario" strokeType="OUTSIDE" strokeWidth="0.0" text="[usuario]">
                            <styleClass>
                               <String fx:value="texto-glow-verde" />
                               <String fx:value="fuente-bouncy" />
@@ -54,7 +57,7 @@
                   </HBox>
                   <VBox alignment="CENTER" VBox.vgrow="SOMETIMES">
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Pedidos" VBox.vgrow="SOMETIMES">
+                        <Button fx:id="btn_pedidos" mnemonicParsing="false" onAction="#handlePedidos" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Pedidos" VBox.vgrow="SOMETIMES">
                            <VBox.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
@@ -90,6 +93,45 @@
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
+                        <!-- ══ BOTÓN DE NOTIFICACIONES CON CAMPANITA ══
+                             Siempre visible — respaldo si se cierra la notif del SO
+                             La campanita muestra cuántas órdenes listas hay         -->
+                        <StackPane alignment="CENTER" VBox.vgrow="SOMETIMES">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+
+                           <!-- Botón principal de notificaciones -->
+                           <Button fx:id="btn_notificaciones"
+                                   mnemonicParsing="false"
+                                   onAction="#handleNotificaciones"
+                                   prefWidth="250.0"
+                                   style="-fx-font-size: 1.6em;"
+                                   text="Notificaciones">
+                              <styleClass>
+                                 <String fx:value="boton-glow-bubble-naranja" />
+                                 <String fx:value="fuente-superchips" />
+                              </styleClass>
+                              <font>
+                                 <Font size="20.0" />
+                              </font>
+                           </Button>
+
+                           <!-- Badge rojo con contador — visible solo si hay notifs -->
+                           <StackPane fx:id="badge_campana"
+                                      alignment="TOP_RIGHT"
+                                      pickOnBounds="false"
+                                      visible="false"
+                                      managed="false"
+                                      style="-fx-cursor: hand;"
+                                      onMouseClicked="#handleNotificaciones">
+                              <Label fx:id="lbl_campana"
+                                     text="🔔 0"
+                                     styleClass="badge-campana"
+                                     StackPane.alignment="TOP_RIGHT"/>
+                           </StackPane>
+                        </StackPane>
+
                         <ImageView fitHeight="193.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/icono_5.png" />
@@ -102,7 +144,7 @@
                   </VBox>
                   <HBox alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
                      <children>
-                        <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
+                        <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" onAction="#handleCerrarSesion" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
                            <graphic>
                               <ImageView fitHeight="49.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
