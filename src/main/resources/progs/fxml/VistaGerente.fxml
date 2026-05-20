@@ -216,7 +216,10 @@
                                 </Button>
 
                                 <!-- CONTROL ASISTENCIA -->
-                                <Button mnemonicParsing="false"
+                                <!-- CONTROL ASISTENCIA -->
+                                <Button fx:id="btn_asistencia"
+                                        mnemonicParsing="false"
+                                        onAction="#abrirAsistencia"
                                         prefWidth="250.0"
                                         style="-fx-font-size: 1.6em;"
                                         text="Control de asistencia">

@@ -68,6 +68,28 @@ public class GerenteController {
     }
 
     /**
+     * Abrir ventana de Asistencia
+     */
+    @FXML
+    private void abrirAsistencia(ActionEvent event) {
+
+        try {
+
+            Parent root = FXMLLoader.load(
+                    getClass().getResource("/progs/fxml/Asistencia.fxml")
+            );
+
+            Stage stage = new Stage();
+            stage.setTitle("Asistencia");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
      * Cerrar sesión
      */
     @FXML
