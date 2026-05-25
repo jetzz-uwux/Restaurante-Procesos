@@ -1,4 +1,4 @@
-package progs.restaurante.models;
+package progs.restaurante;
 
 import javafx.beans.property.*;
 import java.time.LocalDateTime;

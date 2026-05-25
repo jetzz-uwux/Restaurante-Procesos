@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="850.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VentanaMenuController">
+    <children>
+        <SplitPane dividerPositions="0.38" prefHeight="400.0" prefWidth="700.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <items>
+          
+                <AnchorPane minHeight="0.0" minWidth="280.0" styleClass="card-panel">
+                    <children>
+                        <Label layoutX="20.0" layoutY="20.0" styleClass="titulo-panel" text="Gestión de Platillos">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                  
+                        <Label layoutX="20.0" layoutY="65.0" styleClass="label-formulario" text="Nombre del Producto:" />
+                        <TextField fx:id="txt_nombrePlatillo" layoutX="20.0" layoutY="85.0" prefHeight="30.0" promptText="Ej. Tacos al Pastor" styleClass="campo-texto" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                  
+                        <Label layoutX="20.0" layoutY="135.0" styleClass="label-formulario" text="Precio ($):" />
+                        <TextField fx:id="txt_precioPlatillo" layoutX="20.0" layoutY="155.0" prefHeight="30.0" promptText="Ej. 85.50" styleClass="campo-texto" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                  
+                        <Label layoutX="20.0" layoutY="205.0" styleClass="label-formulario" text="Categoría (Menú):" />
+                        <ComboBox fx:id="cmb_categoria" layoutX="20.0" layoutY="225.0" prefHeight="30.0" promptText="Seleccionar..." styleClass="combo-box" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                  
+                        <CheckBox fx:id="chk_disponible" layoutX="20.0" layoutY="280.0" mnemonicParsing="false" selected="true" styleClass="check-box" text="Disponible para Venta" />
+                  
+                        <HBox layoutX="20.0" layoutY="330.0" spacing="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#handleCancelar" prefHeight="35.0" prefWidth="100.0" styleClass="boton-secundario" text="Cancelar" HBox.hgrow="ALWAYS" />
+                                <Button mnemonicParsing="false" onAction="#handleGuardarCambios" prefHeight="35.0" prefWidth="130.0" styleClass="boton-primario" text="Guardar Cambios" HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+            
+                <StackPane minHeight="0.0" minWidth="400.0" styleClass="card-panel">
+                    <children>
+                        <VBox spacing="15.0" style="-fx-padding: 20;">
+                            <children>
+                                <Label styleClass="titulo-panel" text="Carta / Menú del Día">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                        
+                                <TableView fx:id="tbl_menu" styleClass="tabla-elegante" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colNombre" prefWidth="180.0" text="Nombre" />
+                                        <TableColumn fx:id="colPrecio" prefWidth="90.0" text="Precio" />
+                                        <TableColumn fx:id="colCategoria" prefWidth="110.0" text="Categoría" />
+                                        <TableColumn fx:id="colDisponible" prefWidth="100.0" text="Estado" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+            
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

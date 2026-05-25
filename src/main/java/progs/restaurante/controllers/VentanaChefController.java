@@ -19,7 +19,7 @@ import progs.restaurante.datos.ConexionBD;
 import progs.restaurante.lib.EstilosApp;
 import progs.restaurante.lib.EstilosApp.CSS;
 import progs.restaurante.models.DetallePedido;
-import progs.restaurante.models.Pedido;
+import progs.restaurante.Pedido;
 
 import java.net.URL;
 import java.sql.*;
