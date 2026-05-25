@@ -13,7 +13,7 @@ public class Cliente {
     public Cliente(String nombre, int personas) {
         this.nombre = nombre;
         this.personas = personas;
-        // Captura la hora exacta en la que se crea el objeto
+        // Captura la hora en la que se crea el objeto
         this.horaLlegada = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
