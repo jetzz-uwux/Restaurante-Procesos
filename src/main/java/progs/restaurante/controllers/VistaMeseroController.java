@@ -51,19 +51,18 @@ import java.util.concurrent.TimeUnit;
  */
 public class VistaMeseroController implements Initializable {
 
-    // ══════════════════════════════════════════════════════
-    //  NODOS DEL FXML
-    // ══════════════════════════════════════════════════════
-
+    /**
+     * NODOS DEL FXML
+     */
     @FXML private Text      txt_usuario;
     @FXML private StackPane badge_campana;
     @FXML private Label     lbl_campana;
     @FXML private Button    btn_notificaciones;
     @FXML private Button    btn_cerrarsesion;
 
-    // ══════════════════════════════════════════════════════
-    //  ESTADO INTERNO
-    // ══════════════════════════════════════════════════════
+    /**
+     * ESTADO INTERNO
+     */
 
     private final ObservableList<Notificacion> listaPendientes =
         FXCollections.observableArrayList();
@@ -77,10 +76,9 @@ public class VistaMeseroController implements Initializable {
     private TrayIcon trayIcon;
     private boolean trayDisponible = false;
 
-    // ══════════════════════════════════════════════════════
-    //  INITIALIZE
-    // ══════════════════════════════════════════════════════
-
+    /**
+     * INICIALIZAR
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         badge_campana.setVisible(false);
@@ -95,9 +93,9 @@ public class VistaMeseroController implements Initializable {
         if (txt_usuario != null) txt_usuario.setText(nombre);
     }
 
-    // ══════════════════════════════════════════════════════
-    //  SYSTEM TRAY
-    // ══════════════════════════════════════════════════════
+    /**
+     *SYSTEM TRAY
+     */
 
     private void inicializarTray() {
         if (!SystemTray.isSupported()) {
@@ -141,9 +139,10 @@ public class VistaMeseroController implements Initializable {
         );
     }
 
-    // ══════════════════════════════════════════════════════
-    //  CARGAR PENDIENTES (leida = FALSE)
-    // ══════════════════════════════════════════════════════
+    /**
+     * CARGAR PENDIENTES
+     * Leida = false
+     */
 
     private void cargarPendientes() {
         Task<List<Notificacion>> tarea = new Task<>() {
@@ -183,10 +182,10 @@ public class VistaMeseroController implements Initializable {
         hilo.start();
     }
 
-    // ══════════════════════════════════════════════════════
-    //  CARGAR HISTORIAL (leida = TRUE) con filtro de fecha
-    // ══════════════════════════════════════════════════════
-
+    /**
+     * CARGAR HISTORIAL
+     * Leida = true
+     */
     private void cargarHistorial(LocalDate desde, LocalDate hasta) {
         Task<List<Notificacion>> tarea = new Task<>() {
             @Override

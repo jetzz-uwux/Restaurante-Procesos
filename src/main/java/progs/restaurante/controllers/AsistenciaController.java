@@ -31,6 +31,9 @@ public class AsistenciaController implements Initializable {
 
     }
 
+    /**
+     * Marcar asistencia para los empleados
+     */
     @FXML
     private void marcarAsistencia(ActionEvent event) {
 

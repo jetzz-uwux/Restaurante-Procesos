@@ -20,6 +20,9 @@ public class AlmacenController {
 
     private final ObservableList<Item> lista = FXCollections.observableArrayList();
 
+    /**
+     * Inicializar tabla del almacén
+     */
     @FXML
     public void initialize() {
         colNombre.setCellValueFactory(data -> data.getValue().nameProperty());
@@ -37,6 +40,9 @@ public class AlmacenController {
         });
     }
 
+    /**
+     * Agregar materia prima al almacén
+     */
     @FXML
     private void agregar() {
         if (!validarCampos()) return;
@@ -49,6 +55,9 @@ public class AlmacenController {
         limpiarCampos();
     }
 
+    /**
+     * Editar productos disponibles
+     */
     @FXML
     private void editar() {
         Item seleccionado = tabla.getSelectionModel().getSelectedItem();
@@ -68,6 +77,9 @@ public class AlmacenController {
         limpiarCampos();
     }
 
+    /**
+     * Eliminar productos
+     */
     @FXML
     private void eliminar() {
         Item seleccionado = tabla.getSelectionModel().getSelectedItem();
@@ -81,6 +93,9 @@ public class AlmacenController {
         limpiarCampos();
     }
 
+    /**
+     * Limpiar campos de la tabla
+     */
     @FXML
     private void limpiarCampos() {
         txtNombre.clear();
@@ -108,6 +123,9 @@ public class AlmacenController {
         return true;
     }
 
+    /**
+     * Mensaje de error 
+     */
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(titulo);

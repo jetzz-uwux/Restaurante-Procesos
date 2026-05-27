@@ -14,6 +14,10 @@ public class Item {
         this.unit = new SimpleStringProperty(unit);
     }
 
+    /**
+     * Setters y getters 
+     * @return datos producto
+     */
     public String getName() {
         return name.get();
     }

@@ -7,31 +7,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER"
-      spacing="15"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="progs.restaurante.controllers.AsistenciaController">
+<VBox alignment="CENTER" spacing="15" styleClass="fondo-7" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="progs.restaurante.controllers.AsistenciaController">
 
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <Label text="Asistencia de Empleados"
-           style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+    <Label style="-fx-font-size: 22px; -fx-font-weight: bold;" styleClass="titulo-login" text="Asistencia de Empleados" />
 
-    <TextField fx:id="txtUsuario"
-               promptText="Usuario del empleado"
-               maxWidth="250"/>
+    <TextField fx:id="txtUsuario" maxWidth="250" promptText="Usuario del empleado" styleClass="campo-texto" />
 
-    <PasswordField fx:id="txtContrasena"
-                   promptText="Contraseña"
-                   maxWidth="250"/>
+    <PasswordField fx:id="txtContrasena" maxWidth="250" promptText="Contraseña" styleClass="campo-texto" />
 
-    <Button text="Marcar asistencia"
-            onAction="#marcarAsistencia"
-            maxWidth="250"/>
+    <Button maxWidth="250" onAction="#marcarAsistencia" styleClass="boton-glow-bubble-azul" text="Marcar asistencia" />
 
-    <Label fx:id="lblMensaje"
-           style="-fx-font-size: 14px;"/>
+    <Label fx:id="lblMensaje" style="-fx-font-size: 14px;" />
 
 </VBox>
