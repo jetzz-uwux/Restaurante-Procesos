@@ -26,7 +26,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();*/
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaGestionMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VistaCajero.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);

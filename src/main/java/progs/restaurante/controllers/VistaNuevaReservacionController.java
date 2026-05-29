@@ -67,8 +67,7 @@ public class VistaNuevaReservacionController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VistaGestionReservas.fxml"));
             Parent root = loader.load();
 
-            // 2. ¡ESTO ES LO CLAVE! 
-            // Obtenemos el controlador de la vista a la que vamos a regresar
+            // 2.Obtenemos el controlador de la vista a la que vamos a regresar
             VistaGestionReservasController controllerAtras = loader.getController();
 
             // 3. Le pasamos la lista que ya tiene al nuevo cliente
