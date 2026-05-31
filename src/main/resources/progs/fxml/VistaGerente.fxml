@@ -11,57 +11,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane
-    styleClass="fondo-3"
-    xmlns="http://javafx.com/javafx/25"
-    xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="progs.restaurante.controllers.GerenteController">
+<AnchorPane styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.GerenteController">
 
     <children>
 
-        <AnchorPane
-            styleClass="panel-cristal"
-            AnchorPane.bottomAnchor="10.0"
-            AnchorPane.leftAnchor="10.0"
-            AnchorPane.rightAnchor="10.0"
-            AnchorPane.topAnchor="10.0">
+        <AnchorPane styleClass="panel-cristal" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
 
             <children>
 
-                <VBox alignment="CENTER"
-                      maxHeight="-Infinity"
-                      maxWidth="-Infinity"
-                      minHeight="-Infinity"
-                      minWidth="-Infinity"
-                      prefHeight="600.0"
-                      prefWidth="335.0"
-                      AnchorPane.bottomAnchor="0.0"
-                      AnchorPane.leftAnchor="0.0"
-                      AnchorPane.rightAnchor="0.0"
-                      AnchorPane.topAnchor="0.0">
+                <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
                     <children>
 
                         <!-- BOTÓN AYUDA -->
-                        <HBox alignment="CENTER_RIGHT"
-                              prefHeight="29.0"
-                              prefWidth="379.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="379.0">
 
                             <children>
 
-                                <Button fx:id="btn_ayuda"
-                                        contentDisplay="RIGHT"
-                                        mnemonicParsing="false"
-                                        styleClass="boton-imagen"
-                                        text="Ayuda"
-                                        HBox.hgrow="SOMETIMES">
+                                <Button fx:id="btn_ayuda" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="boton-imagen" text="Ayuda" HBox.hgrow="SOMETIMES">
 
                                     <graphic>
 
-                                        <ImageView fitHeight="37.0"
-                                                   fitWidth="37.0"
-                                                   pickOnBounds="true"
-                                                   preserveRatio="true">
+                                        <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
 
                                             <image>
                                                 <Image url="@../img/boton_i.png" />
@@ -78,16 +49,11 @@
                         </HBox>
 
                         <!-- TEXTO BIENVENIDA -->
-                        <HBox alignment="CENTER"
-                              prefHeight="60.0"
-                              prefWidth="379.0"
-                              VBox.vgrow="SOMETIMES">
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
 
                             <children>
 
-                                <Text strokeType="OUTSIDE"
-                                      strokeWidth="0.0"
-                                      text="Bienvenido/a, ">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido/a, ">
 
                                     <styleClass>
                                         <String fx:value="texto-glow-verde" />
@@ -100,9 +66,7 @@
 
                                 </Text>
 
-                                <Text strokeType="OUTSIDE"
-                                      strokeWidth="0.0"
-                                      text="[usuario]">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="[usuario]">
 
                                     <styleClass>
                                         <String fx:value="texto-glow-verde" />
@@ -120,19 +84,12 @@
                         </HBox>
 
                         <!-- BOTONES -->
-                        <VBox alignment="CENTER"
-                              VBox.vgrow="SOMETIMES">
+                        <VBox alignment="CENTER" VBox.vgrow="SOMETIMES">
 
                             <children>
 
                                 <!-- REPORTES -->
-                                <Button fx:id="btn_reportes"
-                                        mnemonicParsing="false"
-                                        onAction="#abrirReportes"
-                                        prefWidth="250.0"
-                                        style="-fx-font-size: 1.6em;"
-                                        text="Reportes"
-                                        VBox.vgrow="SOMETIMES">
+                                <Button fx:id="btn_reportes" mnemonicParsing="false" onAction="#abrirReportes" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Reportes" VBox.vgrow="SOMETIMES">
 
                                     <VBox.margin>
                                         <Insets bottom="10.0" top="10.0" />
@@ -150,13 +107,7 @@
                                 </Button>
 
                                 <!-- INVENTARIO -->
-                                <Button fx:id="btn_inventario"
-                                        mnemonicParsing="false"
-                                        onAction="#abrirInventario"
-                                        prefWidth="250.0"
-                                        style="-fx-font-size: 1.6em;"
-                                        text="Inventario"
-                                        VBox.vgrow="SOMETIMES">
+                                <Button fx:id="btn_inventario" mnemonicParsing="false" onAction="#abrirInventario" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Inventario" VBox.vgrow="SOMETIMES">
 
                                     <styleClass>
                                         <String fx:value="boton-glow-bubble-naranja" />
@@ -174,10 +125,7 @@
                                 </Button>
 
                                 <!-- GESTIÓN MENÚ -->
-                                <Button mnemonicParsing="false"
-                                        prefWidth="250.0"
-                                        style="-fx-font-size: 1.6em;"
-                                        text="Gestión de menú">
+                                <Button fx:id="btn_GestionMenu" mnemonicParsing="false" onAction="#handleGestionar" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Gestión de menú">
 
                                     <styleClass>
                                         <String fx:value="boton-glow-bubble-naranja" />
@@ -195,10 +143,7 @@
                                 </Button>
 
                                 <!-- EMPLEADOS -->
-                                <Button mnemonicParsing="false"
-                                        prefWidth="250.0"
-                                        style="-fx-font-size: 1.6em;"
-                                        text="Empleados">
+                                <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Empleados">
 
                                     <styleClass>
                                         <String fx:value="boton-glow-bubble-naranja" />
@@ -217,12 +162,7 @@
 
                                 <!-- CONTROL ASISTENCIA -->
                                 <!-- CONTROL ASISTENCIA -->
-                                <Button fx:id="btn_asistencia"
-                                        mnemonicParsing="false"
-                                        onAction="#abrirAsistencia"
-                                        prefWidth="250.0"
-                                        style="-fx-font-size: 1.6em;"
-                                        text="Control de asistencia">
+                                <Button fx:id="btn_asistencia" mnemonicParsing="false" onAction="#abrirAsistencia" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Control de asistencia">
 
                                     <styleClass>
                                         <String fx:value="boton-glow-bubble-naranja" />
@@ -240,10 +180,7 @@
                                 </Button>
 
                                 <!-- IMAGEN -->
-                                <ImageView fitHeight="193.0"
-                                           fitWidth="203.0"
-                                           pickOnBounds="true"
-                                           preserveRatio="true">
+                                <ImageView fitHeight="193.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
 
                                     <VBox.margin>
                                         <Insets top="5.0" />
@@ -256,25 +193,15 @@
                         </VBox>
 
                         <!-- BOTÓN CERRAR -->
-                        <HBox alignment="BOTTOM_LEFT"
-                              prefHeight="29.0"
-                              prefWidth="379.0"
-                              VBox.vgrow="SOMETIMES">
+                        <HBox alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
 
                             <children>
 
-                                <Button fx:id="btn_cerrarsesion"
-                                        mnemonicParsing="false"
-                                        onAction="#cerrarSesion"
-                                        styleClass="boton-imagen"
-                                        HBox.hgrow="SOMETIMES">
+                                <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" onAction="#cerrarSesion" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
 
                                     <graphic>
 
-                                        <ImageView fitHeight="49.0"
-                                                   fitWidth="51.0"
-                                                   pickOnBounds="true"
-                                                   preserveRatio="true">
+                                        <ImageView fitHeight="49.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
 
                                             <image>
                                                 <Image url="@../img/boton_X.png" />

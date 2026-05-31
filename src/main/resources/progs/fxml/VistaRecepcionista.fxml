@@ -51,18 +51,6 @@
       </HBox>
       <VBox alignment="CENTER" VBox.vgrow="SOMETIMES">
          <children>
-            <Button fx:id="btn_verMesas" mnemonicParsing="false" onAction="#handleAbrirMesas" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Ver mesas" VBox.vgrow="SOMETIMES">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-               <styleClass>
-                  <String fx:value="boton-glow-bubble-naranja" />
-                  <String fx:value="fuente-superchips" />
-               </styleClass>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
             <Button fx:id="btn_reservas" mnemonicParsing="false" onAction="#handleReservas" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Gestión de reservas" VBox.vgrow="SOMETIMES">
                <styleClass>
                   <String fx:value="boton-glow-bubble-naranja" />

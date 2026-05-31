@@ -66,6 +66,25 @@ public class GerenteController {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    private void handleGestionar(ActionEvent event) {
+
+        try {
+
+            Parent root = FXMLLoader.load(
+                    getClass().getResource("/progs/fxml/VentanaGestionMenu.fxml")
+            );
+
+            Stage stage = new Stage();
+            stage.setTitle("Inventario");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Abrir ventana de Asistencia

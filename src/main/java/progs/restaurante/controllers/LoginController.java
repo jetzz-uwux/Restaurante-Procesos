@@ -252,7 +252,7 @@ public class LoginController implements Initializable {
         String fxmlDestino;
 
         switch (rol) {
-            case "administrador": fxmlDestino = "/progs/fxml/VentanaAdministrador.fxml"; break;
+            case "administrador": fxmlDestino = "/progs/fxml/VistaGerente.fxml"; break;
             case "gerente":       fxmlDestino = "/progs/fxml/VistaGerente.fxml";       break;
             case "cajero":        fxmlDestino = "/progs/fxml/VistaCajero.fxml";        break;
             case "mesero":        fxmlDestino = "/progs/fxml/VistaMesero.fxml";        break;

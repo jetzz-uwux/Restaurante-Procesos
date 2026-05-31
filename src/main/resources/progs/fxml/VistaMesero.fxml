@@ -3,18 +3,17 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="progs.restaurante.controllers.VistaMeseroController">
+<AnchorPane styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VistaMeseroController">
    <children>
       <AnchorPane styleClass="panel-cristal" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -69,19 +68,7 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Desocupar Mesa" VBox.vgrow="SOMETIMES">
-                           <styleClass>
-                              <String fx:value="boton-glow-bubble-naranja" />
-                              <String fx:value="fuente-superchips" />
-                           </styleClass>
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Cerrar Cuentas">
+                        <Button fx:id="btn_cerrarCuenta" mnemonicParsing="false" onAction="#handleCerrarCuenta" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Cerrar Cuentas">
                            <styleClass>
                               <String fx:value="boton-glow-bubble-naranja" />
                               <String fx:value="fuente-superchips" />
@@ -102,12 +89,7 @@
                            </VBox.margin>
 
                            <!-- Botón principal de notificaciones -->
-                           <Button fx:id="btn_notificaciones"
-                                   mnemonicParsing="false"
-                                   onAction="#handleNotificaciones"
-                                   prefWidth="250.0"
-                                   style="-fx-font-size: 1.6em;"
-                                   text="Notificaciones">
+                           <Button fx:id="btn_notificaciones" mnemonicParsing="false" onAction="#handleNotificaciones" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Notificaciones">
                               <styleClass>
                                  <String fx:value="boton-glow-bubble-naranja" />
                                  <String fx:value="fuente-superchips" />
@@ -118,17 +100,8 @@
                            </Button>
 
                            <!-- Badge rojo con contador — visible solo si hay notifs -->
-                           <StackPane fx:id="badge_campana"
-                                      alignment="TOP_RIGHT"
-                                      pickOnBounds="false"
-                                      visible="false"
-                                      managed="false"
-                                      style="-fx-cursor: hand;"
-                                      onMouseClicked="#handleNotificaciones">
-                              <Label fx:id="lbl_campana"
-                                     text="🔔 0"
-                                     styleClass="badge-campana"
-                                     StackPane.alignment="TOP_RIGHT"/>
+                           <StackPane fx:id="badge_campana" alignment="TOP_RIGHT" managed="false" onMouseClicked="#handleNotificaciones" pickOnBounds="false" style="-fx-cursor: hand;" visible="false">
+                              <Label fx:id="lbl_campana" styleClass="badge-campana" text="🔔 0" StackPane.alignment="TOP_RIGHT" />
                            </StackPane>
                         </StackPane>
 

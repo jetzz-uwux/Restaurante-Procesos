@@ -13,6 +13,7 @@ public class CajeroController {
 
     @FXML
     private Button btn_asistencia;
+    private Button btn_Facturacion;
 
     /**
      * Abrir la lista de asistencia
@@ -46,5 +47,33 @@ public class CajeroController {
             alert.showAndWait();
         }
     }
-}
 
+    @FXML
+    private void handleFacturar() {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/progs/fxml/VentanaFacturacion.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Tiempo de cobrar");
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("No se pudo abrir la ventana de cobro.");
+            alert.showAndWait();
+        }
+    }
+}

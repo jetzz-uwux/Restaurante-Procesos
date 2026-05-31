@@ -11,38 +11,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER"
-      maxHeight="-Infinity"
-      maxWidth="-Infinity"
-      minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="490.0"
-      prefWidth="361.0"
-      styleClass="fondo-3"
-      xmlns="http://javafx.com/javafx/25"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="progs.restaurante.controllers.CajeroController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="361.0" styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.CajeroController">
 
    <children>
 
-      <HBox alignment="CENTER_RIGHT"
-            prefHeight="29.0"
-            prefWidth="379.0">
+      <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="379.0">
 
          <children>
 
             <Label text="Ayuda" />
 
-            <Button fx:id="btn_ayuda"
-                    mnemonicParsing="false"
-                    styleClass="boton-imagen"
-                    HBox.hgrow="SOMETIMES">
+            <Button fx:id="btn_ayuda" mnemonicParsing="false" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
 
                <graphic>
-                  <ImageView fitHeight="37.0"
-                             fitWidth="37.0"
-                             pickOnBounds="true"
-                             preserveRatio="true">
+                  <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
 
                      <image>
                         <Image url="@../img/boton_i.png" />
@@ -57,16 +39,11 @@
 
       </HBox>
 
-      <HBox alignment="CENTER"
-            prefHeight="60.0"
-            prefWidth="379.0"
-            VBox.vgrow="SOMETIMES">
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
 
          <children>
 
-            <Text strokeType="OUTSIDE"
-                  strokeWidth="0.0"
-                  text="Bienvenido/a, ">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido/a, ">
 
                <styleClass>
                   <String fx:value="texto-glow-verde" />
@@ -79,9 +56,7 @@
 
             </Text>
 
-            <Text strokeType="OUTSIDE"
-                  strokeWidth="0.0"
-                  text="[usuario]">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="[usuario]">
 
                <styleClass>
                   <String fx:value="texto-glow-verde" />
@@ -98,16 +73,11 @@
 
       </HBox>
 
-      <VBox alignment="CENTER"
-            VBox.vgrow="SOMETIMES">
+      <VBox alignment="CENTER" VBox.vgrow="SOMETIMES">
 
          <children>
 
-            <Button mnemonicParsing="false"
-                    prefWidth="200.0"
-                    style="-fx-font-size: 1.6em;"
-                    text="Facturación"
-                    VBox.vgrow="SOMETIMES">
+            <Button fx:id="btn_Facturacion" mnemonicParsing="false" onAction="#handleFacturar" prefWidth="200.0" style="-fx-font-size: 1.6em;" text="Facturación" VBox.vgrow="SOMETIMES">
 
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
@@ -124,13 +94,7 @@
 
             </Button>
 
-            <Button fx:id="btn_asistencia"
-                    mnemonicParsing="false"
-                    onAction="#handleAbrirAsistencia"
-                    prefWidth="200.0"
-                    style="-fx-font-size: 1.6em;"
-                    text="Lista de Asistencia"
-                    VBox.vgrow="SOMETIMES">
+            <Button fx:id="btn_asistencia" mnemonicParsing="false" onAction="#handleAbrirAsistencia" style="-fx-font-size: 1.6em;" text="Lista de Asistencia" VBox.vgrow="SOMETIMES">
 
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
@@ -147,10 +111,7 @@
 
             </Button>
 
-            <ImageView fitHeight="153.0"
-                       fitWidth="183.0"
-                       pickOnBounds="true"
-                       preserveRatio="true">
+            <ImageView fitHeight="153.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true">
 
                <image>
                   <Image url="@../img/icono_3.png" />
@@ -166,23 +127,14 @@
 
       </VBox>
 
-      <HBox alignment="BOTTOM_LEFT"
-            prefHeight="29.0"
-            prefWidth="379.0"
-            VBox.vgrow="SOMETIMES">
+      <HBox alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
 
          <children>
 
-            <Button fx:id="btn_cerrarsesion"
-                    mnemonicParsing="false"
-                    styleClass="boton-imagen"
-                    HBox.hgrow="SOMETIMES">
+            <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
 
                <graphic>
-                  <ImageView fitHeight="49.0"
-                             fitWidth="51.0"
-                             pickOnBounds="true"
-                             preserveRatio="true">
+                  <ImageView fitHeight="49.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
 
                      <image>
                         <Image url="@../img/boton_X.png" />
