@@ -48,7 +48,8 @@ public class EstilosApp {
         JUEGO           ("css_overcooked.css"),
         IMAGEN          ("imagenes.css"),
         TEXTFIELD       ("textfields.css"),
-        TEXTO           ("texto.css");
+        TEXTO           ("texto.css"),
+        GESTIONEMPLEADOS("GestionEmpleados.css");
 
         final String archivo;
         CSS(String archivo) { this.archivo = archivo; }

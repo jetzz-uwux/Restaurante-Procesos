@@ -38,25 +38,5 @@
     -fx-background-size: cover;
     -fx-background-position: center;
 }
-.column-header {
-    -fx-background-image: url('../img/plato_1.png');
-    -fx-background-size: stretch;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-    -fx-background-color: transparent;
-        -fx-pref-height: 70px;
-    -fx-min-height: 70px;
-}
 
-.column-header-background {
-    -fx-background-color: transparent;
-        -fx-pref-height: 80px;
-        -fx-min-height: 90px;
-}
 
-.stackpane-tabla {
-    -fx-background-image: url('../img/tabla_1.png');
-    -fx-background-size: stretch;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-}

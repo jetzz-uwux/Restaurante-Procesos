@@ -26,7 +26,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();*/
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VistaInicioSesion.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/GestionEmpleados.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
@@ -38,7 +38,8 @@ public class App extends Application {
             CSS.BOTONES,
             CSS.TEXTFIELD,
             CSS.IMAGEN,
-            CSS.TEXTO
+            CSS.TEXTO,
+            CSS.GESTIONEMPLEADOS
         );
         cargarFuentes();
 

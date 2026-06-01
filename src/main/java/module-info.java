@@ -8,7 +8,7 @@ module progs.restaurante {
 
     opens progs.fxml to javafx.fxml;
     opens progs.restaurante to javafx.fxml;
-    opens progs.restaurante.controllers to javafx.fxml;
+    opens progs.restaurante.controllers to javafx.fxml, javafx.base, javafx.controls;
     opens progs.restaurante.models to javafx.base, javafx.controls;
 
     exports progs.restaurante;

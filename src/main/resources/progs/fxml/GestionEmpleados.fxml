@@ -1,68 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="progs.restaurante.controllers.GestionEmpleadosController">
+<!--
+    ARCHIVO FXML - GESTION DE EMPLEADOS
+    Este archivo define la ESTRUCTURA VISUAL de la pantalla.
+    SceneBuilder lo genera/edita visualmente.
 
-    <children>
+    IMPORTANTE:
+    fx:controller apunta a tu clase controladora
+    fx:id         conecta cada elemento con una variable @FXML del controlador
+    onAction      conecta cada boton con un metodo @FXML del controlador
+-->
 
-        <VBox spacing="15"
-              AnchorPane.topAnchor="10"
-              AnchorPane.bottomAnchor="10"
-              AnchorPane.leftAnchor="10"
-              AnchorPane.rightAnchor="10">
+<BorderPane
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="progs.restaurante.controllers.GestionEmpleadosController"
+    prefWidth="960"
+    prefHeight="600"
+    styleClass="root-pane"
+    stylesheets="@GestionEmpleados.css">
 
-            <children>
+    <!-- ENCABEZADO SUPERIOR: Titulo de la pantalla -->
+    <top>
+        <VBox styleClass="header-bar" alignment="CENTER">
+            <Label text="CENTRAL DE CHEFS" styleClass="titulo-principal"/>
+            <Label text="Sistema de Gestion de Personal" styleClass="subtitulo"/>
+        </VBox>
+    </top>
 
-                <TableView fx:id="tablaEmpleados">
+    <!-- CONTENIDO CENTRAL: Tabla izquierda mas Panel derecho -->
+    <center>
+        <HBox spacing="20" styleClass="contenido-central">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
 
+            <!-- PANEL IZQUIERDO: Tabla de Personal Activo -->
+            <VBox styleClass="panel-tabla" HBox.hgrow="ALWAYS" spacing="10">
+
+                <!-- Titulo del panel izquierdo con contador -->
+                <HBox styleClass="panel-encabezado" alignment="CENTER">
+                    <Label text="PERSONAL " styleClass="icono-panel"/>
+                    <Label fx:id="lblContador" text="PERSONAL ACTIVO (0)"
+                           styleClass="titulo-panel"/>
+                </HBox>
+
+                <!-- Tabla de empleados -->
+                <TableView fx:id="tablaEmpleados" VBox.vgrow="ALWAYS"
+                           styleClass="tabla-empleados">
                     <columns>
+                        <!-- Columna ID -->
+                        <TableColumn fx:id="colId" text="ID"
+                                     prefWidth="60" styleClass="col-id"/>
 
-                        <TableColumn fx:id="colId"
-                                     prefWidth="80"
-                                     text="ID"/>
+                        <!-- Columna Nombre -->
+                        <TableColumn fx:id="colNombre" text="Nombre"
+                                     prefWidth="160"/>
 
-                        <TableColumn fx:id="colNombre"
-                                     prefWidth="220"
-                                     text="Nombre"/>
+                        <!-- Columna Usuario -->
+                        <TableColumn fx:id="colUsuario" text="Usuario"
+                                     prefWidth="130"/>
 
-                        <TableColumn fx:id="colUsuario"
-                                     prefWidth="180"
-                                     text="Usuario"/>
-
-                        <TableColumn fx:id="colRol"
-                                     prefWidth="150"
-                                     text="Rol"/>
-
+                        <!-- Columna Rol con badges de color -->
+                        <TableColumn fx:id="colRol" text="Rol / Puesto"
+                                     prefWidth="150"/>
                     </columns>
 
+                    <!-- Mensaje cuando la tabla esta vacia -->
+                    <placeholder>
+                        <Label text="No hay empleados registrados"
+                               styleClass="tabla-vacia"/>
+                    </placeholder>
                 </TableView>
 
-                <HBox spacing="10">
+            </VBox>
 
-                    <children>
+            <!-- PANEL DERECHO: Formulario de Accion -->
+            <VBox styleClass="panel-accion" prefWidth="340" spacing="14">
 
-                        <Button text="Actualizar"
-                                onAction="#actualizarTabla"/>
+                <!-- Titulo del panel derecho -->
+                <HBox styleClass="panel-encabezado" alignment="CENTER">
+                    <Label text="PANEL DE ACCION" styleClass="titulo-panel"/>
+                </HBox>
 
-                        <Button text="Cerrar"
-                                onAction="#cerrarVentana"/>
+                <!-- Subtitulo dinamico: muestra que empleado se edita -->
+                <Label fx:id="lblTituloPanel" text="NUEVO EMPLEADO"
+                       styleClass="subtitulo-panel" wrapText="true"/>
 
-                    </children>
+                <!-- SEPARADOR VISUAL -->
+                <Separator styleClass="separador"/>
+
+                <!-- CAMPO: Nombre -->
+                <VBox spacing="4">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="Nombre" styleClass="etiqueta-campo"/>
+                    </HBox>
+                    <TextField fx:id="txtNombre"
+                               promptText="Ej: Juan Lopez"
+                               styleClass="campo-texto"/>
+                </VBox>
+
+                <!-- CAMPO: Usuario -->
+                <VBox spacing="4">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="Usuario" styleClass="etiqueta-campo"/>
+                    </HBox>
+                    <TextField fx:id="txtUsuario"
+                               promptText="Ej: jlopez2024"
+                               styleClass="campo-texto"/>
+                </VBox>
+
+                <!-- CAMPO: Contrasena -->
+                <VBox spacing="4">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="Contrasena" styleClass="etiqueta-campo"/>
+                    </HBox>
+                    <PasswordField fx:id="txtContrasena"
+                                   promptText="Dejar vacio para no cambiar"
+                                   styleClass="campo-texto"/>
+                </VBox>
+
+                <!-- CAMPO: Rol / Puesto -->
+                <VBox spacing="4">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="Rol / Puesto" styleClass="etiqueta-campo"/>
+                    </HBox>
+                    <ComboBox fx:id="cmbRol"
+                              promptText="Selecciona un rol"
+                              maxWidth="Infinity"
+                              styleClass="combo-rol"/>
+                </VBox>
+
+                <!-- SEPARADOR ANTES DE BOTONES -->
+                <Separator styleClass="separador"/>
+
+                <!-- BOTONES DE ACCION: Contratar / Actualizar / Despedir -->
+                <HBox spacing="10" alignment="CENTER">
+
+                    <!-- BOTON VERDE: ALTA / CONTRATAR -->
+                    <VBox alignment="CENTER" spacing="4">
+                        <Button fx:id="btnContratar"
+                                text="[+]"
+                                onAction="#accionContratar"
+                                styleClass="btn-contratar"
+                                prefWidth="90" prefHeight="55"/>
+                        <Label text="CONTRATAR" styleClass="etiqueta-boton"/>
+                        <Label text="(Alta)" styleClass="etiqueta-boton-sub"/>
+                    </VBox>
+
+                    <!-- BOTON AMARILLO: MODIFICAR / ACTUALIZAR -->
+                    <VBox alignment="CENTER" spacing="4">
+                        <Button fx:id="btnActualizar"
+                                text="[=]"
+                                onAction="#accionActualizar"
+                                styleClass="btn-actualizar"
+                                prefWidth="90" prefHeight="55"/>
+                        <Label text="ACTUALIZAR" styleClass="etiqueta-boton"/>
+                        <Label text="(Modificar)" styleClass="etiqueta-boton-sub"/>
+                    </VBox>
+
+                    <!-- BOTON ROJO: BAJA / DESPEDIR -->
+                    <VBox alignment="CENTER" spacing="4">
+                        <Button fx:id="btnDespedir"
+                                text="[x]"
+                                onAction="#accionDespedir"
+                                styleClass="btn-despedir"
+                                prefWidth="90" prefHeight="55"/>
+                        <Label text="DESPEDIR" styleClass="etiqueta-boton"/>
+                        <Label text="(Baja)" styleClass="etiqueta-boton-sub"/>
+                    </VBox>
 
                 </HBox>
 
-            </children>
+                <!-- BOTON GRIS: LIMPIAR FORMULARIO -->
+                <Button text="Limpiar / Nuevo"
+                        onAction="#limpiarFormulario"
+                        maxWidth="Infinity"
+                        styleClass="btn-limpiar"/>
 
-        </VBox>
+            </VBox>
 
-    </children>
+        </HBox>
+    </center>
 
-</AnchorPane>
+</BorderPane>

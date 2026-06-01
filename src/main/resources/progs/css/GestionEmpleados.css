@@ -1,0 +1,397 @@
+/* =====================================================================
+   ARCHIVO CSS - GESTIÓN DE EMPLEADOS
+   -----------------------------------------------------------------------
+   Este archivo define TODOS LOS COLORES Y ESTILOS de la pantalla.
+   Está inspirado en la imagen: colorido, tipo videojuego, con bordes
+   redondeados y colores vibrantes.
+
+   CÓMO FUNCIONA EN JAVAFX:
+   - .nombre-clase  → aplica estilo a cualquier nodo con styleClass="nombre-clase"
+   - #nombre-id     → aplica a un nodo específico con fx:id="nombre-id"
+   ====================================================================== */
+
+/* -----------------------------------------------------------------------
+
+
+/* -----------------------------------------------------------------------
+   PANEL RAÍZ: El fondo de toda la ventana
+   ----------------------------------------------------------------------- */
+.root-pane {
+    -fx-background-image: url('../img/fondoGestionEmpleados.png');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+/* -----------------------------------------------------------------------
+   ENCABEZADO SUPERIOR
+   ----------------------------------------------------------------------- */
+.header-bar {
+    -fx-background-color: linear-gradient(to bottom, #2d7a4f, #1a4a2e);
+    -fx-padding: 16 20 12 20;
+    -fx-border-color: #f5c842;        /* Borde dorado abajo */
+    -fx-border-width: 0 0 4 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 4);
+}
+
+.titulo-principal {
+    -fx-font-size: 28px;
+    -fx-text-fill: #f5c842;           /* Dorado brillante */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 6, 0, 2, 2);
+}
+
+.subtitulo {
+    -fx-font-size: 12px;
+    -fx-text-fill: #a8d8b0;           /* Verde claro */
+    -fx-font-style: italic;
+}
+
+/* -----------------------------------------------------------------------
+   CONTENIDO CENTRAL: El área donde van los dos paneles
+   ----------------------------------------------------------------------- */
+.contenido-central {
+    -fx-background-color: transparent;
+}
+
+/* -----------------------------------------------------------------------
+   PANELES (Izquierdo y Derecho): Las "cajas" principales
+   ----------------------------------------------------------------------- */
+.panel-tabla,
+.panel-accion {
+    -fx-background-color: #e8f4ea;    /* Fondo crema-verde muy claro */
+    -fx-border-color: #4a9e6a;
+    -fx-border-width: 3;
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+    -fx-padding: 0 0 16 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 12, 0, 0, 4);
+}
+
+.panel-accion {
+    -fx-padding: 0 0 16 0;
+}
+
+/* -----------------------------------------------------------------------
+   ENCABEZADO DE CADA PANEL (la banda de color superior de cada caja)
+   ----------------------------------------------------------------------- */
+.panel-encabezado {
+    -fx-background-color: linear-gradient(to right, #3b8f5e, #5ab87a);
+    -fx-padding: 10 16 10 16;
+    -fx-background-radius: 13 13 0 0;
+    -fx-border-radius: 13 13 0 0;
+    -fx-spacing: 8;
+}
+
+.icono-panel {
+    -fx-font-size: 20px;
+}
+
+.titulo-panel {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0, 1, 1);
+}
+
+/* -----------------------------------------------------------------------
+   SUBTÍTULO DINÁMICO DEL PANEL DE ACCIÓN
+   ----------------------------------------------------------------------- */
+.subtitulo-panel {
+    -fx-font-size: 13px;
+    -fx-text-fill: #2d6b45;
+    -fx-padding: 4 16 0 16;
+}
+
+/* -----------------------------------------------------------------------
+   SEPARADORES
+   ----------------------------------------------------------------------- */
+.separador {
+    -fx-padding: 0 16 0 16;
+}
+
+/* -----------------------------------------------------------------------
+   TABLA DE EMPLEADOS
+   ----------------------------------------------------------------------- */
+.tabla-empleados {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0 8 0 8;
+}
+
+/* Encabezado de la tabla (nombres de columnas) */
+.tabla-empleados .column-header-background {
+    -fx-background-color: #3b8f5e;
+}
+
+.tabla-empleados .column-header,
+.tabla-empleados .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-size: 38;
+}
+
+.tabla-empleados .column-header .label {
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+/* Filas pares */
+.tabla-empleados .table-row-cell:even {
+    -fx-background-color: #f0f9f2;
+}
+
+/* Filas impares */
+.tabla-empleados .table-row-cell:odd {
+    -fx-background-color: #dff0e4;
+}
+
+/* Fila seleccionada */
+.tabla-empleados .table-row-cell:selected {
+    -fx-background-color: #f5c842;  /* Dorado cuando está seleccionado */
+}
+
+.tabla-empleados .table-row-cell:selected .text {
+    -fx-fill: #1a4a2e;             /* Texto oscuro sobre fondo dorado */
+}
+
+/* Texto de las celdas */
+.tabla-empleados .table-cell {
+    -fx-font-size: 13px;
+    -fx-text-fill: #1a3d28;
+    -fx-alignment: CENTER;
+}
+
+/* Mensaje cuando la tabla está vacía */
+.tabla-vacia {
+    -fx-font-size: 14px;
+    -fx-text-fill: #7aaa8a;
+    -fx-font-style: italic;
+}
+
+/* -----------------------------------------------------------------------
+   CAMPOS DE FORMULARIO (TextField, PasswordField)
+   ----------------------------------------------------------------------- */
+.etiqueta-campo {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2d6b45;
+    -fx-padding: 0 16 0 16;
+}
+
+.icono-campo {
+    -fx-font-size: 15px;
+    -fx-padding: 0 0 0 16;
+}
+
+.campo-texto {
+    -fx-font-size: 13px;
+    -fx-background-color: #fefefe;
+    -fx-border-color: #7ac992;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12 8 12;
+    -fx-margin: 0 16 0 16; /* Los márgenes laterales los da el VBox padre */
+    -fx-text-fill: #1a3d28;
+    -fx-prompt-text-fill: #a0c0aa;
+}
+
+.campo-texto:focused {
+    -fx-border-color: #f5c842;      /* Borde dorado al enfocar */
+    -fx-effect: dropshadow(gaussian, rgba(245,200,66,0.4), 8, 0, 0, 0);
+}
+
+/* -----------------------------------------------------------------------
+   COMBOBOX DE ROL
+   ----------------------------------------------------------------------- */
+.combo-rol {
+    -fx-font-size: 13px;
+    -fx-background-color: #fefefe;
+    -fx-border-color: #7ac992;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 4 12 4 12;
+    -fx-text-fill: #1a3d28;
+}
+
+.combo-rol .list-cell {
+    -fx-font-size: 13px;
+    -fx-text-fill: #1a3d28;
+    -fx-padding: 6 12 6 12;
+}
+
+.combo-rol:focused {
+    -fx-border-color: #f5c842;
+}
+
+/* -----------------------------------------------------------------------
+   BOTÓN VERDE: CONTRATAR (Alta)
+   ----------------------------------------------------------------------- */
+.btn-contratar {
+    -fx-background-color: linear-gradient(to bottom, #5dcc70, #3aab4e);
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-border-color: #2a8a3a;
+    -fx-border-width: 3;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6, 0, 0, 3);
+}
+
+.btn-contratar:hover {
+    -fx-background-color: linear-gradient(to bottom, #72e085, #4dc060);
+    -fx-effect: dropshadow(gaussian, rgba(58,171,78,0.6), 12, 0, 0, 4);
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+}
+
+.btn-contratar:pressed {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.btn-contratar:disabled {
+    -fx-opacity: 0.45;
+}
+
+/* -----------------------------------------------------------------------
+   BOTÓN AMARILLO: ACTUALIZAR (Modificar)
+   ----------------------------------------------------------------------- */
+.btn-actualizar {
+    -fx-background-color: linear-gradient(to bottom, #f7d84a, #e8b820);
+    -fx-text-fill: #3d2a00;
+    -fx-font-size: 22px;
+    -fx-border-color: #c49200;
+    -fx-border-width: 3;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6, 0, 0, 3);
+}
+
+.btn-actualizar:hover {
+    -fx-background-color: linear-gradient(to bottom, #ffe060, #f0c830);
+    -fx-effect: dropshadow(gaussian, rgba(232,184,32,0.6), 12, 0, 0, 4);
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+}
+
+.btn-actualizar:pressed {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+}
+
+.btn-actualizar:disabled {
+    -fx-opacity: 0.45;
+}
+
+/* -----------------------------------------------------------------------
+   BOTÓN ROJO: DESPEDIR (Baja)
+   ----------------------------------------------------------------------- */
+.btn-despedir {
+    -fx-background-color: linear-gradient(to bottom, #f56c6c, #d63838);
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-border-color: #b02020;
+    -fx-border-width: 3;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6, 0, 0, 3);
+}
+
+.btn-despedir:hover {
+    -fx-background-color: linear-gradient(to bottom, #ff8080, #e84848);
+    -fx-effect: dropshadow(gaussian, rgba(214,56,56,0.6), 12, 0, 0, 4);
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+}
+
+.btn-despedir:pressed {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+}
+
+.btn-despedir:disabled {
+    -fx-opacity: 0.45;
+}
+
+/* -----------------------------------------------------------------------
+   BOTÓN GRIS: LIMPIAR / NUEVO
+   ----------------------------------------------------------------------- */
+.btn-limpiar {
+    -fx-background-color: linear-gradient(to bottom, #b0c4b8, #8aaa98);
+    -fx-text-fill: #1a3d28;
+    -fx-font-size: 13px;
+    -fx-border-color: #5a8a6a;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-padding: 8 16 8 16;
+    -fx-margin: 0 16 0 16;
+}
+
+.btn-limpiar:hover {
+    -fx-background-color: linear-gradient(to bottom, #c0d4c8, #9abbaa);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* -----------------------------------------------------------------------
+   ETIQUETAS DEBAJO DE LOS BOTONES
+   ----------------------------------------------------------------------- */
+.etiqueta-boton {
+    -fx-font-size: 11px;
+    -fx-text-fill: #1a4a2e;
+}
+
+.etiqueta-boton-sub {
+    -fx-font-size: 10px;
+    -fx-text-fill: #4a8a62;
+}
+
+/* -----------------------------------------------------------------------
+   BADGES DE ROL (chips de color en la columna Rol de la tabla)
+   ----------------------------------------------------------------------- */
+.badge-rol {
+    -fx-font-size: 11px;
+    -fx-padding: 3 10 3 10;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-text-fill: white;
+}
+
+/* Color por tipo de rol */
+.badge-chef          { -fx-background-color: #e8a020; -fx-border-color: #b87800; -fx-border-width: 1.5; }
+.badge-cajero        { -fx-background-color: #3a9ad9; -fx-border-color: #1a6aaa; -fx-border-width: 1.5; }
+.badge-gerente       { -fx-background-color: #9b59b6; -fx-border-color: #6c3483; -fx-border-width: 1.5; }
+.badge-mesero        { -fx-background-color: #27ae60; -fx-border-color: #1a7a40; -fx-border-width: 1.5; }
+.badge-recepcionista { -fx-background-color: #e74c3c; -fx-border-color: #b03028; -fx-border-width: 1.5; }
+.badge-administrador { -fx-background-color: #34495e; -fx-border-color: #1a2a3a; -fx-border-width: 1.5; }
+
+/* -----------------------------------------------------------------------
+   SCROLLBAR PERSONALIZADO (de la tabla)
+   ----------------------------------------------------------------------- */
+.scroll-bar:vertical .track {
+    -fx-background-color: #c8e6d0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #5ab87a;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #3aab4e;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
