@@ -8,8 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import progs.restaurante.lib.EstilosApp;
+import progs.restaurante.lib.EstilosApp.CSS;
+import static progs.restaurante.lib.EstilosApp.cargarFuentes;
 
 public class GerenteController {
+    
+    private static Scene scene;
+    @FXML
+    private Button btn_empleados;
 
     @FXML
     private Button btn_ayuda;
@@ -37,7 +44,18 @@ public class GerenteController {
 
             Stage stage = new Stage();
             stage.setTitle("Reportes");
-            stage.setScene(new Scene(root));
+            scene = new Scene(root);
+            EstilosApp.aplicar(scene,
+                CSS.JUEGO,
+                CSS.FUENTES,
+                CSS.BOTONES,
+                CSS.TEXTFIELD,
+                CSS.IMAGEN,
+                CSS.TEXTO,
+                CSS.TABLA_1,
+                CSS.TABLA_2
+            );
+            cargarFuentes();
             stage.show();
 
         } catch (IOException e) {
@@ -59,14 +77,25 @@ public class GerenteController {
 
             Stage stage = new Stage();
             stage.setTitle("Inventario");
-            stage.setScene(new Scene(root));
+            scene = new Scene(root);
+            EstilosApp.aplicar(scene,
+                CSS.JUEGO,
+                CSS.FUENTES,
+                CSS.BOTONES,
+                CSS.TEXTFIELD,
+                CSS.IMAGEN,
+                CSS.TEXTO,
+                CSS.TABLA_1,
+                CSS.TABLA_2
+            );
+            cargarFuentes();
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
     private void handleGestionar(ActionEvent event) {
 
@@ -78,7 +107,18 @@ public class GerenteController {
 
             Stage stage = new Stage();
             stage.setTitle("Inventario");
-            stage.setScene(new Scene(root));
+            scene = new Scene(root);
+            EstilosApp.aplicar(scene,
+                CSS.JUEGO,
+                CSS.FUENTES,
+                CSS.BOTONES,
+                CSS.TEXTFIELD,
+                CSS.IMAGEN,
+                CSS.TEXTO,
+                CSS.TABLA_1,
+                CSS.TABLA_2
+            );
+            cargarFuentes();
             stage.show();
 
         } catch (IOException e) {
@@ -100,14 +140,25 @@ public class GerenteController {
 
             Stage stage = new Stage();
             stage.setTitle("Asistencia");
-            stage.setScene(new Scene(root));
+            scene = new Scene(root);
+            EstilosApp.aplicar(scene,
+                CSS.JUEGO,
+                CSS.FUENTES,
+                CSS.BOTONES,
+                CSS.TEXTFIELD,
+                CSS.IMAGEN,
+                CSS.TEXTO,
+                CSS.TABLA_1,
+                CSS.TABLA_2
+            );
+            cargarFuentes();
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * Cerrar sesión
      */
@@ -117,4 +168,36 @@ public class GerenteController {
         Stage stage = (Stage) btn_cerrarsesion.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void handleEmpleados(ActionEvent event) {
+
+        try {
+
+            Parent root = FXMLLoader.load(
+                    getClass().getResource("/progs/fxml/GestionEmpleados.fxml")
+            );
+
+            Stage stage = new Stage();
+            stage.setTitle("Gestion Empleados");
+            scene = new Scene(root);
+            EstilosApp.aplicar(scene,
+                CSS.JUEGO,
+                CSS.FUENTES,
+                CSS.BOTONES,
+                CSS.TEXTFIELD,
+                CSS.IMAGEN,
+                CSS.TEXTO,
+                CSS.GESTIONEMPLEADOS
+            );
+            cargarFuentes();
+            
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

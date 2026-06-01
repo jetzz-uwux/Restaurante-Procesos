@@ -1,0 +1,297 @@
+/* =====================================================================
+   VistaMesero.css — ATENCION A MESAS
+   Estilo inspirado en la imagen: fondo madera oscura, panel beige,
+   botones circulares coloridos, tabla con filas tipo ticket de papel.
+   ===================================================================== */
+
+/* FONDO GENERAL: textura madera oscura */
+.fondo-madera {
+    -fx-background-image: url('../img/fondoMesero.png');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+/* PANEL INTERIOR: Marco con fondo madera clara / beige cálido */
+.panel-marco {
+    -fx-background-color: #d4956a;
+    -fx-background-radius: 18;
+    -fx-border-color: #8b5e3c;
+    -fx-border-width: 5;
+    -fx-border-radius: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 20, 0, 0, 6);
+}
+
+/* TITULO PRINCIPAL: "ATENCION A MESAS" */
+.titulo-principal-mesero {
+    -fx-font-size: 28px;
+    -fx-text-fill: #fff8e1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 6, 0, 2, 2);
+    /* El acento amarillo lo logramos con un segundo label si quieres,
+       por ahora todo blanco-crema como en el banner de la imagen */
+}
+
+/* BOTON AYUDA: circulo gris esquina superior izquierda */
+.boton-esquina-izq {
+    -fx-alignment: CENTER;
+}
+
+.btn-esquina-redondo {
+    -fx-background-color: #b0b8c0;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-min-width: 46px;
+    -fx-min-height: 46px;
+    -fx-max-width: 46px;
+    -fx-max-height: 46px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 5, 0, 0, 2);
+    -fx-border-color: #888f96;
+    -fx-border-width: 2;
+}
+
+.btn-esquina-redondo:hover {
+    -fx-background-color: #c8d0d8;
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+}
+
+.etiqueta-esquina {
+    -fx-font-size: 11px;
+    -fx-text-fill: #fff8e1;
+}
+
+/* BOTON X: cerrar sesion esquina superior derecha */
+.btn-cerrar-sesion {
+    -fx-background-color: #e53935;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-min-width: 42px;
+    -fx-min-height: 42px;
+    -fx-max-width: 42px;
+    -fx-max-height: 42px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 5, 0, 0, 2);
+    -fx-border-color: #b71c1c;
+    -fx-border-width: 2;
+}
+
+.btn-cerrar-sesion:hover {
+    -fx-background-color: #ef5350;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+/* CONTENEDOR de cada boton circular (VBox con boton + etiqueta) */
+.contenedor-boton-circular {
+    -fx-alignment: CENTER;
+}
+
+
+/* BOTON CIRCULAR AZUL: Notificaciones */
+.btn-circular-azul {
+    -fx-background-color: radial-gradient(center 40% 35%, radius 60%, #5b9bd5, #1a4a8a);
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-color: #0d2a5e;
+    -fx-border-width: 4;
+    -fx-text-fill: white;
+    -fx-font-size: 38px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 4);
+}
+
+.btn-circular-azul:hover {
+    -fx-background-color: radial-gradient(center 40% 35%, radius 60%, #74b3e8, #2a5aaa);
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
+    -fx-effect: dropshadow(gaussian, rgba(91,155,213,0.7), 18, 0, 0, 4);
+}
+
+.btn-circular-azul:pressed {
+    -fx-scale-x: 0.94;
+    -fx-scale-y: 0.94;
+}
+
+/* ETIQUETA debajo de cada boton circular */
+.etiqueta-boton-circular {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3b1a00;
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.4), 2, 0, 0, 1);
+}
+
+/* BADGE de notificaciones (numero rojo sobre el boton) */
+.badge-campana {
+    -fx-background-color: #e53935;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 2 6 2 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 4, 0, 0, 1);
+    -fx-translate-x: 10;
+    -fx-translate-y: -8;
+}
+
+/* CONTENEDOR DE LA TABLA */
+.contenedor-tabla {
+    -fx-background-color: #f5e6c8;
+    -fx-background-radius: 12;
+    -fx-border-color: #c4a26a;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 12;
+    -fx-padding: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 2);
+}
+
+/* ENCABEZADO de columnas de la tabla (fila marrón) */
+.fila-encabezado-tabla {
+    -fx-background-color: #a0724a;
+    -fx-background-radius: 10 10 0 0;
+    -fx-padding: 8 0 8 0;
+}
+
+.encabezado-col {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff8e1;
+    -fx-alignment: CENTER;
+}
+
+/* TABLA de pedidos (JavaFX TableView) */
+.tabla-pedidos {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+
+.tabla-pedidos .column-header-background {
+    -fx-background-color: transparent;
+    -fx-max-height: 0;
+    -fx-pref-height: 0;
+    -fx-min-height: 0;
+    /* Ocultamos los encabezados nativos porque los hacemos manuales arriba */
+}
+
+.tabla-pedidos .column-header,
+.tabla-pedidos .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-size: 0;
+    -fx-max-height: 0;
+    -fx-pref-height: 0;
+}
+
+/* Filas de la tabla estilo "papel de ticket" */
+.tabla-pedidos .table-row-cell:even {
+    -fx-background-color: #fdf3dc;
+}
+
+.tabla-pedidos .table-row-cell:odd {
+    -fx-background-color: #f5e6c8;
+}
+
+.tabla-pedidos .table-row-cell:selected {
+    -fx-background-color: #f5c842;
+}
+
+.tabla-pedidos .table-cell {
+    -fx-font-size: 13px;
+    -fx-text-fill: #3b1a00;
+    -fx-alignment: CENTER;
+    -fx-border-color: transparent;
+}
+
+/* Iconos de estado en la tabla */
+.tabla-pedidos .table-row-cell:selected .text {
+    -fx-fill: #3b1a00;
+}
+
+.tabla-vacia {
+    -fx-font-size: 13px;
+    -fx-text-fill: #a07850;
+    -fx-font-style: italic;
+}
+
+/* BOTON LATERAL VERDE: Orden Lista */
+.btn-lateral-verde {
+    -fx-background-color: linear-gradient(to bottom, #66bb6a, #388e3c);
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #1b5e20;
+    -fx-border-width: 2.5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6, 0, 0, 3);
+    -fx-wrap-text: true;
+    -fx-text-alignment: CENTER;
+}
+
+.btn-lateral-verde:hover {
+    -fx-background-color: linear-gradient(to bottom, #81c784, #43a047);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(56,142,60,0.6), 12, 0, 0, 4);
+}
+
+.btn-lateral-verde:pressed {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+}
+
+/* BOTON LATERAL ROJO: Editar Pedido */
+.btn-lateral-rojo {
+    -fx-background-color: linear-gradient(to bottom, #ef5350, #c62828);
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #7f0000;
+    -fx-border-width: 2.5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6, 0, 0, 3);
+    -fx-wrap-text: true;
+    -fx-text-alignment: CENTER;
+}
+
+.btn-lateral-rojo:hover {
+    -fx-background-color: linear-gradient(to bottom, #f44336, #d32f2f);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(198,40,40,0.7), 14, 0, 0, 4);
+}
+
+.btn-lateral-rojo:pressed {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+}
+
+/* SCROLLBAR personalizado */
+.scroll-bar:vertical .track {
+    -fx-background-color: #e6d0a8;
+    -fx-background-radius: 6;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #a07850;
+    -fx-background-radius: 6;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #7a5530;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}

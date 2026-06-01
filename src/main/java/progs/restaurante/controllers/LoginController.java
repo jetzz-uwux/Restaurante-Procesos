@@ -292,7 +292,9 @@ public class LoginController implements Initializable {
                 CSS.TEXTO,
                 CSS.JUEGO,
                 CSS.TABLA_2,
-                CSS.TEXTFIELD
+                CSS.TEXTFIELD,
+                CSS.GESTIONEMPLEADOS,
+                CSS.VISTAMESERO
             );
             stage.setScene(scene);
             

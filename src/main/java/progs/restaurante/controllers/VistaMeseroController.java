@@ -68,6 +68,21 @@ public class VistaMeseroController implements Initializable {
     @FXML
     private Button btn_cerrarCuenta;
 
+    // Nuevos elementos del rediseno: tabla de pedidos activos y botones laterales
+    @FXML
+    private TableView<Notificacion> tablaPedidos;
+    @FXML
+    private TableColumn<Notificacion, Integer> colMesa;
+    @FXML
+    private TableColumn<Notificacion, Integer> colPedido;
+    @FXML
+    private TableColumn<Notificacion, Boolean> colEstado; // <- CORREGIDO A Boolean
+
+    @FXML
+    private Button btn_ordenLista;
+    @FXML
+    private Button btn_editarPedido;
+
     /**
      * ESTADO INTERNO
      */
@@ -91,10 +106,68 @@ public class VistaMeseroController implements Initializable {
         badge_campana.setVisible(false);
         badge_campana.setManaged(false);
 
+        // Configurar columnas de la tabla de pedidos activos
+        // Muestra el numero de mesa, numero de pedido y estado (pendiente/listo)
+        colMesa.setCellValueFactory(new PropertyValueFactory<>("numeroMesa"));
+        colPedido.setCellValueFactory(new PropertyValueFactory<>("idPedido"));
+
+        // Columna Estado: muestra icono segun si esta leida (servido) o no (pendiente)
+        colEstado.setCellValueFactory(new PropertyValueFactory<>("leida"));
+        colEstado.setCellFactory(col -> new TableCell<Notificacion, Boolean>() { // <- CORREGIDO A Boolean
+            @Override
+            protected void updateItem(Boolean item, boolean empty) { // <- CORREGIDO A Boolean
+                super.updateItem(item, empty);
+                if (empty || getTableRow() == null || getTableRow().getItem() == null) {
+                    setText(null);
+                    setGraphic(null);
+                    setStyle(""); // Limpieza de estilos para evitar errores visuales al renderizar de nuevo
+                } else {
+                    Notificacion n = (Notificacion) getTableRow().getItem();
+                    // Icono reloj = pendiente, palomita = listo/servido
+                    setText(n.isLeida() ? "Servido" : "Pendiente");
+                    setStyle(n.isLeida()
+                            ? "-fx-text-fill: #388e3c; -fx-font-weight: bold;"
+                            : "-fx-text-fill: #e65100; -fx-font-weight: bold;");
+                }
+            }
+        });
+
+        // Conectar la lista de pendientes a la tabla
+        tablaPedidos.setItems(listaPendientes);
+
+        // Boton ORDEN LISTA: marca la fila seleccionada como servida
+        btn_ordenLista.setOnAction(e -> {
+            Notificacion seleccionada = tablaPedidos.getSelectionModel().getSelectedItem();
+            if (seleccionada == null) {
+                mostrarAlertaSimple("Selecciona un pedido de la tabla primero.");
+                return;
+            }
+            marcarComoServida(seleccionada);
+        });
+
+        // Boton EDITAR PEDIDO: abre la ventana de pedidos con el pedido seleccionado
+        btn_editarPedido.setOnAction(e -> {
+            Notificacion seleccionada = tablaPedidos.getSelectionModel().getSelectedItem();
+            if (seleccionada == null) {
+                mostrarAlertaSimple("Selecciona un pedido de la tabla primero.");
+                return;
+            }
+            mostrarDetalleOrden(seleccionada);
+        });
+
         inicializarTray();
         cargarPendientes();
         iniciarRefrescoAutomatico();
         btn_cerrarCuenta.setOnAction(event -> handleCerrarCuenta());
+    }
+
+    // Metodo auxiliar para alertas rapidas sin mucho codigo repetido
+    private void mostrarAlertaSimple(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Atencion a Mesas");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 
     public void recibirNombre(String nombre) {

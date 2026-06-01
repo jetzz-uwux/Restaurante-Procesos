@@ -1,136 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VistaMeseroController">
-   <children>
-      <AnchorPane styleClass="panel-cristal" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-         <children>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="379.0">
-                     <children>
-                        <Button fx:id="btn_ayuda" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="boton-imagen" text="Ayuda" HBox.hgrow="SOMETIMES">
-                           <graphic>
-                              <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/boton_i.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido/a, ">
-                           <styleClass>
-                              <String fx:value="texto-glow-verde" />
-                              <String fx:value="fuente-bouncy" />
-                           </styleClass>
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txt_usuario" strokeType="OUTSIDE" strokeWidth="0.0" text="[usuario]">
-                           <styleClass>
-                              <String fx:value="texto-glow-verde" />
-                              <String fx:value="fuente-bouncy" />
-                           </styleClass>
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <VBox alignment="CENTER" VBox.vgrow="SOMETIMES">
-                     <children>
-                        <Button fx:id="btn_pedidos" mnemonicParsing="false" onAction="#handlePedidos" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Pedidos" VBox.vgrow="SOMETIMES">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                           <styleClass>
-                              <String fx:value="boton-glow-bubble-naranja" />
-                              <String fx:value="fuente-superchips" />
-                           </styleClass>
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btn_cerrarCuenta" mnemonicParsing="false" onAction="#handleCerrarCuenta" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Cerrar Cuentas">
-                           <styleClass>
-                              <String fx:value="boton-glow-bubble-naranja" />
-                              <String fx:value="fuente-superchips" />
-                           </styleClass>
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                        </Button>
-                        <!-- ══ BOTÓN DE NOTIFICACIONES CON CAMPANITA ══
-                             Siempre visible — respaldo si se cierra la notif del SO
-                             La campanita muestra cuántas órdenes listas hay         -->
-                        <StackPane alignment="CENTER" VBox.vgrow="SOMETIMES">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
+<!--
+    VistaMesero.fxml — ATENCION A MESAS
+    Rediseñado para coincidir con la imagen de referencia:
+    Titulo con fondo madera, 3 botones circulares grandes (Pedidos, Cerrar Cuenta, Notificaciones),
+    tabla inferior con No.Mesa / No.Pedido / Estado,
+    y dos botones laterales: Orden Lista y Editar Pedido.
+    Botones de esquina: Ayuda (arriba izq) y Cerrar sesion (arriba der).
+-->
 
-                           <!-- Botón principal de notificaciones -->
-                           <Button fx:id="btn_notificaciones" mnemonicParsing="false" onAction="#handleNotificaciones" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Notificaciones">
-                              <styleClass>
-                                 <String fx:value="boton-glow-bubble-naranja" />
-                                 <String fx:value="fuente-superchips" />
-                              </styleClass>
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Button>
+<AnchorPane prefHeight="520.0" prefWidth="750.0" styleClass="fondo-madera" stylesheets="@VistaMesero.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VistaMeseroController">
 
-                           <!-- Badge rojo con contador — visible solo si hay notifs -->
-                           <StackPane fx:id="badge_campana" alignment="TOP_RIGHT" managed="false" onMouseClicked="#handleNotificaciones" pickOnBounds="false" style="-fx-cursor: hand;" visible="false">
-                              <Label fx:id="lbl_campana" styleClass="badge-campana" text="🔔 0" StackPane.alignment="TOP_RIGHT" />
-                           </StackPane>
-                        </StackPane>
+    <children>
 
-                        <ImageView fitHeight="193.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icono_5.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </ImageView>
-                     </children>
-                  </VBox>
-                  <HBox alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
-                     <children>
-                        <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" onAction="#handleCerrarSesion" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
-                           <graphic>
-                              <ImageView fitHeight="49.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/boton_X.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-   </children>
+        <!-- PANEL PRINCIPAL: Marco interior con fondo beige/madera clara -->
+        <AnchorPane styleClass="panel-marco" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+
+            <children>
+
+                <!-- BOTON AYUDA: esquina superior izquierda -->
+                <VBox alignment="CENTER" styleClass="boton-esquina-izq" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <Button fx:id="btn_ayuda" mnemonicParsing="false" styleClass="boton-imagen">
+                  <graphic>
+                     <ImageView fitHeight="50.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../img/icono_i.png" />
+                        </image>
+                     </ImageView>
+                  </graphic></Button>
+                </VBox>
+
+                <!-- BOTON CERRAR SESION: esquina superior derecha (X roja) -->
+                <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" onAction="#handleCerrarSesion" styleClass="boton-imagen" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/icono_cerrar.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+
+                <!-- TITULO PRINCIPAL -->
+                <HBox alignment="CENTER" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="12.0">
+                    <Label text="ATENCIóN A MESAS">
+                  <styleClass>
+                     <String fx:value="titulo-principal-mesero" />
+                     <String fx:value="fuente-bouncy" />
+                  </styleClass></Label>
+                </HBox>
+
+                <!-- CONTENIDO PRINCIPAL: botones grandes + tabla + botones laterales -->
+                <VBox spacing="14.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
+
+                    <!-- FILA 1: Los 3 botones circulares grandes -->
+                    <HBox alignment="CENTER" spacing="30.0">
+
+                        <!-- BOTON PEDIDOS (circulo naranja, estilo comanda) -->
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="contenedor-boton-circular">
+                            <Button fx:id="btn_pedidos" mnemonicParsing="false" onAction="#handlePedidos" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                        <graphic>
+                           <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../img/boton_pedidos.png" />
+                              </image>
+                           </ImageView>
+                        </graphic></Button>
+                        </VBox>
+
+                        <!-- BOTON CERRAR CUENTA (circulo dorado/amarillo, terminal de pago) -->
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="contenedor-boton-circular">
+                            <Button fx:id="btn_cerrarCuenta" mnemonicParsing="false" onAction="#handleCerrarCuenta" prefHeight="140.0" prefWidth="140.0" styleClass="boton-imagen">
+                        <graphic>
+                           <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../img/boton_cerrarcuenta.png" />
+                              </image>
+                           </ImageView>
+                        </graphic></Button>
+                        </VBox>
+
+                        <!-- BOTON NOTIFICACIONES (circulo azul, con badge) -->
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="contenedor-boton-circular">
+                            <StackPane>
+                                <Button fx:id="btn_notificaciones" mnemonicParsing="false" onAction="#handleNotificaciones" prefHeight="130.0" prefWidth="130.0" styleClass="btn-circular-azul" />
+                                <!-- Badge con contador de notificaciones -->
+                                <StackPane fx:id="badge_campana" alignment="TOP_RIGHT" managed="false" pickOnBounds="false" visible="false">
+                                    <Label fx:id="lbl_campana" styleClass="badge-campana" text="0" StackPane.alignment="TOP_RIGHT" />
+                                </StackPane>
+                            </StackPane>
+                        </VBox>
+
+                    </HBox>
+
+                    <!-- FILA 2: Tabla + Botones laterales -->
+                    <HBox spacing="12.0" VBox.vgrow="ALWAYS">
+
+                        <!-- TABLA de pedidos activos -->
+                        <VBox styleClass="contenedor-tabla" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+
+                            <!-- Encabezados manuales de la tabla (estilo imagen: tickets) -->
+                            <HBox spacing="0.0" styleClass="fila-encabezado-tabla">
+                                <Label prefWidth="150.0" styleClass="encabezado-col" text="No. Mesa" />
+                                <Label prefWidth="150.0" styleClass="encabezado-col" text="No. Pedido" />
+                                <Label prefWidth="150.0" styleClass="encabezado-col" text="Estado" />
+                            </HBox>
+
+                            <!-- Tabla real de JavaFX -->
+                            <TableView fx:id="tablaPedidos" styleClass="tabla-pedidos" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="colMesa" prefWidth="140.0" text="Mesa" />
+                                    <TableColumn fx:id="colPedido" prefWidth="140.0" text="Pedido" />
+                                    <TableColumn fx:id="colEstado" prefWidth="140.0" text="Estado" />
+                                </columns>
+                                <placeholder>
+                                    <Label styleClass="tabla-vacia" text="Sin pedidos activos" />
+                                </placeholder>
+                            </TableView>
+                        </VBox>
+
+                        <!-- BOTONES LATERALES DERECHOS -->
+                        <VBox alignment="CENTER" spacing="12.0">
+                            <!-- BOTON ORDEN LISTA (verde) -->
+                            <Button fx:id="btn_ordenLista" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" styleClass="btn-lateral-verde" text="ORDEN LISTA" wrapText="true" />
+
+                            <!-- BOTON EDITAR PEDIDO (rojo) -->
+                            <Button fx:id="btn_editarPedido" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" styleClass="btn-lateral-rojo" text="EDITAR PEDIDO" wrapText="true" />
+                        </VBox>
+
+                    </HBox>
+
+                </VBox>
+
+            </children>
+        </AnchorPane>
+
+    </children>
 </AnchorPane>

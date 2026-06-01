@@ -29,7 +29,7 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaRol.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
 
         // Aquí aplica los CSS de la pantalla de login
         EstilosApp.aplicar(scene,

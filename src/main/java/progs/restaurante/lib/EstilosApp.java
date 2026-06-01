@@ -49,7 +49,8 @@ public class EstilosApp {
         IMAGEN          ("imagenes.css"),
         TEXTFIELD       ("textfields.css"),
         TEXTO           ("texto.css"),
-        GESTIONEMPLEADOS("GestionEmpleados.css");
+        GESTIONEMPLEADOS("GestionEmpleados.css"),
+        VISTAMESERO     ("VistaMesero.css");
 
         final String archivo;
         CSS(String archivo) { this.archivo = archivo; }
