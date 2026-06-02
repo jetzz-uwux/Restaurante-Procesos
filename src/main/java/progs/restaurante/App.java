@@ -26,7 +26,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();*/
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/GestionEmpleados.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaRol.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);

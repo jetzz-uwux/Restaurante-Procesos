@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="550.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.ClienteController">
+    <children>
+        <HBox spacing="25.0" styleClass="fondo-7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+            
+                <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label styleClass="titulo-dialogo" text="Carta Digital del Día" />
+                        <TableView fx:id="tbl_menu_cliente" style="-fx-background-color: transparent;" styleClass="stackpane-tabla" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="col_categoria" prefWidth="150.0" text="Categoría" />
+                                <TableColumn fx:id="col_nombre" prefWidth="200.0" text="Platillo / Bebida" />
+                                <TableColumn fx:id="col_precio" prefWidth="100.0" text="Precio" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="btn_regresar" mnemonicParsing="false" onAction="#handleRegresarInicio" styleClass="boton-glow-bubble-naranja" text="Regresar al Inicio" />
+                    </children>
+                </VBox>
+            
+                <VBox alignment="TOP_CENTER" maxWidth="320.0" minWidth="300.0" spacing="12.0" HBox.hgrow="NEVER">
+                    <padding>
+                        <Insets left="15.0" top="5.0" />
+                    </padding>
+                    <children>
+                        <Label styleClass="titulo-dialogo" text="Solicitar Reservación" />
+                  
+                        <VBox spacing="4.0">
+                            <children>
+                                <Label styleClass="campo-label" text="Nombre Completo:" />
+                                <TextField fx:id="txt_nombre" prefHeight="35.0" promptText="Ej. Camila Mariné" styleClass="campo-texto" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="4.0">
+                            <children>
+                                <Label styleClass="campo-label" text="Fecha de la Reserva:" />
+                                <DatePicker fx:id="dp_fecha" maxWidth="1.7976931348623157E308" prefHeight="35.0" promptText="Selecciona el día" styleClass="campo-texto" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="4.0">
+                            <children>
+                                <Label styleClass="campo-label" text="Hora (Formato 24h):" />
+                                <TextField fx:id="txt_hora" prefHeight="35.0" promptText="Ej. 19:30" styleClass="campo-texto" />
+                            </children>
+                        </VBox>
+                  
+                        <VBox spacing="4.0">
+                            <children>
+                                <Label styleClass="campo-label" text="Mesa Solicitada (Número):" />
+                                <TextField fx:id="txt_mesa" prefHeight="35.0" promptText="Ej. 3" styleClass="campo-texto" />
+                            </children>
+                        </VBox>
+                  
+                        <Label textFill="#888888" wrapText="true">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                        </Label>
+                  
+                        <Button fx:id="btn_solicitar_reservacion" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleRegistrarReservacion" styleClass="boton-glow-bubble-azul" text="Confirmar Reservación" />
+                    </children>
+                </VBox>
+            
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
