@@ -807,12 +807,12 @@ public class VistaMeseroController implements Initializable {
         detener();
         try {
             javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(
-                    getClass().getResource("/progs/fxml/login.fxml")
+                    getClass().getResource("/progs/fxml/VistaInicioSesion.fxml")
             );
             javafx.scene.Parent root = loader.load();
             Stage stage = (Stage) btn_cerrarsesion.getScene().getWindow();
             Scene escena = new Scene(root);
-            EstilosApp.aplicar(escena, CSS.JUEGO, CSS.FUENTES, CSS.BOTONES, CSS.TEXTFIELD);
+            EstilosApp.aplicar(escena, CSS.JUEGO, CSS.FUENTES, CSS.BOTONES, CSS.TEXTFIELD, CSS.IMAGEN, CSS.TEXTO);
             stage.setScene(escena);
             stage.setTitle("Restaurante — Iniciar Sesión");
             stage.centerOnScreen();

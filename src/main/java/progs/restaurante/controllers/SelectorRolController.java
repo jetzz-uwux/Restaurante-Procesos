@@ -13,9 +13,10 @@ import progs.restaurante.lib.EstilosApp.CSS;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import static progs.restaurante.lib.EstilosApp.cargarFuentes;
 
 public class SelectorRolController implements Initializable {
-
+    private static Scene scene;
     @FXML
     private Button btn_acceso_cliente;
     @FXML
@@ -34,8 +35,8 @@ public class SelectorRolController implements Initializable {
             Stage stageActual = (Stage) btn_acceso_cliente.getScene().getWindow();
             Scene escena = new Scene(root);
             
-            EstilosApp.aplicar(escena, CSS.JUEGO, CSS.FUENTES, CSS.BOTONES, CSS.TEXTFIELD);
-
+            EstilosApp.aplicar(escena, CSS.JUEGO, CSS.FUENTES, CSS.BOTONES, CSS.TEXTFIELD, CSS.IMAGEN, CSS.TEXTO, CSS.TABLA_1);
+            cargarFuentes();
             stageActual.setScene(escena);
             stageActual.setTitle(tituloVentana);
             stageActual.centerOnScreen();
