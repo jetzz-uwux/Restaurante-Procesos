@@ -8,16 +8,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VistaGestionReservasController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="709.0" styleClass="fondo-7" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VistaGestionReservasController">
    <children>
       <HBox alignment="CENTER" prefHeight="57.0" prefWidth="560.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="TOP" prefHeight="34.0" prefWidth="296.0" styleClass="fuente-lemon" text="Gestión de reservaciones">
+            <Label alignment="CENTER" contentDisplay="TOP" styleClass="fuente-luckiest" text="Gestión de reservaciones">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="29.0" />
                </font>
                <HBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
@@ -45,37 +46,44 @@
                </HBox.margin>
                <styleClass>
                   <String fx:value="fuente-newromance" />
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="boton-glow-bubble-azul" />
                </styleClass>
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="tlb_reservaciones" styleClass="fuente-newromance" VBox.vgrow="SOMETIMES">
-        <columns>
-          <TableColumn fx:id="clb_1" editable="false" prefWidth="140.0" text="No. reservación" />
-          <TableColumn fx:id="clb_2" prefWidth="155.0" text="Nombre del cliente" />
-            <TableColumn fx:id="clb_3" minWidth="0.0" prefWidth="122.0" text="Mesa Asignada" />
-            <TableColumn fx:id="clb_4" minWidth="0.0" prefWidth="93.0" text="Estado" />
-        </columns>
+      <StackPane styleClass="stackpane-tabla" VBox.vgrow="SOMETIMES">
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
          </VBox.margin>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
+         <children>
+            <TableView fx:id="tlb_reservaciones" style="-fx-background-color: transparent;" styleClass="fuente-newromance">
+              <columns>
+                <TableColumn fx:id="clb_1" editable="false" prefWidth="140.0" text="No. reservación" />
+                <TableColumn fx:id="clb_2" prefWidth="155.0" text="Nombre del cliente" />
+                  <TableColumn fx:id="clb_3" minWidth="0.0" prefWidth="122.0" text="Mesa Asignada" />
+                  <TableColumn fx:id="clb_4" minWidth="0.0" prefWidth="93.0" text="Estado" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <StackPane.margin>
+                  <Insets bottom="60.0" left="50.0" right="50.0" top="20.0" />
+               </StackPane.margin>
+            </TableView>
+         </children>
+      </StackPane>
       <HBox alignment="CENTER" prefHeight="59.0" prefWidth="560.0" spacing="20.0">
          <children>
             <Button fx:id="btn_nuevo" mnemonicParsing="false" onAction="#handleNuevo" text="Nueva Reservación">
                <styleClass>
                   <String fx:value="fuente-newromance" />
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="boton-glow-bubble-azul" />
                </styleClass>
             </Button>
             <Button fx:id="btn_cancelar" mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar reservación">
                <styleClass>
                   <String fx:value="fuente-newromance" />
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="boton-glow-bubble-azul" />
                </styleClass>
             </Button>
          </children>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VistaNuevaReservacionController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="411.0" styleClass="fondo-7" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.VistaNuevaReservacionController">
    <children>
       <HBox alignment="CENTER" prefHeight="58.0" prefWidth="380.0" spacing="20.0" VBox.vgrow="SOMETIMES">
          <children>
@@ -87,12 +87,12 @@
          <children>
             <Button fx:id="btn_agregar" mnemonicParsing="false" onAction="#handleAgregar" text="Agregar">
                <styleClass>
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="boton-glow-bubble-naranja" />
                   <String fx:value="fuente-newromance" />
                </styleClass></Button>
             <Button fx:id="btn_cancelar" mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar">
                <styleClass>
-                  <String fx:value="boton-redondo" />
+                  <String fx:value="boton-glow-bubble-naranja" />
                   <String fx:value="fuente-newromance" />
                </styleClass>
             </Button>
