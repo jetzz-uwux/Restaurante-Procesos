@@ -1,228 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.GerenteController">
+<!--
+    VistaGerente.fxml
+    Estructura identica a VistaMesero: botones con imagen en lugar de texto.
+    Botones de esquina: icono_i.png (ayuda) e icono_cerrar.png (cerrar sesion).
+    5 botones principales con imagen en HBox de 2 filas (3 arriba, 2 abajo).
+-->
+
+<AnchorPane prefHeight="520.0" prefWidth="750.0" styleClass="fondo-madera" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.GerenteController">
 
     <children>
 
-        <AnchorPane styleClass="panel-cristal" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <!-- PANEL PRINCIPAL: Marco interior igual que VistaMesero -->
+        <AnchorPane styleClass="panel-marco" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
 
             <children>
 
-                <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <!-- BOTON AYUDA: esquina superior izquierda con imagen -->
+                <VBox alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <Button fx:id="btn_ayuda" mnemonicParsing="false" styleClass="boton-imagen">
+                        <graphic>
+                            <ImageView fitHeight="50.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../img/icono_i.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </VBox>
 
-                    <children>
+                <!-- BOTON CERRAR SESION: esquina superior derecha con imagen -->
+                <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" onAction="#cerrarSesion" styleClass="boton-imagen" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/icono_cerrar.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
 
-                        <!-- BOTÓN AYUDA -->
-                        <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="379.0">
+                <!-- TITULO PRINCIPAL -->
+                <HBox alignment="CENTER" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="12.0">
+                    <Label text="MENU GERENTE">
+                        <styleClass>
+                            <String fx:value="titulo-principal-mesero" />
+                            <String fx:value="fuente-bouncy" />
+                        </styleClass>
+                    </Label>
+                </HBox>
 
-                            <children>
+                <!-- CONTENIDO PRINCIPAL -->
+                <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
 
-                                <Button fx:id="btn_ayuda" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="boton-imagen" text="Ayuda" HBox.hgrow="SOMETIMES">
+                    <!-- TEXTO BIENVENIDA -->
+                    <HBox alignment="CENTER" />
 
-                                    <graphic>
+                    <!-- FILA 1 DE BOTONES: Reportes, Inventario, Gestion Menu -->
+                    <HBox alignment="CENTER" spacing="30.0">
 
-                                        <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-
-                                            <image>
-                                                <Image url="@../img/boton_i.png" />
-                                            </image>
-
-                                        </ImageView>
-
-                                    </graphic>
-
-                                </Button>
-
-                            </children>
-
-                        </HBox>
-
-                        <!-- TEXTO BIENVENIDA -->
-                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
-
-                            <children>
-
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido/a, ">
-
-                                    <styleClass>
-                                        <String fx:value="texto-glow-verde" />
-                                        <String fx:value="fuente-bouncy" />
-                                    </styleClass>
-
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-
-                                </Text>
-
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="[usuario]">
-
-                                    <styleClass>
-                                        <String fx:value="texto-glow-verde" />
-                                        <String fx:value="fuente-bouncy" />
-                                    </styleClass>
-
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-
-                                </Text>
-
-                            </children>
-
-                        </HBox>
-
-                        <!-- BOTONES -->
-                        <VBox alignment="CENTER" VBox.vgrow="SOMETIMES">
-
-                            <children>
-
-                                <!-- REPORTES -->
-                                <Button fx:id="btn_reportes" mnemonicParsing="false" onAction="#abrirReportes" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Reportes" VBox.vgrow="SOMETIMES">
-
-                                    <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
-                                    </VBox.margin>
-
-                                    <styleClass>
-                                        <String fx:value="boton-glow-bubble-naranja" />
-                                        <String fx:value="fuente-superchips" />
-                                    </styleClass>
-
-                                    <font>
-                                        <Font size="20.0" />
-                                    </font>
-
-                                </Button>
-
-                                <!-- INVENTARIO -->
-                                <Button fx:id="btn_inventario" mnemonicParsing="false" onAction="#abrirInventario" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Inventario" VBox.vgrow="SOMETIMES">
-
-                                    <styleClass>
-                                        <String fx:value="boton-glow-bubble-naranja" />
-                                        <String fx:value="fuente-superchips" />
-                                    </styleClass>
-
-                                    <font>
-                                        <Font size="20.0" />
-                                    </font>
-
-                                    <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
-                                    </VBox.margin>
-
-                                </Button>
-
-                                <!-- GESTIÓN MENÚ -->
-                                <Button fx:id="btn_GestionMenu" mnemonicParsing="false" onAction="#handleGestionar" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Gestión de menú">
-
-                                    <styleClass>
-                                        <String fx:value="boton-glow-bubble-naranja" />
-                                        <String fx:value="fuente-superchips" />
-                                    </styleClass>
-
-                                    <font>
-                                        <Font size="20.0" />
-                                    </font>
-
-                                    <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
-                                    </VBox.margin>
-
-                                </Button>
-
-                                <!-- EMPLEADOS -->
-                                <Button fx:id="btn_empleados" mnemonicParsing="false" onAction="#handleEmpleados" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Empleados">
-
-                                    <styleClass>
-                                        <String fx:value="boton-glow-bubble-naranja" />
-                                        <String fx:value="fuente-superchips" />
-                                    </styleClass>
-
-                                    <font>
-                                        <Font size="20.0" />
-                                    </font>
-
-                                    <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
-                                    </VBox.margin>
-
-                                </Button>
-
-                                <!-- CONTROL ASISTENCIA -->
-                                <!-- CONTROL ASISTENCIA -->
-                                <Button fx:id="btn_asistencia" mnemonicParsing="false" onAction="#abrirAsistencia" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Control de asistencia">
-
-                                    <styleClass>
-                                        <String fx:value="boton-glow-bubble-naranja" />
-                                        <String fx:value="fuente-superchips" />
-                                    </styleClass>
-
-                                    <font>
-                                        <Font size="20.0" />
-                                    </font>
-
-                                    <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
-                                    </VBox.margin>
-
-                                </Button>
-
-                                <!-- IMAGEN -->
-                                <ImageView fitHeight="193.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
-
-                                    <VBox.margin>
-                                        <Insets top="5.0" />
-                                    </VBox.margin>
-
-                                </ImageView>
-
-                            </children>
-
+                        <!-- REPORTES -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_reportes" mnemonicParsing="false" onAction="#abrirReportes" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_reportes.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Label styleClass="etiqueta-boton-circular" text="REPORTES" />
                         </VBox>
 
-                        <!-- BOTÓN CERRAR -->
-                        <HBox alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
+                        <!-- INVENTARIO -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_inventario" mnemonicParsing="false" onAction="#abrirInventario" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_inventario.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Label styleClass="etiqueta-boton-circular" text="INVENTARIO" />
+                        </VBox>
 
-                            <children>
+                        <!-- GESTION MENU -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_GestionMenu" mnemonicParsing="false" onAction="#handleGestionar" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_gestionmenu.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Label styleClass="etiqueta-boton-circular" text="GESTION MENU" />
+                        </VBox>
 
-                                <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" onAction="#cerrarSesion" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
+                    </HBox>
 
-                                    <graphic>
+                    <!-- FILA 2 DE BOTONES: Empleados, Asistencia -->
+                    <HBox alignment="CENTER" spacing="30.0">
 
-                                        <ImageView fitHeight="49.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                        <!-- EMPLEADOS -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_empleados" mnemonicParsing="false" onAction="#handleEmpleados" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_gestionempleados.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Label styleClass="etiqueta-boton-circular" text="EMPLEADOS" />
+                        </VBox>
 
-                                            <image>
-                                                <Image url="@../img/boton_X.png" />
-                                            </image>
+                        <!-- CONTROL DE ASISTENCIA -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_asistencia" mnemonicParsing="false" onAction="#abrirAsistencia" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_asistencia.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Label styleClass="etiqueta-boton-circular" text="ASISTENCIA" />
+                        </VBox>
 
-                                        </ImageView>
-
-                                    </graphic>
-
-                                </Button>
-
-                            </children>
-
-                        </HBox>
-
-                    </children>
+                    </HBox>
 
                 </VBox>
 
             </children>
-
         </AnchorPane>
 
     </children>

@@ -1,111 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.RecepcionistaController">
-   <children>
-      <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="379.0">
-         <children>
-            <Label text="Ayuda" />
-            <Button fx:id="btn_ayuda" mnemonicParsing="false" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/boton_i.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido/a, ">
-               <styleClass>
-                  <String fx:value="texto-glow-verde" />
-                  <String fx:value="fuente-bouncy" />
-               </styleClass>
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="[usuario]">
-               <styleClass>
-                  <String fx:value="texto-glow-verde" />
-                  <String fx:value="fuente-bouncy" />
-               </styleClass>
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-         </children>
-      </HBox>
-      <VBox alignment="CENTER" VBox.vgrow="SOMETIMES">
-         <children>
-            <Button fx:id="btn_reservas" mnemonicParsing="false" onAction="#handleReservas" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Gestión de reservas" VBox.vgrow="SOMETIMES">
-               <styleClass>
-                  <String fx:value="boton-glow-bubble-naranja" />
-                  <String fx:value="fuente-superchips" />
-               </styleClass>
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btn_listaEspera" mnemonicParsing="false" onAction="#handleLista" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Lista de Espera">
-               <styleClass>
-                  <String fx:value="boton-glow-bubble-naranja" />
-                  <String fx:value="fuente-superchips" />
-               </styleClass>
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btn_asistencia" mnemonicParsing="false" onAction="#handleRegistrar" prefWidth="250.0" style="-fx-font-size: 1.6em;" text="Registrar Asistencia">
-               <styleClass>
-                  <String fx:value="boton-glow-bubble-naranja" />
-                  <String fx:value="fuente-superchips" />
-               </styleClass>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="193.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/icono_4.png" />
-               </image>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </ImageView>
-         </children>
-      </VBox>
-      <HBox alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
-         <children>
-            <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
-               <graphic>
-                  <ImageView fitHeight="49.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/boton_X.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
-   </children>
-</VBox>
+<!--
+    VistaRecepcionista.fxml
+    Rediseñado con la misma estructura que VistaMesero/VistaGerente:
+    fondo-madera + panel-marco + botones de imagen + esquinas con iconos.
+    Recepcionista tiene 3 botones: Reservas, Lista de Espera, Registrar Asistencia.
+-->
+
+<AnchorPane prefHeight="520.0" prefWidth="750.0" styleClass="fondo-madera" stylesheets="@VistaMesero.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.RecepcionistaController">
+
+    <children>
+
+        <AnchorPane styleClass="panel-marco" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+
+            <children>
+
+                <!-- BOTON AYUDA: esquina superior izquierda -->
+                <VBox alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <Button fx:id="btn_ayuda" mnemonicParsing="false" styleClass="boton-imagen">
+                        <graphic>
+                            <ImageView fitHeight="50.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../img/icono_i.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </VBox>
+
+                <!-- BOTON CERRAR SESION: esquina superior derecha -->
+                <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" onAction="#handleCerrarSesion" styleClass="boton-imagen" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/icono_cerrar.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <!-- TITULO -->
+                <HBox alignment="CENTER" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="12.0">
+                    <Label text="MENU RECEPCIONISTA">
+                        <styleClass>
+                            <String fx:value="titulo-principal-mesero" />
+                            <String fx:value="fuente-bouncy" />
+                        </styleClass>
+                    </Label>
+                </HBox>
+
+                <!-- CONTENIDO PRINCIPAL -->
+                <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
+
+                    <!-- FILA DE BOTONES: los 3 de la recepcionista -->
+                    <HBox alignment="CENTER" spacing="30.0">
+
+                        <!-- GESTION DE RESERVAS -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_reservas" mnemonicParsing="false" onAction="#handleReservas" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_reservas.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                        </VBox>
+
+                        <!-- LISTA DE ESPERA -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_listaEspera" mnemonicParsing="false" onAction="#handleLista" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_listaespera.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                        </VBox>
+
+                        <!-- REGISTRAR ASISTENCIA -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_asistencia" mnemonicParsing="false" onAction="#handleRegistrar" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_asistencia.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                        </VBox>
+
+                    </HBox>
+
+                </VBox>
+
+            </children>
+        </AnchorPane>
+
+    </children>
+</AnchorPane>

@@ -179,16 +179,18 @@ public class VistaMeseroController implements Initializable {
     @FXML
     private void handlePedidos() {
         try {
-
+            EstilosApp.cargarFuentes();
             Parent root = FXMLLoader.load(
                     getClass().getResource("/progs/fxml/VentanaPedidos.fxml")
             );
-
             Stage stage = new Stage();
             stage.setTitle("Pedidos");
-            stage.setScene(new Scene(root));
+            Scene escena = new Scene(root);
+            EstilosApp.aplicar(escena,
+                CSS.JUEGO, CSS.FUENTES, CSS.BOTONES,
+                CSS.TEXTFIELD, CSS.IMAGEN, CSS.TEXTO, CSS.TABLA_1, CSS.TABLA_2);
+            stage.setScene(escena);
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -197,16 +199,20 @@ public class VistaMeseroController implements Initializable {
     @FXML
     private void handleCerrarCuenta() {
         try {
+            EstilosApp.cargarFuentes();
             Parent root = FXMLLoader.load(
                     getClass().getResource("/progs/fxml/VentanaCerrarCuenta.fxml")
             );
             Stage stage = new Stage();
             stage.setTitle("Cerrar Cuenta");
-            stage.setScene(new Scene(root));
+            Scene escena = new Scene(root);
+            EstilosApp.aplicar(escena,
+                CSS.JUEGO, CSS.FUENTES, CSS.BOTONES,
+                CSS.TEXTFIELD, CSS.IMAGEN, CSS.TEXTO, CSS.TABLA_1, CSS.TABLA_2);
+            stage.setScene(escena);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error en FXML");
             alert.setHeaderText("VentanaCerrarCuenta.fxml tiene un error");
@@ -804,20 +810,38 @@ public class VistaMeseroController implements Initializable {
 
     @FXML
     private void handleCerrarSesion() {
-        detener();
+        detener(); // detiene scheduler y system tray antes de salir
+        irAlLogin((Stage) btn_cerrarsesion.getScene().getWindow());
+    }
+
+    // Regresa al login con los CSS exactos que usa LoginController
+    private void irAlLogin(Stage stage) {
         try {
-            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(
-                    getClass().getResource("/progs/fxml/VistaInicioSesion.fxml")
-            );
-            javafx.scene.Parent root = loader.load();
-            Stage stage = (Stage) btn_cerrarsesion.getScene().getWindow();
+            EstilosApp.cargarFuentes();
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/progs/fxml/VistaInicioSesion.fxml"));
+            Parent root = loader.load();
             Scene escena = new Scene(root);
-            EstilosApp.aplicar(escena, CSS.JUEGO, CSS.FUENTES, CSS.BOTONES, CSS.TEXTFIELD, CSS.IMAGEN, CSS.TEXTO);
+            EstilosApp.aplicar(escena,
+                CSS.PANELES,
+                CSS.FUENTES,
+                CSS.BOTONES,
+                CSS.TABLA_1,
+                CSS.IMAGEN,
+                CSS.DIALOGO,
+                CSS.TEXTO,
+                CSS.JUEGO,
+                CSS.TABLA_2,
+                CSS.TEXTFIELD,
+                CSS.GESTIONEMPLEADOS,
+                CSS.VISTAMESERO
+            );
             stage.setScene(escena);
-            stage.setTitle("Restaurante — Iniciar Sesión");
+            stage.setTitle("Restaurante - Iniciar Sesion");
             stage.centerOnScreen();
-        } catch (Exception ex) {
-            System.err.println("❌ Error cerrando sesión: " + ex.getMessage());
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println("Error al regresar al login: " + ex.getMessage());
         }
     }
 

@@ -94,7 +94,14 @@
                         <!-- BOTON NOTIFICACIONES (circulo azul, con badge) -->
                         <VBox alignment="CENTER" spacing="8.0" styleClass="contenedor-boton-circular">
                             <StackPane>
-                                <Button fx:id="btn_notificaciones" mnemonicParsing="false" onAction="#handleNotificaciones" prefHeight="130.0" prefWidth="130.0" styleClass="btn-circular-azul" />
+                                <Button fx:id="btn_notificaciones" mnemonicParsing="false" onAction="#handleNotificaciones" prefHeight="130.0" prefWidth="130.0" styleClass="boton-imagen">
+                           <graphic>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/boton_notificacion.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                                 <!-- Badge con contador de notificaciones -->
                                 <StackPane fx:id="badge_campana" alignment="TOP_RIGHT" managed="false" pickOnBounds="false" visible="false">
                                     <Label fx:id="lbl_campana" styleClass="badge-campana" text="0" StackPane.alignment="TOP_RIGHT" />

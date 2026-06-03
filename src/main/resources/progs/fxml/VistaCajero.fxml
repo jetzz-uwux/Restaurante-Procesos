@@ -1,154 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="361.0" styleClass="fondo-3" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.CajeroController">
+<!--
+    VistaCajero.fxml
+    Rediseñado con la misma estructura que VistaMesero/VistaGerente:
+    fondo-madera + panel-marco + botones de imagen + esquinas con iconos.
+    Cajero tiene 2 botones: Facturacion y Lista de Asistencia.
+-->
 
-   <children>
+<AnchorPane prefHeight="520.0" prefWidth="750.0" styleClass="fondo-madera" stylesheets="@VistaMesero.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.CajeroController">
 
-      <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="379.0">
+    <children>
 
-         <children>
+        <AnchorPane styleClass="panel-marco" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
 
-            <Label text="Ayuda" />
+            <children>
 
-            <Button fx:id="btn_ayuda" mnemonicParsing="false" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
+                <!-- BOTON AYUDA: esquina superior izquierda -->
+                <VBox alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <Button fx:id="btn_ayuda" mnemonicParsing="false" styleClass="boton-imagen">
+                        <graphic>
+                            <ImageView fitHeight="50.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../img/icono_i.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </VBox>
 
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                <!-- BOTON CERRAR SESION: esquina superior derecha -->
+                <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" styleClass="boton-imagen" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/icono_cerrar.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
 
-                     <image>
-                        <Image url="@../img/boton_i.png" />
-                     </image>
+                <!-- TITULO -->
+                <HBox alignment="CENTER" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="12.0">
+                    <Label text="MENU CAJERO">
+                        <styleClass>
+                            <String fx:value="titulo-principal-mesero" />
+                            <String fx:value="fuente-bouncy" />
+                        </styleClass>
+                    </Label>
+                </HBox>
 
-                  </ImageView>
-               </graphic>
+                <!-- CONTENIDO PRINCIPAL -->
+                <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
 
-            </Button>
+                    <!-- FILA DE BOTONES: Facturacion y Asistencia (centrados) -->
+                    <HBox alignment="CENTER" spacing="40.0">
 
-         </children>
+                        <!-- FACTURACION -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_Facturacion" mnemonicParsing="false" onAction="#handleFacturar" prefHeight="140.0" prefWidth="140.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_facturacion.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Label styleClass="etiqueta-boton-circular" text="FACTURACION" />
+                        </VBox>
 
-      </HBox>
+                        <!-- LISTA DE ASISTENCIA -->
+                        <VBox alignment="CENTER" spacing="6.0">
+                            <Button fx:id="btn_asistencia" mnemonicParsing="false" onAction="#handleAbrirAsistencia" prefHeight="140.0" prefWidth="140.0" styleClass="boton-imagen">
+                                <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../img/boton_asistencia.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Label styleClass="etiqueta-boton-circular" text="ASISTENCIA" />
+                        </VBox>
 
-      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
+                    </HBox>
 
-         <children>
+                </VBox>
 
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido/a, ">
+            </children>
+        </AnchorPane>
 
-               <styleClass>
-                  <String fx:value="texto-glow-verde" />
-                  <String fx:value="fuente-bouncy" />
-               </styleClass>
-
-               <font>
-                  <Font size="24.0" />
-               </font>
-
-            </Text>
-
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="[usuario]">
-
-               <styleClass>
-                  <String fx:value="texto-glow-verde" />
-                  <String fx:value="fuente-bouncy" />
-               </styleClass>
-
-               <font>
-                  <Font size="24.0" />
-               </font>
-
-            </Text>
-
-         </children>
-
-      </HBox>
-
-      <VBox alignment="CENTER" VBox.vgrow="SOMETIMES">
-
-         <children>
-
-            <Button fx:id="btn_Facturacion" mnemonicParsing="false" onAction="#handleFacturar" prefWidth="200.0" style="-fx-font-size: 1.6em;" text="Facturación" VBox.vgrow="SOMETIMES">
-
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-
-               <styleClass>
-                  <String fx:value="boton-glow-bubble-naranja" />
-                  <String fx:value="fuente-superchips" />
-               </styleClass>
-
-               <font>
-                  <Font size="20.0" />
-               </font>
-
-            </Button>
-
-            <Button fx:id="btn_asistencia" mnemonicParsing="false" onAction="#handleAbrirAsistencia" style="-fx-font-size: 1.6em;" text="Lista de Asistencia" VBox.vgrow="SOMETIMES">
-
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-
-               <styleClass>
-                  <String fx:value="boton-glow-bubble-naranja" />
-                  <String fx:value="fuente-superchips" />
-               </styleClass>
-
-               <font>
-                  <Font size="20.0" />
-               </font>
-
-            </Button>
-
-            <ImageView fitHeight="153.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true">
-
-               <image>
-                  <Image url="@../img/icono_3.png" />
-               </image>
-
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-
-            </ImageView>
-
-         </children>
-
-      </VBox>
-
-      <HBox alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="379.0" VBox.vgrow="SOMETIMES">
-
-         <children>
-
-            <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" styleClass="boton-imagen" HBox.hgrow="SOMETIMES">
-
-               <graphic>
-                  <ImageView fitHeight="49.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-
-                     <image>
-                        <Image url="@../img/boton_X.png" />
-                     </image>
-
-                  </ImageView>
-               </graphic>
-
-            </Button>
-
-         </children>
-
-      </HBox>
-
-   </children>
-
-</VBox>
+    </children>
+</AnchorPane>
