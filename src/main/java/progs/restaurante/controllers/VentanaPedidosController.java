@@ -167,6 +167,32 @@ public class VentanaPedidosController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    private void handleBuscar() {
+    String texto = txt_buscar.getText().trim();
+
+    if (texto.isEmpty()) {
+        tlb_pedidos.setItems(listaPedidos); // muestra todo si está vacío
+        return;
+    }
+
+    try {
+        int idBuscado = Integer.parseInt(texto);
+        ObservableList<Orden> filtrados = FXCollections.observableArrayList();
+
+        for (Orden o : listaPedidos) {
+            if (o.getIdPedido() == idBuscado) {
+                filtrados.add(o);
+            }
+        }
+
+        tlb_pedidos.setItems(filtrados);
+
+    } catch (NumberFormatException e) {
+        mostrarAlerta("Error", "Ingresa un número de pedido válido.");
+    }
+}
 
     // ALERTAS
     private void mostrarAlerta(String titulo, String mensaje) {
