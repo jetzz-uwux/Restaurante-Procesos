@@ -16,7 +16,7 @@
     Recepcionista tiene 3 botones: Reservas, Lista de Espera, Registrar Asistencia.
 -->
 
-<AnchorPane prefHeight="520.0" prefWidth="750.0" styleClass="fondo-madera" stylesheets="@VistaMesero.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.RecepcionistaController">
+<AnchorPane prefHeight="520.0" prefWidth="750.0" styleClass="fondo-madera" stylesheets="@VistaMesero.css" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progs.restaurante.controllers.RecepcionistaController">
 
     <children>
 

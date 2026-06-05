@@ -83,7 +83,7 @@ public class RecepcionistaController {
     // CERRAR SESION: cierra la ventana actual y regresa al login
     // =========================================================
     @FXML
-    private void cerrarSesion() {
+    private void handleCerrarSesion() {
         irAlLogin((Stage) btn_cerrarsesion.getScene().getWindow());
     }
 

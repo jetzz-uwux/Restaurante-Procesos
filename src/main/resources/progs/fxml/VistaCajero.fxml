@@ -38,7 +38,7 @@
                 </VBox>
 
                 <!-- BOTON CERRAR SESION: esquina superior derecha -->
-                <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" styleClass="boton-imagen" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <Button fx:id="btn_cerrarsesion" mnemonicParsing="false" onAction="#cerrarSesion" styleClass="boton-imagen" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <graphic>
                         <ImageView fitHeight="56.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                             <image>

@@ -67,7 +67,8 @@ public class VistaMeseroController implements Initializable {
     private Button btn_pedidos;
     @FXML
     private Button btn_cerrarCuenta;
-
+    @FXML
+    private Button btn_asistencia;
     // Nuevos elementos del rediseno: tabla de pedidos activos y botones laterales
     @FXML
     private TableView<Notificacion> tablaPedidos;
@@ -860,4 +861,25 @@ public class VistaMeseroController implements Initializable {
             }
         }
     }
+    
+        @FXML
+    private void handleAsistencia() {
+        try {
+            EstilosApp.cargarFuentes();
+            Parent root = FXMLLoader.load(
+                    getClass().getResource("/progs/fxml/Asistencia.fxml")
+            );
+            Stage stage = new Stage();
+            stage.setTitle("Pedidos");
+            Scene escena = new Scene(root);
+            EstilosApp.aplicar(escena,
+                CSS.JUEGO, CSS.FUENTES, CSS.BOTONES,
+                CSS.TEXTFIELD, CSS.IMAGEN, CSS.TEXTO, CSS.TABLA_1, CSS.TABLA_2);
+            stage.setScene(escena);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }

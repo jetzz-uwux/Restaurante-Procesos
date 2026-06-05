@@ -22,9 +22,9 @@
                <children>
                   <HBox alignment="TOP_RIGHT" minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="SOMETIMES">
                      <children>
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" style="-fx-font-size: 1.7em;" text="Ayuda" textAlignment="RIGHT">
+                        <Button fx:id="btn_asistencia" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleAsistencia" style="-fx-font-size: 1.7em;" text="Asistencia" textAlignment="RIGHT">
                            <graphic>
-                              <ImageView fx:id="btn_i" fitHeight="45.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="45.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/icono_i.png" />
                                  </image>

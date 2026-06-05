@@ -1,5 +1,6 @@
 package progs.restaurante.controllers;
 
+import java.io.IOException;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -32,6 +34,9 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import static progs.restaurante.lib.EstilosApp.cargarFuentes;
 
 /**
  * ╔══════════════════════════════════════════════════════════════════════╗
@@ -42,7 +47,7 @@ import java.util.concurrent.TimeUnit;
  * ║   2. Se auto-refresca cada 5 segundos en segundo plano               ║
  * ║   3. Colorea filas por urgencia (verde/naranja/rojo)                 ║
  * ║   4. DETALLES → ventana con los productos del pedido                 ║
- * ║   5. ORDEN LISTA → cambia estado a 'listo' en la BD                 ║
+ * ║   5. ORDEN LISTA → cambia estado a 'listo' en la BD                  ║
  * ║   6. Refrescar → recarga manual inmediata                            ║
  * ║                                                                      ║
  * ║  Tablas usadas:                                                      ║
@@ -63,6 +68,7 @@ public class VentanaChefController implements Initializable {
     @FXML private Button                       btn_editar;  // DETALLES
     @FXML private Button                       btn_servir;  // ORDEN LISTA
     @FXML private Button                       btn_salir;   // SALIR → login
+    @FXML private Button                       btn_asistencia;   // ícono de asistencia
 
     // ══════════════════════════════════════════════════════
     //  CONSTANTES — ajusta aquí si cambian los nombres en BD
@@ -84,6 +90,8 @@ public class VentanaChefController implements Initializable {
     // Umbrales de urgencia en minutos
     private static final int MIN_URGENTE      = 15; // rojo
     private static final int MIN_ADVERTENCIA  = 8;  // naranja
+    
+    private static Scene scene;
 
     // ══════════════════════════════════════════════════════
     //  ESTADO INTERNO
@@ -220,7 +228,7 @@ public class VentanaChefController implements Initializable {
     // ══════════════════════════════════════════════════════
 
     private void cargarPedidos() {
-        Task<List<Pedido>> tarea = new Task<>() {
+        Task<List<Pedido>> tarea = new Task<List<Pedido>>() {
             @Override
             protected List<Pedido> call() throws Exception {
                 return consultarPedidosEnBD();
@@ -337,7 +345,7 @@ public class VentanaChefController implements Initializable {
             return;
         }
 
-        Task<List<DetallePedido>> tarea = new Task<>() {
+        Task<List<DetallePedido>> tarea = new Task<List<DetallePedido>>() {
             @Override
             protected List<DetallePedido> call() throws Exception {
                 return consultarDetallesEnBD(seleccionado.getIdPedido());
@@ -420,9 +428,9 @@ public class VentanaChefController implements Initializable {
         TableColumn<DetallePedido, Double> colPrecio =
             new TableColumn<>("Precio $");
         colPrecio.setCellValueFactory(data ->
-            new javafx.beans.property.SimpleDoubleProperty(
+            new javafx.beans.property.SimpleObjectProperty<>(
                 data.getValue().getPrecio()
-            ).asObject()
+            )
         );
         colPrecio.setPrefWidth(100);
 
@@ -492,7 +500,7 @@ public class VentanaChefController implements Initializable {
     // ══════════════════════════════════════════════════════
 
     private void actualizarEstadoEnBD(Pedido pedido) {
-        Task<Void> tarea = new Task<>() {
+        Task<Void> tarea = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
                 System.out.println("🔄 Intentando actualizar pedido #" + pedido.getIdPedido());
@@ -562,34 +570,53 @@ public class VentanaChefController implements Initializable {
 
     @FXML
     private void handleSalir() {
-        // 1. Detener el refresco automático antes de salir
-        detener();
+        detener(); // detiene el refresco automatico antes de salir
+        irAlLogin((Stage) btn_salir.getScene().getWindow());
+    }
 
+    // Abre Asistencia.fxml en ventana nueva (sin cerrar la ventana del chef)
+    @FXML
+    private void handleAsistencia() {
         try {
-            // 2. Cargar el FXML del login
+            EstilosApp.cargarFuentes();
             javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(
-                getClass().getResource("/progs/fxml/login.fxml")
-            );
+                    getClass().getResource("/progs/fxml/Asistencia.fxml"));
             javafx.scene.Parent root = loader.load();
-
-            // 3. Obtener el Stage actual desde cualquier nodo
-            Stage stage = (Stage) btn_salir.getScene().getWindow();
-
-            // 4. Cambiar la escena de vuelta al login
+            Stage stage = new Stage();
+            stage.setTitle("Control de Asistencia");
             javafx.scene.Scene escena = new javafx.scene.Scene(root);
             EstilosApp.aplicar(escena,
-                CSS.JUEGO,
-                CSS.FUENTES,
-                CSS.BOTONES,
-                CSS.TEXTFIELD
+                CSS.PANELES, CSS.FUENTES, CSS.BOTONES, CSS.TABLA_1,
+                CSS.IMAGEN, CSS.DIALOGO, CSS.TEXTO, CSS.JUEGO,
+                CSS.TABLA_2, CSS.TEXTFIELD
             );
             stage.setScene(escena);
-            stage.setTitle("Restaurante — Iniciar Sesión");
+            stage.show();
+        } catch (java.io.IOException ex) {
+            System.err.println("Error abriendo Asistencia: " + ex.getMessage());
+            mostrarError("No se pudo abrir la ventana de asistencia.");
+        }
+    }
+
+    // Regresa al login con los CSS exactos que usa LoginController
+    private void irAlLogin(Stage stage) {
+        try {
+            EstilosApp.cargarFuentes();
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(
+                    getClass().getResource("/progs/fxml/VistaInicioSesion.fxml"));
+            javafx.scene.Parent root = loader.load();
+            javafx.scene.Scene escena = new javafx.scene.Scene(root);
+            EstilosApp.aplicar(escena,
+                CSS.PANELES, CSS.FUENTES, CSS.BOTONES, CSS.TABLA_1,
+                CSS.IMAGEN, CSS.DIALOGO, CSS.TEXTO, CSS.JUEGO,
+                CSS.TABLA_2, CSS.TEXTFIELD, CSS.GESTIONEMPLEADOS, CSS.VISTAMESERO
+            );
+            stage.setScene(escena);
+            stage.setTitle("Restaurante - Iniciar Sesion");
             stage.centerOnScreen();
             stage.show();
-
         } catch (java.io.IOException ex) {
-            System.err.println("❌ Error al volver al login: " + ex.getMessage());
+            System.err.println("Error al regresar al login: " + ex.getMessage());
             mostrarError("No se pudo volver a la pantalla de inicio.");
         }
     }
