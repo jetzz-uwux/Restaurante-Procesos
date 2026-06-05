@@ -32,6 +32,11 @@ public class VentanaMenuController {
     private TableColumn<Producto, String> colCategoria;
     @FXML
     private TableColumn<Producto, String> colDisponible;
+    
+    @FXML
+    private Button btn_guardar;
+    @FXML
+    private Button btn_cancelar;
 
     private ObservableList<Producto> listaProductos = FXCollections.observableArrayList();
     private ProductoDAO productoDAO = new ProductoDAO();
