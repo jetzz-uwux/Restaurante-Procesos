@@ -36,5 +36,49 @@ public class ProductoDAO {
         }
         return lista;
     }
+
+    public void guardarProducto(Producto p) {
+        String sql = "INSERT INTO productos (nombre, precio, categoria, disponible) VALUES (?, ?, ?, ?)";
+        try (Connection con = ConexionBD.getConexion(); PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, p.getNombre());
+            ps.setDouble(2, p.getPrecio());
+            ps.setString(3, p.getCategoria());
+            ps.setBoolean(4, p.isDisponible());
+            ps.executeUpdate();
+
+            // ← esto es lo nuevo: recuperar el id generado y asignarlo al objeto
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                p.setIdProducto(rs.getInt(1));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void actualizarProducto(Producto p) {
+        String sql = "UPDATE productos SET nombre=?, precio=?, categoria=?, disponible=? WHERE id_producto=?";
+        try (Connection con = ConexionBD.getConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, p.getNombre());
+            ps.setDouble(2, p.getPrecio());
+            ps.setString(3, p.getCategoria());
+            ps.setBoolean(4, p.isDisponible());
+            ps.setInt(5, p.getIdProducto());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void eliminarProducto(int idProducto) {
+        String sql = "DELETE FROM productos WHERE id_producto=?";
+        try (Connection con = ConexionBD.getConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idProducto);
+            int filas = ps.executeUpdate();
+            System.out.println("Filas eliminadas: " + filas);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
-    

@@ -32,11 +32,11 @@ public class VentanaMenuController {
     private TableColumn<Producto, String> colCategoria;
     @FXML
     private TableColumn<Producto, String> colDisponible;
-    
+
     @FXML
     private Button btn_guardar;
     @FXML
-    private Button btn_cancelar;
+    private Button btn_eliminar;
 
     private ObservableList<Producto> listaProductos = FXCollections.observableArrayList();
     private ProductoDAO productoDAO = new ProductoDAO();
@@ -113,6 +113,7 @@ public class VentanaMenuController {
                     break;
             }
 
+            productoDAO.guardarProducto(nuevoProducto);  // ← guarda en BD
             listaProductos.add(nuevoProducto);
             mostrarAlerta("Registro Exitoso", "El nuevo producto se ha añadido a la carta.", Alert.AlertType.INFORMATION);
 
@@ -121,6 +122,7 @@ public class VentanaMenuController {
             productoSeleccionado.setPrecio(precio);
             productoSeleccionado.setDisponible(disponible);
 
+            productoDAO.actualizarProducto(productoSeleccionado);  // ← actualiza en BD
             tbl_menu.refresh();
             mostrarAlerta("Actualización Exitosa", "Los datos del producto han sido modificados.", Alert.AlertType.INFORMATION);
         }
@@ -129,7 +131,15 @@ public class VentanaMenuController {
     }
 
     @FXML
-    private void handleCancelar() {
+    private void handleEliminar() {
+        if (productoSeleccionado == null) {
+            mostrarAlerta("Atención", "Selecciona un producto de la tabla.", Alert.AlertType.WARNING);
+            return;
+        }
+        System.out.println("ID a eliminar: " + productoSeleccionado.getIdProducto());
+        productoDAO.eliminarProducto(productoSeleccionado.getIdProducto());
+        productoDAO.eliminarProducto(productoSeleccionado.getIdProducto());
+        listaProductos.remove(productoSeleccionado);
         limpiarFormulario();
     }
 
