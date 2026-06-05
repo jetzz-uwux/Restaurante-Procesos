@@ -21,7 +21,7 @@ public abstract class Producto {
         this.precio = precio;
         this.categoria = categoria;
         this.disponible = disponible;
-        this.stock = disponible ? 10 : 0;
+        this.stock = disponible ? 0 : 0;
     }
 
     public Producto(int idProducto, String nombre, double precio, String categoria, boolean disponible) {
@@ -30,7 +30,7 @@ public abstract class Producto {
         this.precio = precio;
         this.categoria = categoria;
         this.disponible = disponible;
-        this.stock = disponible ? 10 : 0;
+        this.stock = disponible ? 0 : 0;
     }
 
     public String getNombre() {

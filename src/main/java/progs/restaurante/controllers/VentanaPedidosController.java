@@ -16,6 +16,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import progs.restaurante.Orden;
 import progs.restaurante.datos.OrdenesDAO;
+import progs.restaurante.lib.EstilosApp;
+import progs.restaurante.lib.EstilosApp.CSS;
 
 public class VentanaPedidosController implements Initializable {
 
@@ -52,9 +54,11 @@ public class VentanaPedidosController implements Initializable {
             Parent root = loader.load();
 
             Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            EstilosApp.aplicar(scene, CSS.JUEGO, CSS.FUENTES, CSS.BOTONES, CSS.IMAGEN);
             stage.setTitle("Nuevo Pedido");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.showAndWait();
 
             cargarDatosDesdeBD();
@@ -80,10 +84,13 @@ public class VentanaPedidosController implements Initializable {
 
             VentanaEditarPedidoController controller = loader.getController();
             controller.cargarDatos(seleccionado);
+            
+            Scene scene = new Scene(root);
+            EstilosApp.aplicar(scene, CSS.JUEGO, CSS.FUENTES, CSS.BOTONES, CSS.IMAGEN);
 
             Stage stage = new Stage();
             stage.setTitle("Editar Pedido");
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.showAndWait();
 
             cargarDatosDesdeBD();
@@ -149,10 +156,11 @@ public class VentanaPedidosController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/progs/fxml/VentanaVentas.fxml"));
             Parent root = loader.load();
-
+            Scene scene = new Scene(root);
+            EstilosApp.aplicar(scene, CSS.JUEGO, CSS.FUENTES, CSS.BOTONES, CSS.IMAGEN);
             Stage stage = new Stage();
             stage.setTitle("Reporte de Ventas");
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.show();
 
         } catch (IOException e) {
