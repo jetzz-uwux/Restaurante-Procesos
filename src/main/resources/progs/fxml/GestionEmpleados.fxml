@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <!--
     ARCHIVO FXML - GESTION DE EMPLEADOS
@@ -16,19 +25,17 @@
     onAction      conecta cada boton con un metodo @FXML del controlador
 -->
 
-<BorderPane
-    xmlns:fx="http://javafx.com/fxml"
-    fx:controller="progs.restaurante.controllers.GestionEmpleadosController"
-    prefWidth="960"
-    prefHeight="600"
-    styleClass="root-pane"
-    stylesheets="@GestionEmpleados.css">
+<BorderPane prefHeight="600" prefWidth="960" styleClass="root-pane" stylesheets="@GestionEmpleados.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="progs.restaurante.controllers.GestionEmpleadosController">
 
     <!-- ENCABEZADO SUPERIOR: Titulo de la pantalla -->
     <top>
-        <VBox styleClass="header-bar" alignment="CENTER">
-            <Label text="CENTRAL DE CHEFS" styleClass="titulo-principal"/>
-            <Label text="Sistema de Gestion de Personal" styleClass="subtitulo"/>
+        <VBox alignment="CENTER" styleClass="header-bar">
+            <Label text="CENTRAL DE PERSONAL">
+            <styleClass>
+               <String fx:value="titulo-principal" />
+               <String fx:value="fuente-bouncy" />
+            </styleClass></Label>
+            <Label styleClass="subtitulo" text="Sistema de Gestion de Personal" />
         </VBox>
     </top>
 
@@ -36,151 +43,123 @@
     <center>
         <HBox spacing="20" styleClass="contenido-central">
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
+                <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
 
             <!-- PANEL IZQUIERDO: Tabla de Personal Activo -->
-            <VBox styleClass="panel-tabla" HBox.hgrow="ALWAYS" spacing="10">
+            <VBox spacing="10" styleClass="panel-tabla" HBox.hgrow="ALWAYS">
 
                 <!-- Titulo del panel izquierdo con contador -->
-                <HBox styleClass="panel-encabezado" alignment="CENTER">
-                    <Label text="PERSONAL " styleClass="icono-panel"/>
-                    <Label fx:id="lblContador" text="PERSONAL ACTIVO (0)"
-                           styleClass="titulo-panel"/>
+                <HBox alignment="CENTER" styleClass="panel-encabezado">
+                    <Label styleClass="icono-panel" text="PERSONAL " />
+                    <Label fx:id="lblContador" styleClass="titulo-panel" text="PERSONAL ACTIVO (0)" />
                 </HBox>
 
                 <!-- Tabla de empleados -->
-                <TableView fx:id="tablaEmpleados" VBox.vgrow="ALWAYS"
-                           styleClass="tabla-empleados">
+                <TableView fx:id="tablaEmpleados" VBox.vgrow="ALWAYS">
                     <columns>
                         <!-- Columna ID -->
-                        <TableColumn fx:id="colId" text="ID"
-                                     prefWidth="60" styleClass="col-id"/>
+                        <TableColumn fx:id="colId" prefWidth="60" styleClass="col-id" text="ID" />
 
                         <!-- Columna Nombre -->
-                        <TableColumn fx:id="colNombre" text="Nombre"
-                                     prefWidth="160"/>
+                        <TableColumn fx:id="colNombre" prefWidth="160" text="Nombre" />
 
                         <!-- Columna Usuario -->
-                        <TableColumn fx:id="colUsuario" text="Usuario"
-                                     prefWidth="130"/>
+                        <TableColumn fx:id="colUsuario" prefWidth="130" text="Usuario" />
 
                         <!-- Columna Rol con badges de color -->
-                        <TableColumn fx:id="colRol" text="Rol / Puesto"
-                                     prefWidth="150"/>
+                        <TableColumn fx:id="colRol" prefWidth="150" text="Rol / Puesto" />
                     </columns>
 
                     <!-- Mensaje cuando la tabla esta vacia -->
                     <placeholder>
-                        <Label text="No hay empleados registrados"
-                               styleClass="tabla-vacia"/>
+                        <Label styleClass="tabla-vacia" text="No hay empleados registrados" />
                     </placeholder>
+               <styleClass>
+                  <String fx:value="tabla-empleados" />
+                  <String fx:value="fuente-somelist" />
+               </styleClass>
                 </TableView>
 
             </VBox>
 
             <!-- PANEL DERECHO: Formulario de Accion -->
-            <VBox styleClass="panel-accion" prefWidth="340" spacing="14">
+            <VBox prefWidth="340" spacing="14" styleClass="panel-accion">
 
                 <!-- Titulo del panel derecho -->
-                <HBox styleClass="panel-encabezado" alignment="CENTER">
-                    <Label text="PANEL DE ACCION" styleClass="titulo-panel"/>
+                <HBox alignment="CENTER" styleClass="panel-encabezado">
+                    <Label styleClass="titulo-panel" text="PANEL DE ACCION" />
                 </HBox>
 
                 <!-- Subtitulo dinamico: muestra que empleado se edita -->
-                <Label fx:id="lblTituloPanel" text="NUEVO EMPLEADO"
-                       styleClass="subtitulo-panel" wrapText="true"/>
+                <Label fx:id="lblTituloPanel" styleClass="subtitulo-panel" text="NUEVO EMPLEADO" wrapText="true" />
 
                 <!-- SEPARADOR VISUAL -->
-                <Separator styleClass="separador"/>
+                <Separator styleClass="separador" />
 
                 <!-- CAMPO: Nombre -->
                 <VBox spacing="4">
                     <HBox alignment="CENTER_LEFT" spacing="8">
-                        <Label text="Nombre" styleClass="etiqueta-campo"/>
+                        <Label styleClass="etiqueta-campo" text="Nombre" />
                     </HBox>
-                    <TextField fx:id="txtNombre"
-                               promptText="Ej: Juan Lopez"
-                               styleClass="campo-texto"/>
+                    <TextField fx:id="txtNombre" promptText="Ej: Juan Lopez" styleClass="campo-texto" />
                 </VBox>
 
                 <!-- CAMPO: Usuario -->
                 <VBox spacing="4">
                     <HBox alignment="CENTER_LEFT" spacing="8">
-                        <Label text="Usuario" styleClass="etiqueta-campo"/>
+                        <Label styleClass="etiqueta-campo" text="Usuario" />
                     </HBox>
-                    <TextField fx:id="txtUsuario"
-                               promptText="Ej: jlopez2024"
-                               styleClass="campo-texto"/>
+                    <TextField fx:id="txtUsuario" promptText="Ej: jlopez2024" styleClass="campo-texto" />
                 </VBox>
 
                 <!-- CAMPO: Contrasena -->
                 <VBox spacing="4">
                     <HBox alignment="CENTER_LEFT" spacing="8">
-                        <Label text="Contrasena" styleClass="etiqueta-campo"/>
+                        <Label styleClass="etiqueta-campo" text="Contrasena" />
                     </HBox>
-                    <PasswordField fx:id="txtContrasena"
-                                   promptText="Dejar vacio para no cambiar"
-                                   styleClass="campo-texto"/>
+                    <PasswordField fx:id="txtContrasena" promptText="Dejar vacio para no cambiar" styleClass="campo-texto" />
                 </VBox>
 
                 <!-- CAMPO: Rol / Puesto -->
                 <VBox spacing="4">
                     <HBox alignment="CENTER_LEFT" spacing="8">
-                        <Label text="Rol / Puesto" styleClass="etiqueta-campo"/>
+                        <Label styleClass="etiqueta-campo" text="Rol / Puesto" />
                     </HBox>
-                    <ComboBox fx:id="cmbRol"
-                              promptText="Selecciona un rol"
-                              maxWidth="Infinity"
-                              styleClass="combo-rol"/>
+                    <ComboBox fx:id="cmbRol" maxWidth="Infinity" promptText="Selecciona un rol" styleClass="combo-rol" />
                 </VBox>
 
                 <!-- SEPARADOR ANTES DE BOTONES -->
-                <Separator styleClass="separador"/>
+                <Separator styleClass="separador" />
 
                 <!-- BOTONES DE ACCION: Contratar / Actualizar / Despedir -->
-                <HBox spacing="10" alignment="CENTER">
+                <HBox alignment="CENTER" spacing="10">
 
                     <!-- BOTON VERDE: ALTA / CONTRATAR -->
                     <VBox alignment="CENTER" spacing="4">
-                        <Button fx:id="btnContratar"
-                                text="[+]"
-                                onAction="#accionContratar"
-                                styleClass="btn-contratar"
-                                prefWidth="90" prefHeight="55"/>
-                        <Label text="CONTRATAR" styleClass="etiqueta-boton"/>
-                        <Label text="(Alta)" styleClass="etiqueta-boton-sub"/>
+                        <Button fx:id="btnContratar" onAction="#accionContratar" prefHeight="55" prefWidth="90" styleClass="btn-contratar" text="[+]" />
+                        <Label styleClass="etiqueta-boton" text="CONTRATAR" />
+                        <Label styleClass="etiqueta-boton-sub" text="(Alta)" />
                     </VBox>
 
                     <!-- BOTON AMARILLO: MODIFICAR / ACTUALIZAR -->
                     <VBox alignment="CENTER" spacing="4">
-                        <Button fx:id="btnActualizar"
-                                text="[=]"
-                                onAction="#accionActualizar"
-                                styleClass="btn-actualizar"
-                                prefWidth="90" prefHeight="55"/>
-                        <Label text="ACTUALIZAR" styleClass="etiqueta-boton"/>
-                        <Label text="(Modificar)" styleClass="etiqueta-boton-sub"/>
+                        <Button fx:id="btnActualizar" onAction="#accionActualizar" prefHeight="55" prefWidth="90" styleClass="btn-actualizar" text="[=]" />
+                        <Label styleClass="etiqueta-boton" text="ACTUALIZAR" />
+                        <Label styleClass="etiqueta-boton-sub" text="(Modificar)" />
                     </VBox>
 
                     <!-- BOTON ROJO: BAJA / DESPEDIR -->
                     <VBox alignment="CENTER" spacing="4">
-                        <Button fx:id="btnDespedir"
-                                text="[x]"
-                                onAction="#accionDespedir"
-                                styleClass="btn-despedir"
-                                prefWidth="90" prefHeight="55"/>
-                        <Label text="DESPEDIR" styleClass="etiqueta-boton"/>
-                        <Label text="(Baja)" styleClass="etiqueta-boton-sub"/>
+                        <Button fx:id="btnDespedir" onAction="#accionDespedir" prefHeight="55" prefWidth="90" styleClass="btn-despedir" text="[x]" />
+                        <Label styleClass="etiqueta-boton" text="DESPEDIR" />
+                        <Label styleClass="etiqueta-boton-sub" text="(Baja)" />
                     </VBox>
 
                 </HBox>
 
                 <!-- BOTON GRIS: LIMPIAR FORMULARIO -->
-                <Button text="Limpiar / Nuevo"
-                        onAction="#limpiarFormulario"
-                        maxWidth="Infinity"
-                        styleClass="btn-limpiar"/>
+                <Button maxWidth="Infinity" onAction="#limpiarFormulario" styleClass="btn-limpiar" text="Limpiar / Nuevo" />
 
             </VBox>
 
